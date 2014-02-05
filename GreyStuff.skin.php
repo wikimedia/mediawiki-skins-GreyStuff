@@ -132,24 +132,28 @@ class GreyStuffTemplate extends BaseTemplate {
 					</div>
 				<?php
 				}
+				if ( $this->data['subtitle'] || $this->data['undelete'] || $this->data['newtalk'] ) {
 				?>
-				<div id="content-top-stuff">
-					<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>>
-						<?php $this->html( 'subtitle' ) ?>
+					<div id="content-top-stuff">
+						<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>>
+							<?php $this->html( 'subtitle' ) ?>
+						</div>
+						<?php
+						if ( $this->data['undelete'] ) {
+							?>
+							<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+							<?php
+						}
+						if ( $this->data['newtalk'] ) {
+							?>
+							<div class="usermessage"><?php $this->html( 'newtalk' ) ?></div>
+							<?php
+						}
+						?>
 					</div>
 					<?php
-					if ( $this->data['undelete'] ) {
-						?>
-						<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-						<?php
-					}
-					if ( $this->data['newtalk'] ) {
-						?>
-						<div class="usermessage"><?php $this->html( 'newtalk' ) ?></div>
-						<?php
-					}
-					?>
-				</div>
+				}
+				?>
 				<h1 id="firstHeading" class="firstHeading" lang="<?php
 					$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 					$this->text( 'pageLanguage' );
@@ -212,11 +216,13 @@ class GreyStuffTemplate extends BaseTemplate {
 					</ul>
 					<?php
 				}
+				?>
+				<div class="visualClear"></div>
+				<?php
 				echo $footerEnd;
-			?>
+				?>
 			</div>
 		</div>
-		<div class="visualClear"></div>
 	</div>
 	<?php
 		$this->printTrail();

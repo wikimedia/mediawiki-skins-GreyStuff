@@ -34,6 +34,7 @@ $wgExtensionCredits['skin'][] = array(
 	'version' => '1.0.1',
 	'author' => array( 'Calimonius the Estrange' ),
 	'descriptionmsg' => 'greystuff-desc',
+	'url' => 'https://github.com/zaori/mw-skin-greystuff'
 );
 
 # Autoload the skin class, make it a valid skin, set up i18n, set up CSS & JS
