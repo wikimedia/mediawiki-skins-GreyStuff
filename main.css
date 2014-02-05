@@ -77,6 +77,7 @@ a.new:visited {
 	font-weight: bold;
 	line-height: 140%;
 	color: #999;
+	/* @noflip */
 	text-shadow:  0 -1px 1px #333, 0 2px 1px #fff;
 }
 #sitesubtitle {
@@ -116,6 +117,7 @@ float: right;
 #p-welcome {
 	/* @embed */
 	background: url('images/arrow-down.png') no-repeat 100% 40%;
+	/* @embed */
 	background-image: url('images/arrow-down.svg'), none;
 	padding: 0 1.75em .3em 0;
 }
@@ -137,6 +139,7 @@ float: right;
 	font-size: 90%;
 	/* @embed */
 	background: url('images/arrow-down.png') no-repeat 100% 60%;
+	/* @embed */
 	background-image: url('images/arrow-down.svg'), none;
 	text-shadow: none;
 }
@@ -314,6 +317,16 @@ button {
 	background: linear-gradient(to bottom, #fcfcfc 0%,#ededed 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 	border-radius: 3px;
+}
+input[type="submit"]:active, button:active {
+	background: -moz-linear-gradient(top, #fff 0%, #f6f6f6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #fff 0%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #fff 0%,#f6f6f6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #fff 0%,#f6f6f6 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #fff 0%,#f6f6f6 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+
 }
 textarea {
 	width: 100%;

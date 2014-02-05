@@ -31,6 +31,7 @@ class SkinGreyStuff extends SkinTemplate {
 
 		# Add css
 		$out->addModuleStyles( 'skins.common.normalize' );
+		$out->addModuleStyles( 'skins.common.content' );
 		$out->addModuleStyles( 'skins.greystuff' );
 	}
 }
@@ -217,7 +218,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		</div>
 		<div class="visualClear"></div>
 	</div>
-<?php
+	<?php
 		$this->printTrail();
 		echo Html::closeElement( 'body' );
 		echo Html::closeElement( 'html' );

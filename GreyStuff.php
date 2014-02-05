@@ -24,27 +24,26 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
+	die( 'Not a valid entry point.' );
 }
 
-// Skin credits that will show up on Special:Version
-
+# Skin credits that will show up on Special:Version
 $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'GreyStuff skin',
-	'version' => '0.muffin.11',
+	'version' => '1.0.1',
 	'author' => array( 'Calimonius the Estrange' ),
 	'descriptionmsg' => 'greystuff-desc',
 );
 
+# Autoload the skin class, make it a valid skin, set up i18n, set up CSS & JS
+# (via ResourceLoader)
 $skinID = basename( dirname( __FILE__ ) );
 $dir = dirname( __FILE__ ) . '/';
 
-# Autoload the skin class, make it a valid skin, set up i18n
-
-# The first instance must be strtolower()ed so that useskin=nimbus works and
+# The first instance must be strtolower()ed so that useskin=aurora works and
 # so that it does *not* force an initial capital (i.e. we do NOT want
-# useskin=GreyStuff) and the second instance is used to determine the name of
+# useskin=greystuff) and the second instance is used to determine the name of
 # *this* file.
 $wgValidSkinNames[strtolower( $skinID )] = 'GreyStuff';
 
@@ -52,11 +51,9 @@ $wgAutoloadClasses['SkinGreyStuff'] = $dir . 'GreyStuff.skin.php';
 $wgExtensionMessagesFiles['SkinGreyStuff'] = $dir . 'GreyStuff.i18n.php';
 $wgResourceModules['skins.greystuff'] = array(
 	'styles' => array(
-		// MonoBook also loads these
-		'skins/common/commonContent.css' => array( 'media' => 'screen' ),
-		// Styles custom to the GreyStuff skin
-		'skins/greystuff/main.css' => array( 'media' => 'screen' )
+		'skins/GreyStuff/main.css' => array( 'media' => 'screen' ),
 	),
 	'scripts' => '',
 	'position' => 'top'
 );
+

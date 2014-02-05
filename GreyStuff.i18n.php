@@ -17,7 +17,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation) */
 $messages['qqq'] = array(
-	'greystuff-desc' => '{{desc|name=Mask}}',
+	'greystuff-desc' => '{{desc|name=GreyStuff}}',
 	'greystuff-loggedinas' => 'Welcome label for personal menu for logged in users.',
 	'greystuff-history' => 'Page history link label in toolbox.',
 	'greystuff-purge' => 'Purge link label in toolbox.',
