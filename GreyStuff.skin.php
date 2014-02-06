@@ -8,7 +8,7 @@
  * @author Calimonius the Estrange
  * @author Jack Phoenix
  * @authors Whoever wrote monobook
- * @date 2013
+ * @date 2014
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -275,11 +275,10 @@ class GreyStuffTemplate extends BaseTemplate {
 			<div class="pBody">
 				<ul>
 				<?php
-					foreach ( $this->data['content_actions'] as $key => $tab ) {
-						echo '
-					' . $this->makeListItem( $key, $tab );
-					}
-					?>
+				foreach ( $this->data['content_actions'] as $key => $tab ) {
+					echo $this->makeListItem( $key, $tab );
+				}
+				?>
 				</ul>
 			</div>
 		</div>
@@ -349,9 +348,9 @@ class GreyStuffTemplate extends BaseTemplate {
 		if ( $tooltip !== false ) {
 			$portletAttribs['title'] = $tooltip;
 		}
-		echo '	' . Html::openElement( 'div', $portletAttribs );
+		echo Html::openElement( 'div', $portletAttribs );
 		$msgObj = wfMessage( $bar );
-	?>
+		?>
 
 		<h3><?php echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $bar ); ?></h3>
 		<div class='pBody'>

@@ -52,7 +52,7 @@ $wgAutoloadClasses['SkinGreyStuff'] = $dir . 'GreyStuff.skin.php';
 $wgExtensionMessagesFiles['SkinGreyStuff'] = $dir . 'GreyStuff.i18n.php';
 $wgResourceModules['skins.greystuff'] = array(
 	'styles' => array(
-		'skins/GreyStuff/main.css' => array( 'media' => 'screen' ),
+		'skins/GreyStuff/main.less',
 	),
 	'scripts' => '',
 	'position' => 'top'
