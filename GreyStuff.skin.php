@@ -31,7 +31,6 @@ class SkinGreyStuff extends SkinTemplate {
 
 		# Add css
 		$out->addModuleStyles( 'skins.common.normalize' );
-		$out->addModuleStyles( 'skins.common.content' );
 		$out->addModuleStyles( 'skins.greystuff' );
 	}
 }

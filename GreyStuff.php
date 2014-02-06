@@ -31,10 +31,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'GreyStuff skin',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 	'author' => array( 'Calimonius the Estrange' ),
 	'descriptionmsg' => 'greystuff-desc',
-	'url' => 'https://github.com/zaori/mw-skin-greystuff'
+	'url' => 'https://www.mediawiki.org/wiki/Skin:GreyStuff'
 );
 
 # Autoload the skin class, make it a valid skin, set up i18n, set up CSS & JS
