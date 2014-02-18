@@ -9,7 +9,7 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'greystuff-desc' => "Pointless grey skin because cold medicine isn't strong enough",
+	'greystuff-desc' => 'Simple grey fixed-width skin',
 	'greystuff-loggedinas' => 'Logged in as $1',
 	'greystuff-history' => 'Page history',
 	'greystuff-purge' => 'Refresh page',
@@ -22,6 +22,3 @@ $messages['qqq'] = array(
 	'greystuff-history' => 'Page history link label in toolbox.',
 	'greystuff-purge' => 'Purge link label in toolbox.',
 );
-
-
-
