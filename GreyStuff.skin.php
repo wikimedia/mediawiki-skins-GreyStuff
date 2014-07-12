@@ -30,7 +30,7 @@ class SkinGreyStuff extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		# Add css
-		$out->addModuleStyles( array( 'mediawiki.skinning.normalize', 'mediawiki.skinning.content.externallinks', 'skins.greystuff' ) );
+		$out->addModuleStyles( 'skins.greystuff' );
 	}
 }
 
