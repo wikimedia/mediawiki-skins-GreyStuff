@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Skins
  */
 class SkinGreyStuff extends SkinTemplate {
-	var $skinname = 'greystuff', $stylename = 'greystuff',
+	public $skinname = 'greystuff', $stylename = 'greystuff',
 		$template = 'GreyStuffTemplate', $useHeadElement = true;
 
 	/**
