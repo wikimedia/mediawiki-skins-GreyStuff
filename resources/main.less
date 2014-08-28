@@ -230,6 +230,11 @@ a.external:visited {
 	#p-personal:hover .dropdown {
 		top: 1.75em;
 	}
+	#p-personal .no-dropdown ul li {
+		display: inline;
+		margin-left: 1em;
+	}
+
 	#navigation .portlet:hover .pBody {
 		left: 0;
 	}
@@ -424,6 +429,7 @@ label {
 			&[id^="ca-nstab-"]:after {
 				content: ':';
 			}
+
 			/* Duplicate with tools */
 			&#ca-history {
 				display: none;
@@ -485,7 +491,7 @@ h4 {
 	font-size: 120%;
 }
 h5 {
-	font-size: 110%;
+	font-size: 108%;
 	color: #333;
 }
 h6, dt {
@@ -534,6 +540,7 @@ ul#filetoc {
 	background-color: @soft-bkg;
 	border: 1px solid @soft-border;
 	color: #777;
+	margin-top: 1em;
 }
 #toc, .toc, .mw-warning {
 	background-color: @soft-bkg;
