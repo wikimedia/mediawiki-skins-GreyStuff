@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Isarra"
+			]
+	},
+	"greystuff-desc": "{{desc|what=skin|name=GreyStuff}}",
+	"greystuff-loggedinas": "Label for personal menu for logged in users that really helpfully informs them that they are indeed logged in.",
+	"greystuff-history": "Page history link label in toolbox.",
+	"greystuff-purge": "Purge link label in toolbox."
+}

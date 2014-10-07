@@ -49,6 +49,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgValidSkinNames[strtolower( $skinID )] = 'GreyStuff';
 
 $wgAutoloadClasses['SkinGreyStuff'] = $dir . 'GreyStuff.skin.php';
+$wgMessagesDirs['SkinGreyStuff'] = $dir . '/i18n';
 $wgExtensionMessagesFiles['SkinGreyStuff'] = $dir . 'GreyStuff.i18n.php';
 $wgResourceModules['skins.greystuff'] = array(
 	'styles' => array(
