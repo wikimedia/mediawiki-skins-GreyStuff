@@ -2,7 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Isarra"
-			]
+		]
 	},
 	"greystuff-desc": "{{desc|what=skin|name=GreyStuff}}",
 	"greystuff-loggedinas": "Label for personal menu for logged in users that really helpfully informs them that they are indeed logged in.",
