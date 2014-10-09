@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jopparn"
+		]
+	},
+	"greystuff-loggedinas": "Inloggad som $1",
+	"greystuff-history": "Sidhistorik",
+	"greystuff-purge": "Uppdatera sida"
+}

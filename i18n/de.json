@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"greystuff-desc": "Einfache graue Benutzeroberfläche mit fester Breite",
+	"greystuff-loggedinas": "Angemeldet als $1",
+	"greystuff-history": "Versionsgeschichte",
+	"greystuff-purge": "Seite aktualisieren"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps"
+		]
+	},
+	"greystuff-loggedinas": "Zalogowano jako $1",
+	"greystuff-history": "Historia strony",
+	"greystuff-purge": "Odśwież stronę"
+}

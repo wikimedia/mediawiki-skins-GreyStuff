@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"greystuff-loggedinas": "$1 olarak oturum açıldı",
+	"greystuff-history": "Sayfa geçmişi",
+	"greystuff-purge": "Sayfayı yenile"
+}

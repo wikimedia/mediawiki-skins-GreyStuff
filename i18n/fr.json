@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"greystuff-desc": "Habillage de largeur fixe en gris simple",
+	"greystuff-loggedinas": "Connecté en tant que $1",
+	"greystuff-history": "Historique de la page",
+	"greystuff-purge": "Rafraîchir la page"
+}
