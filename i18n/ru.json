@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"greystuff-desc": "Простая серая тема оформления с фиксированной шириной",
+	"greystuff-loggedinas": "Вошёл как $1",
+	"greystuff-history": "История",
+	"greystuff-purge": "Обновить страницу"
+}
