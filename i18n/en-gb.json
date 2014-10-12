@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Captaindogfish"
+		]
+	},
+	"greystuff-desc": "Simple grey fixed-width skin",
+	"greystuff-loggedinas": "Logged in as $1",
+	"greystuff-history": "Page history",
+	"greystuff-purge": "Refresh page"
+}
