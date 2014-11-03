@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"Amire80"
 		]
 	},
+	"greystuff-desc": "עיצוב אפור פשוט ברוחב קבוע",
 	"greystuff-loggedinas": "מחובר בשם $1",
 	"greystuff-history": "היסטוריית הדף",
 	"greystuff-purge": "רענון הדף"
