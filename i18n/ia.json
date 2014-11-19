@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"greystuff-desc": "Simple apparentia gris a largor fixe",
+	"greystuff-loggedinas": "Authenticate como $1",
+	"greystuff-history": "Historia del pagina",
+	"greystuff-purge": "Refrescar pagina"
+}
