@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"아라"
+		]
+	},
+	"greystuff-desc": "단순한 회색 고정폭 스킨",
+	"greystuff-loggedinas": "$1 사용자로 로그인됨",
+	"greystuff-history": "문서 역사",
+	"greystuff-purge": "문서 새로 고침"
+}
