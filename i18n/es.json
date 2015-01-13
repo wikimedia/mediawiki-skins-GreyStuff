@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
+	"greystuff-desc": "Apariencia sencilla, gris y de anchura fija",
 	"greystuff-loggedinas": "Sesión iniciada como $1",
 	"greystuff-history": "Historial de página",
 	"greystuff-purge": "Recargar página"
