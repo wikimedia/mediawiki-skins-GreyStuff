@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McSalama"
+		]
+	},
+	"greystuff-desc": "Yksinkertainen harmaa kiinteäleveyksinen teema",
+	"greystuff-loggedinas": "Kirjauduttu sisään $1:na/nä",
+	"greystuff-history": "Sivuhistoria",
+	"greystuff-purge": "Päivitä sivu"
+}
