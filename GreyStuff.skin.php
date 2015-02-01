@@ -157,7 +157,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					$this->text( 'pageLanguage' );
 					?>">
 					<?php $this->cactions(); ?>
-					<span dir="auto"><?php $this->html( 'title' ) ?></span>
+					<?php $this->html( 'title' ) ?>
 				</h1>
 				<div id="bodyContent" class="mw-body">
 					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
