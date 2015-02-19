@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reza1615"
+			"Reza1615",
+			"Alirezaaa"
 		]
 	},
 	"greystuff-desc": "پوستهٔ سادهٔ خاکستری عرض ثابت",
-	"greystuff-loggedinas": "ورود به‌عنوان $1",
+	"greystuff-loggedinas": "ورود به عنوان $1",
 	"greystuff-history": "تاریخچهٔ صفحه",
 	"greystuff-purge": "تازه کردن صفحه"
 }
