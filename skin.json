@@ -1,0 +1,31 @@
+{
+	"name": "GreyStuff skin",
+	"version": "1.0.2",
+	"author": [
+		"Calimonius the Estrange"
+	],
+	"url": "https://www.mediawiki.org/wiki/Skin:GreyStuff",
+	"descriptionmsg": "greystuff-desc",
+	"type": "skin",
+	"ValidSkinNames": {
+		"greystuff": "GreyStuff"
+	},
+	"MessagesDirs": {
+		"SkinGreyStuff": [
+			"/i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"SkinGreyStuff": "GreyStuff.skin.php"
+	},
+	"ResourceModules": {
+		"skins.greystuff": {
+			"styles": [
+				"skins/GreyStuff/resources/normalise.css",
+				"skins/GreyStuff/resources/main.less"
+			],
+			"scripts": "",
+			"position": "top"
+		}
+	}
+}
