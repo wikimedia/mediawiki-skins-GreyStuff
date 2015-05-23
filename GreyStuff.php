@@ -54,7 +54,6 @@ $wgExtensionMessagesFiles['SkinGreyStuff'] = $dir . 'GreyStuff.i18n.php';
 $wgResourceModules['skins.greystuff'] = array(
 	'styles' => array(
 		'skins/GreyStuff/resources/normalise.css',
-		'skins/GreyStuff/resources/externallinks.css',
 		'skins/GreyStuff/resources/main.less',
 	),
 	'scripts' => '',
