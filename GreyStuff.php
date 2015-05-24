@@ -27,7 +27,6 @@ if ( function_exists( 'wfLoadSkin' ) ) {
 	wfLoadSkin( 'GreyStuff' );
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
 	$wgMessagesDirs['GreyStuff'] = __DIR__ . '/i18n';
-	$wgExtensionMessagesFiles['GreyStuff'] = __DIR__ . '/GreyStuff.alias.php';
 	wfWarn(
 		'Deprecated PHP entry point used for GreyStuff skin. Please use wfLoadSkin instead, ' .
 		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
