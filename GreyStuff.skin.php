@@ -53,7 +53,6 @@ class GreyStuffTemplate extends BaseTemplate {
 	 */
 	function execute() {
 		global $wgHostLink, $wgDefaultSkin;
-		$user = $this->getSkin()->getUser();
 
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
@@ -63,58 +62,38 @@ class GreyStuffTemplate extends BaseTemplate {
 		<div id="globalWrapper">
 		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?>>
 			<div id="header-top-container">
-				<div id="header-top">
-					<div class="portlet" id="p-personal" role="navigation">
-						<?php
-						# Display status, and make a dropdown if logged in
-						if ( $user->isLoggedIn() ) {
-							?>
-							<div id="p-welcome">
-							<?php
-							echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
-							?>
-							</div>
-							<div class="pBody dropdown">
-						<?php
-						} else {
-						?>
-							<div class="pBody no-dropdown">
-						<?php
-						}
-						?>
-							<ul<?php $this->html( 'userlangattributes' ) ?>>
-							<?php
-								foreach ( $this->getPersonalTools() as $key => $item ) {
-									echo $this->makeListItem( $key, $item );
-								}
-							?>
-							</ul>
-						</div>
+			<div id="header-top">
+				<?php
+				$this->outputPersonalMenu();
+				$this->outputSearch();
+				?>
+				<div class="mw-portlet" id="p-header">
+					<div id="sitetitle" role="banner">
+						<a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>">
+							<?php echo wfMessage( 'sitetitle' )->escaped() ?>
+						</a>
 					</div>
-					<?php $this->searchBox(); ?>
-					<div class="portlet" id="p-header">
-						<div id="sitetitle" role="banner">
-							<a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>">
-								<?php echo wfMessage( 'sitetitle' )->escaped() ?>
-							</a>
-						</div>
-						<div id="sitesubtitle">
-							<?php echo wfMessage( 'sitesubtitle' )->escaped() ?>
-						</div>
+					<div id="sitesubtitle">
+						<?php echo wfMessage( 'sitesubtitle' )->escaped() ?>
 					</div>
 				</div>
+			</div>
 			</div>
 			<div id="header-navigation-container">
 				<div id="header-navigation">
 					<div id="header-tools">
 						<?php
-						$this->languageBox();
-						$this->toolbox();
+						$this->outputPortlet( array(
+							'id' => 'p-variants',
+							'headerMessage' => 'variants',
+							'content' => $this->data['content_navigation']['variants'],
+						) );
+						$this->outputToolbox();
 						?>
 					</div>
 					<div id="navigation">
 						<?php
-						$this->renderPortals( $this->data['sidebar'] );
+						$this->outputSidebar();
 						?>
 					</div>
 				</div>
@@ -155,13 +134,38 @@ class GreyStuffTemplate extends BaseTemplate {
 					<?php
 				}
 				?>
-				<h1 id="firstHeading" class="firstHeading" lang="<?php
-					$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
-					$this->text( 'pageLanguage' );
-					?>">
-					<?php $this->cactions(); ?>
-					<?php $this->html( 'title' ) ?>
-				</h1>
+				<div id="content-header">
+					<h1 id="firstHeading" class="firstHeading" lang="<?php
+						$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+						$this->text( 'pageLanguage' );
+						?>">
+
+						<?php
+						$this->html( 'title' ) ?>
+					</h1>
+					<div id ="page-namespaces">
+						<?php
+						$this->outputPortlet( array(
+							'id' => 'p-namespaces',
+							'headerMessage' => 'namespaces',
+							'content' => $this->data['content_navigation']['namespaces'],
+						) );
+						?>
+					</div>
+					<div id ="page-tools">
+						<?php
+						$ptools = array_merge(
+							$this->data['content_navigation']['views'],
+							$this->data['content_navigation']['actions']
+						);
+						$this->outputPortlet( array(
+							'id' => 'p-views',
+							'headerMessage' => 'views',
+							'content' => $ptools
+						) );
+						?>
+					</div>
+				</div>
 				<div id="bodyContent" class="mw-body">
 					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
 
@@ -179,83 +183,70 @@ class GreyStuffTemplate extends BaseTemplate {
 		<div id="footer-container">
 			<div id="footer-bottom-container">
 			<?php
-				$validFooterIcons = $this->getFooterIcons( "icononly" );
-				$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
-
-				if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) {
-					?>
-					<div id="footer-bottom" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
-					<?php
-					$footerEnd = '</div>';
-				} else {
-					$footerEnd = '';
-				}
-				foreach ( $validFooterIcons as $blockName => $footerIcons ) {
-					?>
-					<div id="f-<?php echo htmlspecialchars( $blockName ); ?>ico" class="footer-icons">
-					<?php
-					foreach ( $footerIcons as $icon ) {
-						?>
-						<?php echo $this->getSkin()->makeFooterIcon( $icon );
-					}
-					?>
-					</div>
-					<?php
-				}
-				if ( count( $validFooterLinks ) > 0 ) {
-					?>
-					<ul id="f-list">
-					<?php
-					foreach ( $validFooterLinks as $aLink ) {
-						?>
-						<li id="<?php echo $aLink ?>">
-							<?php $this->html( $aLink ) ?>
-						</li>
-						<?php
-					}
-					?>
-					</ul>
-					<?php
-				}
-				?>
-				<div class="visualClear"></div>
-				<?php
-				echo $footerEnd;
-				?>
+				$this->outputFooter();
+			?>
 			</div>
 		</div>
-	</div>
-	<?php
+		</div>
+		<?php
 		$this->printTrail();
 		echo Html::closeElement( 'body' );
 		echo Html::closeElement( 'html' );
 		wfRestoreWarnings();
 	} // end of execute() method
 
-	/*************************************************************************************************/
-
-
-	/**
-	 * @param $sidebar array
-	 */
-	protected function renderPortals( $sidebar ) {
+	private function outputSidebar() {
+		$sidebar = $this->getSidebar();
 		$sidebar['SEARCH'] = false;
 		$sidebar['TOOLBOX'] = false;
 		$sidebar['LANGUAGES'] = false;
 
-		foreach ( $sidebar as $boxName => $content ) {
-			if ( $content === false ) {
+		foreach ( $sidebar as $boxName => $box ) {
+			if ( $boxName === false ) {
 				continue;
 			}
-
-			$this->customBox( $boxName, $content );
+			$this->outputPortlet( $box );
 		}
 	}
 
-	function searchBox() {
+	private function outputPersonalMenu() {
+		$user = $this->getSkin()->getUser();
+		?>
+		<div class="mw-portlet" id="p-personal" role="navigation">
+		<?php
+		# Display status, and make a dropdown if logged in
+		if ( $user->isLoggedIn() ) {
+			?>
+			<div id="p-welcome">
+			<?php
+			echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
+			?>
+			</div>
+			<div class="pBody dropdown">
+		<?php
+		} else {
+		?>
+			<div class="pBody no-dropdown">
+		<?php
+		}
+		?>
+			<ul<?php $this->html( 'userlangattributes' ) ?>>
+			<?php
+				foreach ( $this->getPersonalTools() as $key => $item ) {
+					echo $this->makeListItem( $key, $item );
+				}
+			?>
+			</ul>
+		</div>
+		</div>
+		<?php
+	}
+
+	private function outputSearch() {
 	?>
-		<div id="p-search" class="portlet" role="search">
+		<div class="mw-portlet" id="p-search" role="search">
 			<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+			<h3><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h3>
 			<div id="simpleSearch">
 				<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text' ) ); ?>
 				<?php echo $this->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton' ) ); ?>
@@ -267,112 +258,121 @@ class GreyStuffTemplate extends BaseTemplate {
 	<?php
 	}
 
-	/**
-	 * Prints the cactions bar.
-	 * Shared between Monobook and Modern and stolen for greystuff
-	 */
-	function cactions() {
-	?>
-		<div id="p-cactions" class="portlet" role="navigation">
-			<div class="pBody">
-				<ul>
-				<?php
-				foreach ( $this->data['content_actions'] as $key => $tab ) {
-					echo $this->makeListItem( $key, $tab );
-				}
-				?>
-				</ul>
-			</div>
-		</div>
-	<?php
-	}
-	/*************************************************************************************************/
-	function toolbox() {
-	?>
-		<div class="portlet" id="p-tb" role="navigation">
+	private function outputToolbox() {
+		?>
+		<div class="mw-portlet" id="p-toolbox" role="navigation">
 			<h3><?php $this->msg( 'toolbox' ) ?></h3>
-			<div class="pBody">
+			<div class="p-body">
 				<ul>
 				<?php
-					foreach ( $this->getToolbox() as $key => $tbitem ) {
-						echo $this->makeListItem( $key, $tbitem );
-					}
-					$title = $this->getSkin()->getTitle();
-					# history
-					if ( $this->getSkin()->getOutput()->isArticleRelated() ) {
-						$link = Linker::link( $title, wfMessage( 'greystuff-history' )->text(), array(), array( 'action' => 'history' ) ); ?>
-						<li id="t-history"><?php echo $link; ?></li>
-						<?php
-					}
-					# purge
-					$link = Linker::link( $title, wfMessage( 'greystuff-purge' )->text(), array(), array( 'action' => 'purge' ) ); ?>
-					<li id="t-purge"><?php echo $link; ?></li>
-
+				foreach ( $this->getToolbox() as $key => $tbitem ) {
+					echo $this->makeListItem( $key, $tbitem );
+				}
+				$title = $this->getSkin()->getTitle();
+				# history
+				if ( $this->getSkin()->getOutput()->isArticleRelated() ) {
+					$link = Linker::link( $title, wfMessage( 'greystuff-history' )->text(), array(), array( 'action' => 'history' ) ); ?>
+					<li id="t-history"><?php echo $link; ?></li>
 					<?php
-					wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
-					wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
+				}
+				# purge
+				$link = Linker::link( $title, wfMessage( 'greystuff-purge' )->text(), array(), array( 'action' => 'purge' ) ); ?>
+				<li id="t-purge"><?php echo $link; ?></li>
+
+				<?php
+				wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+				wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
 				?>
 				</ul>
 			</div>
 		</div>
-	<?php
-	}
-
-	/*************************************************************************************************/
-	function languageBox() {
-		if ( $this->data['language_urls'] ) {
-		?>
-			<div id="p-lang" class="portlet" role="navigation">
-				<h3<?php $this->html( 'userlangattributes' ) ?>><?php $this->msg( 'otherlanguages' ) ?></h3>
-				<div class="pBody">
-					<ul>
-					<?php
-					foreach ( $this->data['language_urls'] as $key => $langlink ) {
-						?>
-						<?php echo $this->makeListItem( $key, $langlink );
-					}
-					?>
-					</ul>
-				</div>
-			</div>
 		<?php
-		}
 	}
 
-	/*************************************************************************************************/
 	/**
-	 * @param $bar string
-	 * @param $cont array|string
+	 * Outputs a single sidebar portlet of any kind.
 	 */
-	function customBox( $bar, $cont ) {
-		$portletAttribs = array( 'class' => 'generated-sidebar portlet', 'id' => Sanitizer::escapeId( "p-$bar" ), 'role' => 'navigation' );
-		$tooltip = Linker::titleAttrib( "p-$bar" );
-		if ( $tooltip !== false ) {
-			$portletAttribs['title'] = $tooltip;
+	private function outputPortlet( $box ) {
+		if ( !$box['content'] ) {
+			return;
 		}
-		echo Html::openElement( 'div', $portletAttribs );
-		$msgObj = wfMessage( $bar );
-		?>
 
-		<h3><?php echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $bar ); ?></h3>
-		<div class='pBody'>
-			<?php   if ( is_array( $cont ) ) { ?>
-			<ul>
-			<?php
-				foreach ( $cont as $key => $val ) {
-					echo $this->makeListItem( $key, $val );
+		?>
+		<div
+			role="navigation"
+			class="mw-portlet"
+			id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"
+			<?php echo Linker::tooltip( $box['id'] ) ?>
+		>
+			<h3>
+				<?php
+				if ( isset( $box['headerMessage'] ) ) {
+					$this->msg( $box['headerMessage'] );
+				} else {
+					echo htmlspecialchars( $box['header'] );
 				}
+				?>
+			</h3>
+
+			<div class="p-body">
+				<?php
+				if ( is_array( $box['content'] ) ) {
+					echo '<ul>';
+					foreach ( $box['content'] as $key => $item ) {
+						echo $this->makeListItem( $key, $item );
+					}
+					echo '</ul>';
+				} else {
+					echo $box['content'];
+				}?>
+			</div>
+		</div>
+		<?php
+	}
+
+	private function outputFooter() {
+		$validFooterIcons = $this->getFooterIcons( "icononly" );
+		$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
+
+		if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) {
+			?>
+			<div id="footer-bottom" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
+			<?php
+			$footerEnd = '</div>';
+		} else {
+			$footerEnd = '';
+		}
+		foreach ( $validFooterIcons as $blockName => $footerIcons ) {
+			?>
+			<div id="f-<?php echo htmlspecialchars( $blockName ); ?>ico" class="footer-icons">
+			<?php
+			foreach ( $footerIcons as $icon ) {
+				?>
+				<?php echo $this->getSkin()->makeFooterIcon( $icon );
+			}
+			?>
+			</div>
+			<?php
+		}
+		if ( count( $validFooterLinks ) > 0 ) {
+			?>
+			<ul id="f-list">
+			<?php
+			foreach ( $validFooterLinks as $aLink ) {
+				?>
+				<li id="<?php echo $aLink ?>">
+					<?php $this->html( $aLink ) ?>
+				</li>
+				<?php
+			}
 			?>
 			</ul>
 			<?php
-		} else {
-			# allow raw HTML block to be defined by extensions
-			print $cont;
 		}
 		?>
-		</div>
-	</div>
-	<?php
+		<div class="visualClear"></div>
+		<?php
+		echo $footerEnd;
 	}
 
 } // end of class
