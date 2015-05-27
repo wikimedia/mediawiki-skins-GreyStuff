@@ -20,10 +20,23 @@
 	},
 	"ResourceModules": {
 		"skins.greystuff": {
-			"styles": [
-				"skins/GreyStuff/resources/normalise.css",
-				"skins/GreyStuff/resources/main.less"
-			],
+			"styles": {
+				"skins/GreyStuff/resources/normalise.css": {
+					"media": "screen"
+				},
+				"skins/GreyStuff/resources/main.less": {
+					"media": "screen"
+				},
+				"skins/GreyStuff/resources/screen-large.less": {
+					"media": "(min-width: 1001px)"
+				},
+				"skins/GreyStuff/resources/screen-small.less": {
+					"media": "(max-width: 1000px)"
+				},
+				"skins/GreyStuff/resources/screen-mobile.less": {
+					"media": "(max-width: 600px)"
+				}
+			},
 			"scripts": "",
 			"position": "top"
 		}

@@ -7,5 +7,7 @@
 	"greystuff-desc": "Simple grey fixed-width skin",
 	"greystuff-loggedinas": "Logged in as $1",
 	"greystuff-history": "Page history",
-	"greystuff-purge": "Refresh page"
+	"greystuff-purge": "Refresh page",
+	"greystuff-userpage": "User page",
+	"greystuff-talkpage": "Talk page"
 }

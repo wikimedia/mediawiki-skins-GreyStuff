@@ -64,7 +64,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			<div id="header-top-container">
 			<div id="header-top">
 				<?php
-				$this->outputPersonalMenu();
+				$this->outputPersonalNavigation();
 				$this->outputSearch();
 				?>
 				<div class="mw-portlet" id="p-header">
@@ -79,24 +79,14 @@ class GreyStuffTemplate extends BaseTemplate {
 				</div>
 			</div>
 			</div>
-			<div id="header-navigation-container">
-				<div id="header-navigation">
-					<div id="header-tools">
-						<?php
-						$this->outputPortlet( array(
-							'id' => 'p-variants',
-							'headerMessage' => 'variants',
-							'content' => $this->data['content_navigation']['variants'],
-						) );
-						$this->outputToolbox();
-						?>
-					</div>
-					<div id="navigation">
-						<?php
-						$this->outputSidebar();
-						?>
-					</div>
-				</div>
+		</div>
+		<div id="train-wreck">
+		<div id="plane-wreck">
+		<div id="header-navigation-container">
+			<div id="header-navigation">
+				<?php
+				$this->outputMainNavigation();
+				?>
 			</div>
 		</div>
 		<div id="content-container">
@@ -153,15 +143,25 @@ class GreyStuffTemplate extends BaseTemplate {
 						?>
 					</div>
 					<div id ="page-tools">
+
 						<?php
-						$ptools = array_merge(
-							$this->data['content_navigation']['views'],
-							$this->data['content_navigation']['actions']
-						);
+						if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
+							$this->data['content_navigation']['views']['watch'] = $this->data['content_navigation']['actions']['watch'];
+							unset( $this->data['content_navigation']['actions']['watch'] );
+						}
+						if ( isset( $this->data['content_navigation']['actions']['unwatch'] ) ) {
+							$this->data['content_navigation']['views']['unwatch'] = $this->data['content_navigation']['actions']['unwatch'];
+							unset( $this->data['content_navigation']['actions']['unwatch'] );
+						}
 						$this->outputPortlet( array(
 							'id' => 'p-views',
 							'headerMessage' => 'views',
-							'content' => $ptools
+							'content' => $this->data['content_navigation']['views']
+						) );
+						$this->outputPortlet( array(
+							'id' => 'p-actions',
+							'headerMessage' => 'views',
+							'content' => $this->data['content_navigation']['actions']
 						) );
 						?>
 					</div>
@@ -179,6 +179,14 @@ class GreyStuffTemplate extends BaseTemplate {
 					<?php if ( $this->data['dataAfterContent'] ) { $this->html( 'dataAfterContent' ); } ?>
 				</div>
 			</div>
+		</div>
+		<div id="footer-navigation">
+			<?php
+			$this->outputMainNavigation();
+			?>
+		</div>
+		</div> <!-- End train and plane wrecks -->
+		<div class="visualClear"></div>
 		</div>
 		<div id="footer-container">
 			<div id="footer-bottom-container">
@@ -209,7 +217,27 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 	}
 
-	private function outputPersonalMenu() {
+	private function outputMainNavigation() {
+		?>
+		<div class="navigation">
+			<?php
+			$this->outputSidebar();
+			?>
+		</div>
+		<div class="navigation-tools">
+			<?php
+			$this->outputPortlet( array(
+				'class' => 'p-variants',
+				'headerMessage' => 'variants',
+				'content' => $this->data['content_navigation']['variants'],
+			) );
+			$this->outputToolbox();
+			?>
+		</div>
+		<?php
+	}
+
+	private function outputPersonalNavigation() {
 		$user = $this->getSkin()->getUser();
 		?>
 		<div class="mw-portlet" id="p-personal" role="navigation">
@@ -222,17 +250,23 @@ class GreyStuffTemplate extends BaseTemplate {
 			echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
 			?>
 			</div>
-			<div class="pBody dropdown">
+			<div class="p-body dropdown">
 		<?php
 		} else {
 		?>
-			<div class="pBody no-dropdown">
+			<div class="p-body no-dropdown">
 		<?php
 		}
 		?>
 			<ul<?php $this->html( 'userlangattributes' ) ?>>
 			<?php
 				foreach ( $this->getPersonalTools() as $key => $item ) {
+					if ( $key == 'userpage' ) {
+						$item['links'][0]['text'] = wfMessage( 'greystuff-userpage' )->text();
+					}
+					if ( $key == 'mytalk' ) {
+						$item['links'][0]['text'] = wfMessage( 'greystuff-talkpage' )->text();
+					}
 					echo $this->makeListItem( $key, $item );
 				}
 			?>

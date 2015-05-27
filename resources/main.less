@@ -1,12 +1,5 @@
 @import "mediawiki.mixins";
-
-/* Element colours */
-@bold-bkg: #f3f3f3;
-@bold-border: #e0e0e0;
-@soft-bkg: #f9f9f9;
-@soft-border: #eee;
-
-@text-grey: #666;
+@import "variables.less";
 
 body {
 	font-family: sans-serif;
@@ -49,17 +42,8 @@ a.external:visited {
 }
 
 /* Set up appearance */
-
-#header-navigation-container,
-#content-container,
-#footer-tools-container {
+#train-wreck {
 	background: #fff;
-}
-#footer-bottom-container {
-	border-top: solid 1px @bold-border;
-}
-#header-navigation-container {
-	border-bottom: solid 1px @soft-border;
 }
 #header-top-container {
 	border-bottom: solid 1px @bold-border;
@@ -67,12 +51,16 @@ a.external:visited {
 
 #header-top,
 #header-navigation,
-#content,
+#plane-wreck,
 #footer-bottom {
-	width: 950px;
+	.widths;
 	margin: auto;
 	padding: 1.5em;
 	word-wrap: break-word;
+}
+#plane-wreck {
+	padding-top: 0;
+	padding-bottom: 0;
 }
 
 /*
@@ -117,6 +105,7 @@ a.external:visited {
 		clear: both;
 		margin-top: .5em;
 		margin-top: -2px !ie;
+		margin-bottom: 0;
 		margin-bottom: -8px !ie;
 
 		h3 {
@@ -160,67 +149,15 @@ a.external:visited {
 		}
 	}
 
-	/*
-	* Navigation menus
-	*
-	* Some stuff shared with personal menu
-	*/
-	#header-navigation {
-		padding: 0 1.5em;
-		font-size: 90%;
-		clear: both;
-		height: 20px !ie;
-		padding-top: .5em !ie;
-
-		h3 {
-			display: inline-block;
-			display: inline !ie;
-			padding: 0 1.75em 0 0;
-			margin: .6em 1.5em .45em 0;
-			font-weight: normal;
-			font-size: 90%;
-			background-repeat: no-repeat;
-			background-position: 100% 60%;
-			.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
-			text-shadow: none;
-		}
-		.p-body {
-			display: none;
-		}
-		.mw-portlet {
-			display: inline-block;
-			display: inline !ie;
-		}
-		ul {
-			padding: 0;
-			margin: 0;
-			list-style: none;
-		}
-		li {
-			margin: 0 1.25em 0 0;
-			font-size: 90%;
-		}
-	}
-	/* Reverse right menus */
-	#header-tools h3 {
-		margin: .6em 0 .45em 1.5em;
-	}
-	#header-tools {
-		float: right;
-	}
-
 	/* Dropdown stuff */
-	#p-welcome:hover,
-	#header-navigation h3:hover {
+	#p-welcome:hover {
 		cursor: pointer;
 	}
 
-	#p-personal,
-	#header-navigation-container .mw-portlet {
+	#p-personal {
 		position: relative;
 	}
-	#p-personal:hover .dropdown,
-	#header-navigation-container .mw-portlet:hover .p-body {
+	#p-personal:hover .dropdown {
 		display: block;
 		position: absolute;
 		background: #fff;
@@ -242,17 +179,12 @@ a.external:visited {
 		margin-left: 1em;
 	}
 
-	#navigation .mw-portlet:hover .p-body {
-		left: 0;
-	}
-	.dropdown ul,
-	#header-navigation-container .mw-portlet ul {
+	.dropdown ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	.dropdown li,
-	#header-navigation-container .mw-portlet li {
+	.dropdown li {
 		margin: .75em 0;
 	}
 }
@@ -410,17 +342,16 @@ label {
 	padding: 1em 0;
 }
 
-
 /*
  *
  * Content header
  *
  */
-
 #content-header {
 	border-bottom: solid 1px @soft-border;
 	margin-bottom: .75em;
 	padding-bottom: .25em;
+	padding-top: 1.25em;
 
 	h3 {
 		position: absolute;
@@ -450,7 +381,7 @@ label {
 		li {
 			display: inline-block;
 			display: inline !ie;
-			margin: 0 .75em 0 0;
+			margin: .3em .75em 0 0;
 
 			/* Duplicate with tools */
 			&#ca-history {
@@ -461,11 +392,15 @@ label {
 			}
 		}
 	}
+
 	#page-tools {
 		float: right;
 
 		ul li {
-			margin: 0 0 0 .75em;
+			margin: .3em 0 0 .75em;
+		}
+		#p-actions {
+			margin-left: .75em;
 		}
 	}
 }
@@ -478,6 +413,9 @@ label {
  */
 #content-container {
 	font-size: 90%;
+}
+#train-wreck {
+	border-bottom: solid 1px @bold-border;
 }
 
 #siteSub {
@@ -537,9 +475,9 @@ pre {
 #catlinks {
 	font-size: 85%;
 	border-top: solid 1px @soft-border;
-	margin: 1.75em 0 -1.6em;
+	margin: 1.75em 0 0;
 	padding: .35em 0 0;
-	color: #aaa;
+	color: @fluff-grey;
 
 	li {
 		border: none;
@@ -549,10 +487,14 @@ pre {
 
 #contentSub {
 	font-size: 85%;
-	margin: -1.45em 0 1.75em;
+	margin: .25em 0 0;
 	border-bottom: solid 1px @soft-border;
 	padding: 0 0 .1em;
-	color: #aaa;
+	color: @fluff-grey;
+
+	a {
+		color: @link-grey;
+	}
 }
 
 /* Tables of contents */
