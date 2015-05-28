@@ -166,6 +166,7 @@ class GreyStuffTemplate extends BaseTemplate {
 						?>
 					</div>
 				</div>
+				<div class="visualClear"></div>
 				<div id="bodyContent" class="mw-body">
 					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
 
