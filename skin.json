@@ -16,7 +16,8 @@
 		]
 	},
 	"AutoloadClasses": {
-		"SkinGreyStuff": "GreyStuff.skin.php"
+		"SkinGreyStuff": "GreyStuff.skin.php",
+		"GreyStuffTemplate": "GreyStuffTemplate.php"
 	},
 	"ResourceModules": {
 		"skins.greystuff": {
