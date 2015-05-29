@@ -44,9 +44,7 @@ a.external:visited {
 /* Set up appearance */
 #train-wreck {
 	background: #fff;
-}
-#header-top-container {
-	border-bottom: solid 1px @bold-border;
+	border-top: solid 1px @bold-border;
 }
 
 #header-top,
@@ -70,60 +68,69 @@ a.external:visited {
  */
 
 #header-container {
-	font-size: 95%;
 
+	#header-top-container {
+		padding: .5em 1.5em;
+	}
 	#header-top {
-		padding: 1em 1.5em;
+		padding: 0;
+		font-size: 95%;
 	}
 
 	/* Banner stuff */
-	#sitetitle {
-		padding-top: .25em;
+	#p-banner {
+		float: left;
 
-		a {
-			font-size: 210%;
-			font-weight: bold;
-			line-height: 140%;
-			color: #999;
-			/* @noflip */
-			text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
+		#sitetitle {
+			padding-top: .25em;
 
-			&:hover {
-				text-decoration: none;
+			a {
+				font-size: 210%;
+				font-weight: bold;
+				line-height: 140%;
+				color: #999;
+				/* @noflip */
+				text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
+
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
-	}
-	#sitesubtitle {
-		font-style: italic;
-		font-size: 85%;
-		line-height: 1.2em;
+		#sitesubtitle {
+			font-style: italic;
+			font-size: 85%;
+			line-height: 1.2em;
+		}
 	}
 
 	/* Search stuff */
 	#p-search {
 		float: right;
-		clear: both;
+		clear: right;
 		margin-top: .5em;
 		margin-top: -2px !ie;
 		margin-bottom: 0;
 		margin-bottom: -8px !ie;
+		font-size: 85%;
 
 		h3 {
 			position: absolute;
 			top: -9999px;
 		}
 
+		#searchInput-container-container {
+			display: inline-block;
+		}
 		#searchInput {
-			width: 23em;
+			width: 20em;
 			border: solid 1px #ccc;
 		}
 		#searchGoButton {
 			border: solid 1px #bbb;
 			height: 30px !ie;
+			min-width: 4em;
 			margin: 8px 0 !ie;
-		}
-		input {
-			font-size: 85%;
 		}
 	}
 

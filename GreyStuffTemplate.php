@@ -9,6 +9,8 @@
  * @author Jack Phoenix
  * @authors Whoever wrote monobook
  * @date 2014
+ *
+ * The DOM here is an utter trainwreck.
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,11 +43,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?>>
 			<div id="header-top-container">
 			<div id="header-top">
-				<?php
-				$this->outputPersonalNavigation();
-				$this->outputSearch();
-				?>
-				<div class="mw-portlet" id="p-header">
+				<div class="mw-portlet" id="p-banner">
 					<div id="sitetitle" role="banner">
 						<a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>">
 							<?php echo wfMessage( 'sitetitle' )->escaped() ?>
@@ -55,9 +53,15 @@ class GreyStuffTemplate extends BaseTemplate {
 						<?php echo wfMessage( 'sitesubtitle' )->escaped() ?>
 					</div>
 				</div>
+				<?php
+				$this->outputPersonalNavigation();
+				$this->outputSearch();
+				?>
+				<div class="visualClear"></div>
 			</div>
 			</div>
 		</div>
+		<div class="visualClear"></div>
 		<div id="train-wreck">
 		<div id="plane-wreck">
 		<div id="header-navigation-container">
@@ -261,7 +265,11 @@ class GreyStuffTemplate extends BaseTemplate {
 			<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 			<h3><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h3>
 			<div id="simpleSearch">
-				<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text' ) ); ?>
+				<div id="searchInput-container-container">
+				<div id="searchInput-container">
+					<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text' ) ); ?>
+				</div>
+				</div>
 				<?php echo $this->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton' ) ); ?>
 				<?php # echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton' ) ); ?>
 				<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>"/>
