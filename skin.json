@@ -40,6 +40,10 @@
 			},
 			"scripts": "",
 			"position": "top"
+		},
+		"skins.greystuff.logo": {
+			"class": "ResourceLoaderSkinModule",
+			"position": "top"
 		}
 	}
 }

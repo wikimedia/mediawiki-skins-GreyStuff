@@ -43,6 +43,13 @@ class GreyStuffTemplate extends BaseTemplate {
 		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?>>
 			<div id="header-top-container">
 			<div id="header-top">
+				<div id="p-logo" role="banner">
+					<a class="mw-wiki-logo" href="<?php
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+					?>" <?php
+					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+					?>></a>
+				</div>
 				<div class="mw-portlet" id="p-banner">
 					<div id="sitetitle" role="banner">
 						<a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>">

@@ -27,6 +27,8 @@ class SkinGreyStuff extends SkinTemplate {
 	 * @param $out OutputPage
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
+		global $wgVersion;
+
 		parent::setupSkinUserCss( $out );
 
 		# Add css
@@ -34,5 +36,10 @@ class SkinGreyStuff extends SkinTemplate {
 			'mediawiki.skinning.content.externallinks',
 			'skins.greystuff'
 		) );
+		if ( $out->getResourceLoader()->isModuleRegistered( 'mediawiki.skining.logo' ) ) {
+			$out->addModuleStyles( 'mediawiki.skinning.logo' );
+		} else {
+			$out->addModuleStyles( 'skins.greystuff.logo' );
+		}
 	}
 }
