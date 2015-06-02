@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Romaine"
+			"Romaine",
+			"Esketti"
 		]
 	},
 	"greystuff-desc": "Eenvoudige grijze skin met vaste breedte",
 	"greystuff-loggedinas": "Aangemeld als $1",
 	"greystuff-history": "Paginageschiedenis",
-	"greystuff-purge": "Pagina vernieuwen"
+	"greystuff-purge": "Pagina vernieuwen",
+	"greystuff-userpage": "Gebruikerspagina",
+	"greystuff-talkpage": "Overlegpagina"
 }

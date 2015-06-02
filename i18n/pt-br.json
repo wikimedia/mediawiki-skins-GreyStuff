@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guilhermemau"
+			"Guilhermemau",
+			"PedroMaia"
 		]
 	},
 	"greystuff-desc": "Pele cinza simples de largura fixa",
 	"greystuff-loggedinas": "Logado como $1",
 	"greystuff-history": "Histórico da Página",
-	"greystuff-purge": "Atualizar página"
+	"greystuff-purge": "Atualizar página",
+	"greystuff-userpage": "Paginas de usuário",
+	"greystuff-talkpage": "pagina de discussão"
 }

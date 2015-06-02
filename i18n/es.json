@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Larjona"
 		]
 	},
 	"greystuff-desc": "Apariencia sencilla, gris y de anchura fija",
 	"greystuff-loggedinas": "Sesión iniciada como $1",
 	"greystuff-history": "Historial de página",
-	"greystuff-purge": "Recargar página"
+	"greystuff-purge": "Recargar página",
+	"greystuff-userpage": "Página de usuario",
+	"greystuff-talkpage": "Página de discusión"
 }
