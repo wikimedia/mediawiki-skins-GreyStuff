@@ -36,7 +36,7 @@ class SkinGreyStuff extends SkinTemplate {
 			'mediawiki.skinning.content.externallinks',
 			'skins.greystuff'
 		) );
-		if ( $out->getResourceLoader()->isModuleRegistered( 'mediawiki.skining.logo' ) ) {
+		if ( $out->getResourceLoader()->isModuleRegistered( 'mediawiki.skinning.logo' ) ) {
 			$out->addModuleStyles( 'mediawiki.skinning.logo' );
 		} else {
 			$out->addModuleStyles( 'skins.greystuff.logo' );
