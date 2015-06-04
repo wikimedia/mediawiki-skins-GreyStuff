@@ -1,5 +1,5 @@
 {
-	"name": "GreyStuff skin",
+	"name": "GreyStuff",
 	"version": "1.0.2",
 	"author": [
 		"Calimonius the Estrange"
@@ -30,10 +30,10 @@
 					"media": "screen"
 				},
 				"skins/GreyStuff/resources/screen-large.less": {
-					"media": "(min-width: 1001px)"
+					"media": "(min-width: 1025px)"
 				},
 				"skins/GreyStuff/resources/screen-small.less": {
-					"media": "(max-width: 1000px)"
+					"media": "(max-width: 1024px)"
 				},
 				"skins/GreyStuff/resources/screen-mobile.less": {
 					"media": "(max-width: 760px)"

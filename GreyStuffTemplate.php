@@ -193,25 +193,22 @@ class GreyStuffTemplate extends BaseTemplate {
 		wfRestoreWarnings();
 	} // end of execute() method
 
-	private function outputSidebar() {
-		$sidebar = $this->getSidebar();
-		$sidebar['SEARCH'] = false;
-		$sidebar['TOOLBOX'] = false;
-		$sidebar['LANGUAGES'] = false;
-
-		foreach ( $sidebar as $boxName => $box ) {
-			if ( $boxName === false ) {
-				continue;
-			}
-			$this->outputPortlet( $box );
-		}
-	}
-
 	private function outputMainNavigation() {
 		?>
 		<div class="navigation">
 			<?php
-			$this->outputSidebar();
+			// From [[MediaWiki:Sidebar]]
+			$sidebar = $this->getSidebar();
+			$sidebar['SEARCH'] = false;
+			$sidebar['TOOLBOX'] = false;
+			$sidebar['LANGUAGES'] = false;
+
+			foreach ( $sidebar as $boxName => $box ) {
+				if ( $boxName === false ) {
+					continue;
+				}
+				$this->outputPortlet( $box );
+			}
 			?>
 		</div>
 		<div class="navigation-tools">
@@ -232,7 +229,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		?>
 		<div class="mw-portlet" id="p-personal" role="navigation">
 		<?php
-		# Display status, and make a dropdown if logged in
+		// Display status, and make a dropdown if logged in
 		if ( $user->isLoggedIn() ) {
 			?>
 			<div id="p-welcome">
@@ -278,7 +275,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				</div>
 				</div>
 				<?php echo $this->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton' ) ); ?>
-				<?php # echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton' ) ); ?>
+				<?php // echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton' ) ); ?>
 				<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>"/>
 			</div>
 		</form>
@@ -297,13 +294,13 @@ class GreyStuffTemplate extends BaseTemplate {
 					echo $this->makeListItem( $key, $tbitem );
 				}
 				$title = $this->getSkin()->getTitle();
-				# history
+				// history
 				if ( $this->getSkin()->getOutput()->isArticleRelated() ) {
 					$link = Linker::link( $title, wfMessage( 'greystuff-history' )->text(), array(), array( 'action' => 'history' ) ); ?>
 					<li id="t-history"><?php echo $link; ?></li>
 					<?php
 				}
-				# purge
+				// purge
 				$link = Linker::link( $title, wfMessage( 'greystuff-purge' )->text(), array(), array( 'action' => 'purge' ) ); ?>
 				<li id="t-purge"><?php echo $link; ?></li>
 
@@ -318,7 +315,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Outputs a single sidebar portlet of any kind.
+	 * Outputs a single portlet of any kind.
 	 */
 	private function outputPortlet( $box ) {
 		if ( !$box['content'] ) {

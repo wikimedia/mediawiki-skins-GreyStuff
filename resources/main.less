@@ -251,7 +251,7 @@ a.external:visited {
 		margin-right: 1em;
 
 		&.selected {
-			border-bottom: solid 1px @soft-border;
+			border-bottom: solid 3px @soft-border;
 		}
 		&.selected a {
 			color: #000;
@@ -364,7 +364,7 @@ label {
  *
  */
 #content-header {
-	border-bottom: solid 1px @soft-border;
+	border-bottom: double 4px @soft-border;
 	margin-bottom: .75em;
 	padding-bottom: .25em;
 	padding-top: 1.25em;
@@ -456,20 +456,20 @@ h3, h4, h5, h6, dt {
 	font-variant: normal;
 }
 h1 {
-	font-size: 190%;
+	font-size: 200%;
 	color: @text-grey;
 }
 h2 {
-	font-size: 160%;
+	font-size: 170%;
 }
 h3 {
-	font-size: 125%;
+	font-size: 140%;
 }
 h4 {
-	font-size: 120%;
+	font-size: 125%;
 }
 h5 {
-	font-size: 108%;
+	font-size: 110%;
 	color: #333;
 }
 h6, dt {
@@ -519,18 +519,20 @@ pre {
 
 /* Tables of contents */
 ul#filetoc {
-	background-color: @soft-bkg;
-	border: 1px solid @soft-border;
+	border-bottom: 1px solid @soft-border;
 	color: #777;
 	margin-top: 1em;
 }
 #toc, .toc, .mw-warning {
-	background-color: @soft-bkg;
-	border: 1px solid @soft-border;
-	padding: 1.2em 1.4em;
-	color: #777;
+	font-size: 95%;
+	padding: 1em 0 .5em 0;
+	border-bottom: solid 1px @soft-border;
+	color: @text-grey;
 	display: inline-block;
 	display: inline !ie;
+}
+#toc a, .mw-editsection a {
+	color: @link-grey;
 }
 .toc ul {
 	list-style: none;
@@ -541,4 +543,27 @@ ul#filetoc {
 	margin-right: 1em;
 	display: inline-block;
 	display: inline !ie;
+}
+
+
+#toc #toctitle {
+	border-bottom: solid 1px @soft-border;
+	margin-bottom: 1em;
+}
+
+
+/* Thumbnails */
+.tright {
+	padding: 1em 0 2em 2em;
+}
+.tleft {
+
+}
+.thumbcaption {
+	font-size: 90%;
+	border-bottom: solid 1px @soft-border;
+	padding-bottom: 1em;
+}
+.thumbinner img{
+	border: solid 1px @soft-border;
 }
