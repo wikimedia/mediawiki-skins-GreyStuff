@@ -31,15 +31,10 @@ class SkinGreyStuff extends SkinTemplate {
 
 		parent::setupSkinUserCss( $out );
 
-		# Add css
+		// Add css
 		$out->addModuleStyles( array (
 			'mediawiki.skinning.content.externallinks',
 			'skins.greystuff'
 		) );
-		if ( $out->getResourceLoader()->isModuleRegistered( 'mediawiki.skinning.logo' ) ) {
-			$out->addModuleStyles( 'mediawiki.skinning.logo' );
-		} else {
-			$out->addModuleStyles( 'skins.greystuff.logo' );
-		}
 	}
 }

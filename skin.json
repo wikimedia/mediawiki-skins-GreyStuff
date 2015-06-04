@@ -21,6 +21,7 @@
 	},
 	"ResourceModules": {
 		"skins.greystuff": {
+			"class": "ResourceLoaderSkinModule",
 			"styles": {
 				"skins/GreyStuff/resources/normalise.css": {
 					"media": "screen"
@@ -39,10 +40,6 @@
 				}
 			},
 			"scripts": "",
-			"position": "top"
-		},
-		"skins.greystuff.logo": {
-			"class": "ResourceLoaderSkinModule",
 			"position": "top"
 		}
 	},
