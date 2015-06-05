@@ -33,7 +33,8 @@ a.external {
 a.external:visited {
 	color: #057;
 }
-.center {
+.center,
+.center * {
 	margin: auto;
 	text-align: center;
 }
@@ -252,9 +253,13 @@ a.external:visited {
 
 		&.selected {
 			border-bottom: solid 3px @soft-border;
+
+			a {
+				color: #000;
+			}
 		}
-		&.selected a {
-			color: #000;
+		a {
+			color: @link-grey;
 		}
 	}
 }
@@ -285,24 +290,42 @@ a.external:visited {
  * FORM STUFF
  *
  */
+
+/* pile of bad hacks to try to catch all the different ones */
 #searchInput,
+input[name="target"],
+input[name="user"],
+input[name="mime"],
+input[size$="0"],
 input[type="text"],
 input[type="checkbox"],
 input[type="radio"],
+input#wpTemplateSandboxPage,
 input.mw-summary,
+input.mw-input,
 .mw-input input,
-textarea {
-	padding: .45em;
+textarea,
+.mw-ui-input-inline {
+	padding: .35em;
 	box-shadow: 0 1px 4px -1px #ccc inset;
 	border: solid 1px @bold-border;
-	margin-bottom: .5em;
+	margin: .5em 0;
+}
+select {
+	padding: .2em;
+	margin: .5em 0;
+}
+#searchInput,
+input[type="submit"].searchButton {
+	padding: .45em;
+	margin: 0;
 }
 input[type="radio"] {
 	border-radius: 7px;
 }
 input[type="submit"],
 button {
-	padding: .45em 1em;
+	padding: .35em 1em;
 	border: solid 1px #ccc;
 	border-radius: 3px;
 	box-shadow: none;
@@ -321,7 +344,18 @@ textarea {
 div.editOptions {
 	background: #fff;
 	border-bottom: solid 1px @soft-border;
-	padding-bottom: 1em;
+	padding: 1em 0;
+
+	.mw-summary label {
+		padding-left: 0;
+	}
+	input#wpSummary {
+		box-sizing: border-box;
+		width: 100%;
+	}
+	label {
+		margin-right: 1.5em;
+	}
 }
 td.mw-input,
 td.mw-label {
@@ -343,10 +377,14 @@ fieldset {
 	}
 }
 label {
-	padding-left: 1em;
+	padding-left: .5em;
+}
+.mw-input label {
+	padding: 0;
+	margin-right: 1em;
 }
 .mw-label {
-	padding-right: 1em;
+	padding-right: .5em;
 }
 .mw-submit {
 	padding-top: 2em;
@@ -356,6 +394,51 @@ label {
 	color: @text-grey;
 	line-height: 1.2em;
 	padding: 1em 0;
+}
+
+/* Recent changes and watchlist options */
+.rcoptions hr,
+#mw-watchlist-options hr {
+	clear: both;
+}
+.rcoptions #namespace,
+#mw-watchlist-options .namespaceselector {
+	margin-right: 2em;
+}
+
+/* Watchlist */
+#mw-watchlist-options {
+	label {
+		padding: 0 1em 0 0;
+	}
+	input[type="submit"] {
+		margin: 0 0 0 4em;
+	}
+}
+
+/* Related changes hacks */
+.mw-special-Recentchangeslinked {
+	.rcoptions {
+		input[type="submit"] {
+			float: right;
+			margin: 0 0 0 4em;
+		}
+		td.mw-label.mw-target-label {
+			vertical-align: top;
+			padding-top: .75em;
+		}
+		input[name="target"] {
+			float: left;
+		}
+	}
+	#showlinkedto {
+		clear: left;
+		float: left;
+	}
+	label[for="showlinkedto"] {
+		padding: .4em;
+		float: left;
+	}
 }
 
 /*
@@ -399,10 +482,6 @@ label {
 			display: inline !ie;
 			margin: .3em .75em 0 0;
 
-			/* Duplicate with tools */
-			&#ca-history {
-				display: none;
-			}
 			&.selected a {
 				color: @text-grey;
 			}
@@ -447,13 +526,20 @@ h1, h2, h3, h4, h5, h6, dt {
 	font-variant: small-caps;
 	font-weight: normal;
 	color: #444;
-	margin-bottom: .25em;
-	margin: 1.5em 0 .5em;
+	margin: 2em 0 .5em;
 }
 h1 .mw-editsection,
 h2 .mw-editsection,
 h3, h4, h5, h6, dt {
 	font-variant: normal;
+}
+#mw-content-text {
+	h1, h2 {
+		border-bottom: solid 1px @soft-border;
+	}
+	.toc h2 {
+		border-bottom: none;
+	}
 }
 h1 {
 	font-size: 200%;
@@ -474,7 +560,7 @@ h5 {
 }
 h6, dt {
 	font-size: 100%;
-	color: #333;
+	color: #000;
 }
 .mw-editsection-bracket {
 	display: none;
@@ -519,9 +605,15 @@ pre {
 
 /* Tables of contents */
 ul#filetoc {
+	border: none;
 	border-bottom: 1px solid @soft-border;
-	color: #777;
+	background: transparent;
 	margin-top: 1em;
+	padding: 0;
+
+	a {
+		color: @link-grey;
+	}
 }
 #toc, .toc, .mw-warning {
 	font-size: 95%;
@@ -554,10 +646,20 @@ ul#filetoc {
 
 /* Thumbnails */
 .tright {
-	padding: 1em 0 2em 2em;
+	margin: 0 0 .5em .5em;
+
+	.thumbinner {
+		padding: 0 0 1em 1.5em;
+		background: #fff;
+	}
 }
 .tleft {
+	margin: 0 .5em .5em 0;
 
+	.thumbinner {
+		padding: 0 1.5em 1em 0;
+		background: #fff;
+	}
 }
 .thumbcaption {
 	font-size: 90%;
