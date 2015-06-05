@@ -30,13 +30,13 @@
 					"media": "screen"
 				},
 				"skins/GreyStuff/resources/screen-large.less": {
-					"media": "(min-width: 1025px)"
+					"media": "screen and (min-width: 1025px)"
 				},
 				"skins/GreyStuff/resources/screen-small.less": {
-					"media": "(max-width: 1024px)"
+					"media": "screen and (max-width: 1024px)"
 				},
 				"skins/GreyStuff/resources/screen-mobile.less": {
-					"media": "(max-width: 760px)"
+					"media": "screen and (max-width: 760px)"
 				}
 			},
 			"scripts": "",

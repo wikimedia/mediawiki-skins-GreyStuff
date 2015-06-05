@@ -40,7 +40,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$this->html( 'headelement' );
 		?>
 		<div id="globalWrapper">
-		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?>>
+		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?> class="noprint">
 			<div id="header-top-container">
 			<div id="header-top">
 				<div id="p-logo" role="banner">
@@ -71,7 +71,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		<div class="visualClear"></div>
 		<div id="train-wreck">
 		<div id="plane-wreck">
-		<div id="header-navigation-container">
+		<div id="header-navigation-container" class="noprint">
 			<div id="header-navigation">
 				<?php
 				$this->outputMainNavigation();
@@ -122,7 +122,7 @@ class GreyStuffTemplate extends BaseTemplate {
 						<?php
 						$this->html( 'title' ) ?>
 					</h1>
-					<div id ="page-namespaces">
+					<div id="page-namespaces" class="noprint">
 						<?php
 						$this->outputPortlet( array(
 							'id' => 'p-namespaces',
@@ -131,7 +131,7 @@ class GreyStuffTemplate extends BaseTemplate {
 						) );
 						?>
 					</div>
-					<div id ="page-tools">
+					<div id="page-tools" class="noprint">
 
 						<?php
 						if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
@@ -164,13 +164,13 @@ class GreyStuffTemplate extends BaseTemplate {
 					<!-- end content -->
 					<div class="visualClear"></div>
 				</div>
-				<div id="content-bottom-stuff">
+				<div id="content-bottom-stuff" class="noprint">
 					<?php if ( $this->data['catlinks'] ) { $this->html( 'catlinks' ); } ?>
 					<?php if ( $this->data['dataAfterContent'] ) { $this->html( 'dataAfterContent' ); } ?>
 				</div>
 			</div>
 		</div>
-		<div id="footer-navigation">
+		<div id="footer-navigation" class="noprint">
 			<?php
 			$this->outputMainNavigation();
 			?>
