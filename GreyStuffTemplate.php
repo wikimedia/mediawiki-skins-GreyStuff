@@ -34,9 +34,6 @@ class GreyStuffTemplate extends BaseTemplate {
 	function execute() {
 		global $wgHostLink, $wgDefaultSkin;
 
-		// Suppress warnings to prevent notices about missing indexes in $this->data
-		wfSuppressWarnings();
-
 		$this->html( 'headelement' );
 		?>
 		<div id="globalWrapper">
@@ -190,7 +187,6 @@ class GreyStuffTemplate extends BaseTemplate {
 		$this->printTrail();
 		echo Html::closeElement( 'body' );
 		echo Html::closeElement( 'html' );
-		wfRestoreWarnings();
 	} // end of execute() method
 
 	private function outputMainNavigation() {
