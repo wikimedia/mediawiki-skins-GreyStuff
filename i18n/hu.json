@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tacsipacsi"
+		]
+	},
+	"greystuff-desc": "Egyszerű, szürke, rögzített szélességű felület",
+	"greystuff-loggedinas": "Bejelentkezve $1 néven",
+	"greystuff-history": "Laptörténet",
+	"greystuff-purge": "Lap frissítése",
+	"greystuff-userpage": "Felhasználói lap",
+	"greystuff-talkpage": "Vitalap"
+}

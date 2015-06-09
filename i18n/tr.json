@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"Uğurkent"
 		]
 	},
 	"greystuff-desc": "Basit gri sabit genişlikli görünüm",
 	"greystuff-loggedinas": "$1 olarak oturum açıldı",
 	"greystuff-history": "Sayfa geçmişi",
-	"greystuff-purge": "Sayfayı yenile"
+	"greystuff-purge": "Sayfayı yenile",
+	"greystuff-userpage": "Kullanıcı sayfası",
+	"greystuff-talkpage": "Tartışma sayfası"
 }
