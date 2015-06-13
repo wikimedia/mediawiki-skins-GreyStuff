@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Macofe"
 		]
 	},
 	"greystuff-desc": "Habillage de largeur fixe en gris simple",
 	"greystuff-loggedinas": "Connecté en tant que $1",
 	"greystuff-history": "Historique de la page",
-	"greystuff-purge": "Rafraîchir la page"
+	"greystuff-purge": "Rafraîchir la page",
+	"greystuff-userpage": "Page utilisateur",
+	"greystuff-talkpage": "Page de discussion"
 }
