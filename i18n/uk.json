@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Alex Khimich"
 		]
 	},
 	"greystuff-desc": "Проста сіра тема з фіксованою шириною",
 	"greystuff-loggedinas": "Увійшли в систему як $1",
 	"greystuff-history": "Історія сторінки",
-	"greystuff-purge": "Оновити сторінку"
+	"greystuff-purge": "Оновити сторінку",
+	"greystuff-userpage": "Сторінка користувача",
+	"greystuff-talkpage": "Сторінка обговорення"
 }
