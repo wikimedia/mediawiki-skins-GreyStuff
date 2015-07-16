@@ -71,17 +71,20 @@
 			display: none;
 		}
 		&.mw-portlet:hover .p-body {
+			transition-property: height;
+			transition-duration: 1s;
+
 			display: block;
-			position: absolute;
-			background: #fff;
-			top: 100%;
 			padding: .75em 2em;
 			border: solid 1px @soft-border;
 			box-shadow: 0 2px 4px rgba(0,0,0,.05);
+			position: absolute;
+			top: 100%;
+			z-index: 5;
+			background: #fff;
+			line-height: 1.1em;
 			width: 8em;
 			text-align: left;
-			z-index: 5;
-			line-height: 1.1em;
 		}
 	}
 	.navigation-tools .mw-portlet:hover .p-body {
@@ -117,7 +120,7 @@
 	font-size: 80%;
 
 	a {
-		color: #777;
+		color: @link-grey;
 	}
 }
 #footer-navigation .navigation-tools ul {
@@ -131,11 +134,9 @@
 
 /* Bad hacks to fix background for bottom menu */
 #plane-wreck {
-	background: #fff;
 	border-bottom: 1px solid @bold-border;
 }
 #train-wreck {
-	background: @bold-bkg;
+	background: #fff;
 	border-bottom: none;
 }
-
