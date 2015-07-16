@@ -1,6 +1,6 @@
 {
 	"name": "GreyStuff",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": [
 		"Calimonius the Estrange"
 	],
@@ -12,35 +12,42 @@
 	},
 	"MessagesDirs": {
 		"SkinGreyStuff": [
-			"/i18n"
+			"i18n"
 		]
 	},
 	"AutoloadClasses": {
 		"SkinGreyStuff": "GreyStuff.skin.php",
 		"GreyStuffTemplate": "GreyStuffTemplate.php"
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "GreyStuff"
+	},
 	"ResourceModules": {
 		"skins.greystuff": {
 			"class": "ResourceLoaderSkinModule",
 			"styles": {
-				"skins/GreyStuff/resources/normalise.css": {
+				"resources/normalise.css": {
 					"media": "screen"
 				},
-				"skins/GreyStuff/resources/main.less": {
+				"resources/main.less": {
 					"media": "screen"
 				},
-				"skins/GreyStuff/resources/screen-large.less": {
+				"resources/screen-large.less": {
 					"media": "screen and (min-width: 1025px)"
 				},
-				"skins/GreyStuff/resources/screen-small.less": {
+				"resources/screen-small.less": {
 					"media": "screen"
 				},
-				"skins/GreyStuff/resources/screen-mobile.less": {
+				"resources/screen-mobile.less": {
 					"media": "screen and (max-width: 760px)"
 				}
 			},
-			"scripts": "",
 			"position": "top"
+		},
+		"skins.greystuff.js": {
+			"scripts": [ "resources/main.js" ],
+			"position": "bottom"
 		}
 	},
 	"manifest_version": 1

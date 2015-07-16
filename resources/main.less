@@ -10,6 +10,20 @@ body {
 	color: #000;
 	background: @bold-bkg;
 }
+.client-nojs {
+	/* need to specify #header-container to have the style actually applied,
+	 * otherwise some stupid display: none; somewhere overrides it. Yay for
+	 * cascading!
+	 */
+	#header-container {
+		/* Allow the menus to remain usable even when JS isn't available/enabled */
+		#p-personal {
+			&:hover .dropdown {
+				display: block;
+			}
+		}
+	}
+}
 a {
 	text-decoration: none;
 	color: #04a;
@@ -148,6 +162,7 @@ a.external:visited {
 		float: right;
 		color: @text-grey;
 		font-size: 85%;
+		position: relative;
 
 		.no-dropdown ul {
 			margin: 0;
@@ -162,37 +177,39 @@ a.external:visited {
 			background-position: 100% 40%;
 			.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
 			padding: 0 1.75em .3em 0;
+
+			/* Dropdown stuff */
+			&:hover {
+				cursor: pointer;
+			}
 		}
-	}
 
-	/* Dropdown stuff */
-	#p-welcome:hover {
-		cursor: pointer;
-	}
+		/**
+		 * No-JS and JS versions, respectively
+		 * Without the latter rule there's some weird flickering and whatnot
+		 * with the personal tools menu due to the JS. I have no idea what or
+		 * why, but this seems to fix it...
+		 */
+		&:hover .dropdown,
+		.dropdown {
+			position: absolute;
+			background: #fff;
+			top: 100%;
+			right: 0;
+			padding: .75em 2em;
+			border: solid 1px @soft-border;
+			box-shadow: 0 2px 4px rgba(0,0,0,.05);
+			width: 8em;
+			text-align: left;
+			z-index: 5; /* needed so that this menu properly overlaps the toolbox's "tools" text */
+			line-height: 1.1em;
+			top: 1.75em;
+		}
 
-	#p-personal {
-		position: relative;
-	}
-	#p-personal:hover .dropdown {
-		display: block;
-		position: absolute;
-		background: #fff;
-		top: 100%;
-		right: 0;
-		padding: .75em 2em;
-		border: solid 1px @soft-border;
-		box-shadow: 0 2px 4px rgba(0,0,0,.05);
-		width: 8em;
-		text-align: left;
-		z-index: 5;
-		line-height: 1.1em;
-	}
-	#p-personal:hover .dropdown {
-		top: 1.75em;
-	}
-	#p-personal .no-dropdown ul li {
-		display: inline;
-		margin-left: 1em;
+		.no-dropdown ul li {
+			display: inline;
+			margin-left: 1em;
+		}
 	}
 
 	.dropdown ul {

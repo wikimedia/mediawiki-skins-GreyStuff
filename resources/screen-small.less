@@ -6,6 +6,18 @@
 *
 * Some stuff shared/duplicated with personal menu(?)
 */
+.client-nojs {
+	#header-navigation {
+		.mw-portlet {
+			&.mw-portlet:hover .p-body {
+				transition-property: height;
+				transition-duration: 1s;
+				display: block;
+			}
+		}
+	}
+}
+
 #header-navigation {
 	padding: 0;
 	font-size: 90%;
@@ -70,11 +82,8 @@
 		.p-body {
 			display: none;
 		}
-		&.mw-portlet:hover .p-body {
-			transition-property: height;
-			transition-duration: 1s;
 
-			display: block;
+		&.mw-portlet .p-body {
 			padding: .75em 2em;
 			border: solid 1px @soft-border;
 			box-shadow: 0 2px 4px rgba(0,0,0,.05);
@@ -87,7 +96,7 @@
 			text-align: left;
 		}
 	}
-	.navigation-tools .mw-portlet:hover .p-body {
+	.navigation-tools .mw-portlet .p-body {
 		right: 0;
 	}
 }

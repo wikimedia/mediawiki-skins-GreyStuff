@@ -276,7 +276,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		?>
 		<div class="mw-portlet" id="p-toolbox" role="navigation">
 			<h3><?php $this->msg( 'toolbox' ) ?></h3>
-			<div class="p-body">
+			<div class="p-body dropdown">
 				<ul>
 				<?php
 				foreach ( $this->getToolbox() as $key => $tbitem ) {
@@ -327,7 +327,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				?>
 			</h3>
 
-			<div class="p-body">
+			<div class="p-body dropdown">
 				<?php
 				if ( is_array( $box['content'] ) ) {
 					echo '<ul>';
