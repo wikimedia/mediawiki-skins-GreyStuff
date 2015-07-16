@@ -11,10 +11,6 @@
  * @date 2014
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
-}
-
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @ingroup Skins
@@ -27,11 +23,9 @@ class SkinGreyStuff extends SkinTemplate {
 	 * @param $out OutputPage
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
-		global $wgVersion;
-
 		parent::setupSkinUserCss( $out );
 
-		// Add css
+		// Add CSS
 		$out->addModuleStyles( array (
 			'mediawiki.skinning.content.externallinks',
 			'skins.greystuff'

@@ -13,10 +13,6 @@
  * The DOM here is an utter trainwreck.
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
-}
-
 /**
  * Main skin class
  * @ingroup Skins
@@ -28,11 +24,9 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * Takes an associative array of data set from a SkinTemplate-based
 	 * class, and a wrapper for MediaWiki's localization database, and
 	 * outputs a formatted page.
-	 *
-	 * @access private
 	 */
 	function execute() {
-		global $wgHostLink, $wgDefaultSkin;
+		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 
 		$this->html( 'headelement' );
 		?>
@@ -112,7 +106,6 @@ class GreyStuffTemplate extends BaseTemplate {
 				?>
 				<div id="content-header">
 					<h1 id="firstHeading" class="firstHeading" lang="<?php
-						$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 						$this->text( 'pageLanguage' );
 						?>">
 
@@ -301,8 +294,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				<li id="t-purge"><?php echo $link; ?></li>
 
 				<?php
-				wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
-				wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
+				Hooks::run( 'SkinTemplateToolboxEnd', array( &$this, true ) );
 				?>
 				</ul>
 			</div>
@@ -352,8 +344,8 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	private function outputFooter() {
-		$validFooterIcons = $this->getFooterIcons( "icononly" );
-		$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
+		$validFooterIcons = $this->getFooterIcons( 'icononly' );
+		$validFooterLinks = $this->getFooterLinks( 'flat' ); // Additional footer links
 
 		if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) {
 			?>
@@ -368,8 +360,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			<div id="f-<?php echo htmlspecialchars( $blockName ); ?>ico" class="footer-icons">
 			<?php
 			foreach ( $footerIcons as $icon ) {
-				?>
-				<?php echo $this->getSkin()->makeFooterIcon( $icon );
+				echo $this->getSkin()->makeFooterIcon( $icon );
 			}
 			?>
 			</div>
