@@ -9,10 +9,16 @@
 .client-nojs {
 	#header-navigation {
 		.mw-portlet {
-			&.mw-portlet:hover .p-body {
-				transition-property: height;
-				transition-duration: 1s;
-				display: block;
+			&.mw-portlet:hover {
+				.p-body {
+					transition-property: height;
+					transition-duration: 1s;
+					display: block;
+				}
+				h3 {
+					background-position: 100% 60%;
+					.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
+				}
 			}
 		}
 	}
@@ -46,9 +52,14 @@
 		font-weight: normal;
 		font-size: 90%;
 		background-repeat: no-repeat;
-		background-position: 100% 60%;
-		.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
+		background-position: 100% 100%;
+		.background-image-svg('images/arrow-right.svg', 'images/arrow-right.png');
 		text-shadow: none;
+
+		&.menu-down-arrow {
+			background-position: 100% 60%;
+			.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
+		}
 
 		&:hover {
 			cursor: pointer;
@@ -122,6 +133,12 @@
 	li {
 		font-size: 85%;
 	}
+}
+#footer-navigation .navigation .mw-portlet:first-of-type {
+	padding-left: 0;
+}
+#footer-navigation .navigation-tools .mw-portlet:last-of-type {
+	padding-right: 0;
 }
 #footer-navigation {
 	padding: 0;

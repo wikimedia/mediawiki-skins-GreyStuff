@@ -217,11 +217,11 @@ class GreyStuffTemplate extends BaseTemplate {
 		// Display status, and make a dropdown if logged in
 		if ( $user->isLoggedIn() ) {
 			?>
-			<div id="p-welcome">
+			<h3 id="p-welcome">
 			<?php
 			echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
 			?>
-			</div>
+			</h3>
 			<div class="p-body dropdown">
 		<?php
 		} else {

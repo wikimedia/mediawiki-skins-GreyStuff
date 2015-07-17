@@ -11,6 +11,7 @@ $( function() {
 		e.stopPropagation(); // stop hiding it!
 		if ( !wasOpen ) {
 			$( this ).next( '.dropdown' ).fadeIn( 300 );
+			$( this ).closest( 'h3' ).addClass( 'menu-down-arrow' );
 		}
 	} );
 	$( document ).click( function( e ) {
@@ -26,6 +27,8 @@ function closeOpen( e ) {
 	// Close all dropdowns
 	$( '#p-personal, #header-navigation .navigation .mw-portlet, #p-toolbox' ).children( '.dropdown' ).each( function() {
 		if ( $( this ).is( ':visible' ) ) {
+			// .closest() doesn't work here like it does above...
+			$( this ).parent().children( 'h3' ).removeClass( 'menu-down-arrow' );
 			$( this ).fadeOut( 300 );
 		}
 	} );
