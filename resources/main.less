@@ -57,23 +57,29 @@ a.external:visited {
 }
 
 /* Set up appearance */
-#train-wreck {
+
+#header-navigation-container {
 	background: #fff;
 	border-top: solid 1px @bold-border;
+}
+#content-container {
+	background: #fff;
+	border-bottom: solid 1px @bold-border;
 }
 
 #header-top,
 #header-navigation,
-#plane-wreck,
+#content,
+#footer-navigation,
 #footer-bottom {
 	.widths;
 	margin: auto;
 	padding: 1.5em;
 	word-wrap: break-word;
 }
-#plane-wreck {
-	padding-top: 0;
-	padding-bottom: 0;
+
+#content {
+	padding: 0;
 }
 
 /*
@@ -526,9 +532,6 @@ label {
  */
 #content-container {
 	font-size: 90%;
-}
-#train-wreck {
-	border-bottom: solid 1px @bold-border;
 }
 #mw-content-text {
 	padding-bottom: 1.5em;

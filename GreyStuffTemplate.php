@@ -31,7 +31,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$this->html( 'headelement' );
 		?>
 		<div id="globalWrapper">
-		<div id="header-container"<?php $this->html( 'userlangattributes' ); ?> class="noprint">
+			<div id="header-container"<?php $this->html( 'userlangattributes' ); ?> class="noprint">
 			<div id="header-top-container">
 			<div id="header-top">
 				<div id="p-logo" role="banner">
@@ -58,32 +58,30 @@ class GreyStuffTemplate extends BaseTemplate {
 				<div class="visualClear"></div>
 			</div>
 			</div>
-		</div>
-		<div class="visualClear"></div>
-		<div id="train-wreck">
-		<div id="plane-wreck">
-		<div id="header-navigation-container" class="noprint">
+			</div>
+			<div class="visualClear"></div>
+			<div id="header-navigation-container" class="noprint">
 			<div id="header-navigation">
 				<?php
-				$this->outputMainNavigation();
+				$this->outputMainNavigation( true );
 				?>
 			</div>
-		</div>
-		<div id="content-container">
+			</div>
+			<div id="content-container">
 			<div id="content" class="mw-body-primary" role="main">
 				<a id="top"></a>
 				<?php
 				if ( $this->data['sitenotice'] ) {
-				?>
-					<div id="siteNotice">
-					<?php
-						$this->html( 'sitenotice' )
 					?>
+					<div id="siteNotice">
+						<?php
+						$this->html( 'sitenotice' )
+						?>
 					</div>
-				<?php
+					<?php
 				}
 				if ( $this->data['subtitle'] || $this->data['undelete'] || $this->data['newtalk'] ) {
-				?>
+					?>
 					<div id="content-top-stuff">
 						<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>>
 							<?php $this->html( 'subtitle' ) ?>
@@ -159,22 +157,20 @@ class GreyStuffTemplate extends BaseTemplate {
 					<?php if ( $this->data['dataAfterContent'] ) { $this->html( 'dataAfterContent' ); } ?>
 				</div>
 			</div>
-		</div>
-		<div id="footer-navigation" class="noprint">
-			<?php
-			$this->outputMainNavigation();
-			?>
-		</div>
-		</div> <!-- End train and plane wrecks -->
-		<div class="visualClear"></div>
-		</div>
-		<div id="footer-container">
-			<div id="footer-bottom-container">
-			<?php
-				$this->outputFooter();
-			?>
 			</div>
-		</div>
+			<div id="footer-navigation" class="noprint">
+				<?php
+				$this->outputMainNavigation();
+				?>
+			</div>
+			<div class="visualClear"></div>
+			<div id="footer-container">
+			<div id="footer-bottom-container">
+				<?php
+				$this->outputFooter();
+				?>
+			</div>
+			</div>
 		</div>
 		<?php
 		$this->printTrail();
@@ -182,7 +178,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		echo Html::closeElement( 'html' );
 	} // end of execute() method
 
-	private function outputMainNavigation() {
+	private function outputMainNavigation( $dropdown = false ) {
 		?>
 		<div class="navigation">
 			<?php
@@ -207,7 +203,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				'headerMessage' => 'variants',
 				'content' => $this->data['content_navigation']['variants'],
 			) );
-			$this->outputToolbox();
+			$this->outputToolbox( $dropdown );
 			?>
 		</div>
 		<?php
@@ -272,11 +268,11 @@ class GreyStuffTemplate extends BaseTemplate {
 	<?php
 	}
 
-	private function outputToolbox() {
+	private function outputToolbox( $dropdown = false ) {
 		?>
 		<div class="mw-portlet" id="p-toolbox" role="navigation">
 			<h3><?php $this->msg( 'toolbox' ) ?></h3>
-			<div class="p-body dropdown">
+			<div class="p-body <?php if ( $dropdown ) { ?> dropdown <?php } ?>">
 				<ul>
 				<?php
 				foreach ( $this->getToolbox() as $key => $tbitem ) {

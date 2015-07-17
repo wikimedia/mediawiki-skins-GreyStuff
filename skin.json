@@ -33,10 +33,7 @@
 				"resources/main.less": {
 					"media": "screen"
 				},
-				"resources/screen-large.less": {
-					"media": "screen and (min-width: 1025px)"
-				},
-				"resources/screen-small.less": {
+				"resources/screen-full.less": {
 					"media": "screen"
 				},
 				"resources/screen-mobile.less": {
