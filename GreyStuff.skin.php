@@ -22,6 +22,8 @@ class SkinGreyStuff extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 
+		$out->addMeta( 'viewport', 'width=device-width' );
+
 		// Add JS
 		$out->addModules( 'skins.greystuff.js' );
 	}
