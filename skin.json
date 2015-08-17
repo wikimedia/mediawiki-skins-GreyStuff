@@ -6,6 +6,7 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Skin:GreyStuff",
 	"descriptionmsg": "greystuff-desc",
+	"license-name": "GPL-2.0+",
 	"type": "skin",
 	"ValidSkinNames": {
 		"greystuff": "GreyStuff"
