@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pippinu"
+			"Pippinu",
+			"Sarvaturi"
 		]
 	},
-	"greystuff-desc": "Na peddi sìmplici gricia e cu’ larghizza fissa",
+	"greystuff-desc": "Na peddi sìmplici gricia e cu larghizza fissa",
 	"greystuff-loggedinas": "Trasutu comu $1",
 	"greystuff-history": "Cronuluggìa dâ pàggina",
 	"greystuff-purge": "Aggiorna la pàggina",
-	"greystuff-userpage": "Pàggina di l’utenti",
+	"greystuff-userpage": "Pàggina di l'utenti",
 	"greystuff-talkpage": "Pàggina di discussioni"
 }
