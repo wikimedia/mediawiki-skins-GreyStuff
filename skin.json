@@ -46,6 +46,15 @@
 		"skins.greystuff.js": {
 			"scripts": [ "resources/main.js" ],
 			"position": "bottom"
+		},
+		"skins.greystuff.mobile": {
+			"styles": {
+				"resources/mobile.js.css": {
+					"media": "(max-width: 760px)"
+				}
+			},
+			"scripts": [ "resources/mobile.js" ],
+			"position": "top"
 		}
 	},
 	"manifest_version": 1

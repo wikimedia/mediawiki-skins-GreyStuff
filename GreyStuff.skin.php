@@ -26,6 +26,7 @@ class SkinGreyStuff extends SkinTemplate {
 
 		// Add JS
 		$out->addModules( 'skins.greystuff.js' );
+		$out->addModules( 'skins.greystuff.mobile' );
 	}
 
 	/**

@@ -53,6 +53,9 @@ class GreyStuffTemplate extends BaseTemplate {
 				</div>
 				<?php
 				$this->outputPersonalNavigation();
+				?>
+				<div class="mobileClear"></div>
+				<?php
 				$this->outputSearch();
 				?>
 				<div class="visualClear"></div>
@@ -110,6 +113,7 @@ class GreyStuffTemplate extends BaseTemplate {
 						<?php
 						$this->html( 'title' ) ?>
 					</h1>
+					<div class="mobileClear"></div>
 					<div id="page-namespaces" class="noprint">
 						<?php
 						$this->outputPortlet( array(

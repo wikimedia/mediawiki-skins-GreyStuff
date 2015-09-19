@@ -1,3 +1,6 @@
+
+/* Expanding menus (desktop mostly, but personal still applies to mobile too) */
+
 $( function() {
 	// When the menus (or their respective little arrows, which are still
 	// contained in the menu element) are clicked, show their contents.
@@ -11,7 +14,6 @@ $( function() {
 		e.stopPropagation(); // stop hiding it!
 		if ( !wasOpen ) {
 			$( this ).next( '.dropdown' ).fadeIn( 300 );
-			$( this ).closest( 'h3' ).addClass( 'menu-down-arrow' );
 		}
 	} );
 	$( document ).click( function( e ) {
@@ -28,7 +30,6 @@ function closeOpen( e ) {
 	$( '#p-personal, #header-navigation .navigation .mw-portlet, #p-toolbox' ).children( '.dropdown' ).each( function() {
 		if ( $( this ).is( ':visible' ) ) {
 			// .closest() doesn't work here like it does above...
-			$( this ).parent().children( 'h3' ).removeClass( 'menu-down-arrow' );
 			$( this ).fadeOut( 300 );
 		}
 	} );

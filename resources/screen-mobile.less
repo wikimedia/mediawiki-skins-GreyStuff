@@ -1,3 +1,4 @@
+@import "variables.less";
 
 /* Extra stuff mobile doesn't need */
 #sitesubtitle,
@@ -63,3 +64,39 @@ div.thumb {
 	width: 100%;
 }
 
+/* Mobile float cleanup */
+.mobileClear,
+#content-header .mobileClear {
+	display: block;
+	clear: both;
+}
+
+/* Footer links and icons */
+
+#footer-container #f-list li#lastmod {
+	display: block;
+	margin-bottom: 1em;
+}
+#footer-container .footer-icons {
+	float: none;
+	display: inline;
+}
+#f-list {
+	font-size: 100%;
+}
+
+/* Footer (need to accordianise and do same with top but hidden by a toggle?) */
+
+#footer-navigation {
+	font-size: 100%;
+}
+#footer-navigation .mw-portlet {
+	float: none;
+	padding: 1em 0 1.5em;
+	border-bottom: solid 1px @bold-border;
+}
+#footer-navigation .p-body ul {
+	columns: 12em 2;
+	-moz-columns: 12em 2;
+	-webkit-columns: 12em 2;
+}
