@@ -3,7 +3,8 @@
 /* Extra stuff mobile doesn't need */
 #sitesubtitle,
 #header-navigation-container,
-#p-logo {
+#p-logo,
+#content-header ul li#ca-view {
 	display: none;
 }
 
@@ -29,7 +30,6 @@
 }
 
 /* Full-width thumbnails */
-
 div.thumb {
 	float: none;
 }
@@ -59,6 +59,12 @@ div.thumb {
 	margin: 0 auto .5em;
 }
 
+/* Keep images from overflowing */
+#content a > img {
+	height: auto !important;
+	max-width: 100% !important;
+}
+
 /* Table of contents */
 #toc, .toc, .mw-warning {
 	width: 100%;
@@ -72,7 +78,6 @@ div.thumb {
 }
 
 /* Footer links and icons */
-
 #footer-container #f-list li#lastmod {
 	display: block;
 	margin-bottom: 1em;
@@ -85,8 +90,7 @@ div.thumb {
 	font-size: 100%;
 }
 
-/* Footer (need to accordianise and do same with top but hidden by a toggle?) */
-
+/* Footer */
 #footer-navigation {
 	font-size: 100%;
 }

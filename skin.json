@@ -49,7 +49,7 @@
 		},
 		"skins.greystuff.mobile": {
 			"styles": {
-				"resources/mobile.js.css": {
+				"resources/mobile.js.less": {
 					"media": "(max-width: 760px)"
 				}
 			},
