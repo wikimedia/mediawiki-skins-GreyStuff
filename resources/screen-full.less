@@ -66,106 +66,20 @@
 			cursor: pointer;
 		}
 	}
-	ul {
-		padding: 0;
-		margin: 0;
-		list-style: none;
-	}
-	li {
-		margin: 0 1.25em 0 0;
-		font-size: 90%;
-	}
 
 	.mw-portlet {
 		position: relative;
 		display: inline-block;
 		display: inline !ie;
 
-		ul {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-
-			li {
-				margin: .75em 0;
-			}
-		}
-
 		.p-body {
 			display: none;
+			font-size: 90%;
+			.generic-dropdown;
 		}
-
-		&.mw-portlet .p-body {
-			padding: .75em 2em;
-			border: solid 1px @soft-border;
-			box-shadow: 0 2px 4px rgba(0,0,0,.05);
-			position: absolute;
-			top: 100%;
-			z-index: 5;
-			background: #fff;
-			line-height: 1.1em;
-			width: 8em;
-			text-align: left;
+		&#p-toolbox .p-body {
+			left: auto;
+			right: 0;
 		}
 	}
-	.navigation-tools .mw-portlet .p-body {
-		right: 0;
-	}
-}
-
-#header-navigation-container {
-	border-bottom: solid 1px @soft-border;
-}
-
-#footer-navigation h3 {
-	margin: 0 0 1em;
-	font-size: 85%;
-}
-#footer-navigation ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-#footer-navigation .mw-portlet {
-	float: left;
-
-	padding: 1.5em;
-
-	li {
-		font-size: 85%;
-	}
-}
-#footer-navigation .navigation .mw-portlet:first-of-type {
-	padding-left: 0;
-}
-#footer-navigation .navigation-tools .mw-portlet:last-of-type {
-	padding-right: 0;
-}
-#footer-navigation {
-	padding-top: 0;
-	font-size: 80%;
-
-	h3 {
-		color: @text-grey;
-	}
-	a {
-		color: @link-grey;
-	}
-}
-#footer-navigation .navigation-tools ul {
-	columns: 2 9em;
-	-moz-columns: 2 9em;
-	-webkit-columns: 2 9em;
-}
-#footer-container {
-	clear: both;
-}
-
-/* Bad hacks to fix background for bottom menu */
-#plane-wreck {
-	border-bottom: 1px solid @bold-border;
-}
-#train-wreck {
-	background: #fff;
-	border-bottom: none;
 }

@@ -213,33 +213,15 @@ a.external:visited {
 		 */
 		&:hover .dropdown,
 		.dropdown {
-			position: absolute;
-			background: #fff;
-			top: 100%;
+			.generic-dropdown;
+			left: auto;
 			right: 0;
-			padding: .75em 2em;
-			border: solid 1px @soft-border;
-			box-shadow: 0 2px 4px rgba(0,0,0,.05);
-			width: 8em;
-			text-align: left;
-			z-index: 5; /* needed so that this menu properly overlaps the toolbox's "tools" text */
-			line-height: 1.1em;
-			top: 1.75em;
 		}
 
 		.no-dropdown ul li {
 			display: inline;
 			margin-left: 1em;
 		}
-	}
-
-	.dropdown ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.dropdown li {
-		margin: .75em 0;
 	}
 }
 
@@ -269,6 +251,52 @@ a.external:visited {
 			margin: 0 1em 0 0;
 		}
 	}
+}
+#header-navigation-container {
+	border-bottom: solid 1px @soft-border;
+}
+#footer-navigation h3 {
+	margin: 0 0 1em;
+	font-size: 85%;
+}
+#footer-navigation ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#footer-navigation .mw-portlet {
+	float: left;
+
+	padding: 1.5em;
+
+	li {
+		font-size: 85%;
+	}
+}
+#footer-navigation .navigation .mw-portlet:first-of-type {
+	padding-left: 0;
+}
+#footer-navigation .navigation-tools .mw-portlet:last-of-type {
+	padding-right: 0;
+}
+#footer-navigation {
+	padding-top: 0;
+	font-size: 80%;
+
+	h3 {
+		color: @text-grey;
+	}
+	a {
+		color: @link-grey;
+	}
+}
+#footer-navigation .navigation-tools ul {
+	columns: 2 9em;
+	-moz-columns: 2 9em;
+	-webkit-columns: 2 9em;
+}
+#footer-container {
+	clear: both;
 }
 
 

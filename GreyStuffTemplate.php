@@ -51,6 +51,8 @@ class GreyStuffTemplate extends BaseTemplate {
 						<?php echo wfMessage( 'sitesubtitle' )->escaped() ?>
 					</div>
 				</div>
+				<div id="menus-cover"></div>
+				<div id="main-menu-toggle"></div>
 				<?php
 				$this->outputPersonalNavigation();
 				?>
@@ -215,7 +217,13 @@ class GreyStuffTemplate extends BaseTemplate {
 
 	private function outputPersonalNavigation() {
 		$user = $this->getSkin()->getUser();
-		?>
+
+		if ( $user->isLoggedIn() ) {
+			?>
+			<div id="personal-menu-toggle"></div>
+			<?php
+		} ?>
+		<div id="tools-menu-toggle"></div>
 		<div class="mw-portlet" id="p-personal" role="navigation">
 		<?php
 		// Display status, and make a dropdown if logged in

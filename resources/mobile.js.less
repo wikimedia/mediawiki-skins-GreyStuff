@@ -1,5 +1,8 @@
 /* js stuff */
 
+@import "mediawiki.mixins";
+@import "variables.less";
+
 /* For the footer menus */
 #footer-container {
 	padding-top: 0;
@@ -26,4 +29,96 @@
 	li {
 		padding: .25em 1em;
 	}
+}
+
+/* Main navigation menu */
+
+#header-container #p-personal .no-dropdown ul {
+	margin: 1em;
+}
+
+#main-menu-toggle,
+#personal-menu-toggle,
+#tools-menu-toggle {
+	content: '';
+	width: 35px;
+	height: 35px;
+	float: right;
+	margin: .4em 0 0 .5em;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+#tools-menu-toggle {
+	.background-image-svg('images/gear-icon.svg', 'images/gear-icon.png');
+}
+#personal-menu-toggle {
+	.background-image-svg('images/user-icon.svg', 'images/user-icon.png');
+}
+#main-menu-toggle {
+	.background-image-svg('images/menu-icon.svg', 'images/menu-icon.png');
+}
+
+/* Make navigation and personal menu base states consistent and crap */
+#header-container #p-personal:hover .dropdown,
+#header-container #p-personal .dropdown {
+	display: block;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	position: static;
+	width: auto;
+}
+#header-container #p-personal {
+	display: none;
+}
+#header-container #p-personal #p-welcome:hover {
+	cursor: auto;
+}
+#header-navigation .navigation,
+#header-navigation .navigation-tools {
+	font-size: 80.75%;
+}
+#header-container #p-personal,
+#header-container #p-personal:hover,
+#header-navigation .navigation,
+#header-navigation .navigation-tools {
+	.generic-dropdown;
+	box-shadow: 0 2px 8px rgba(0,0,0,.2);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: auto;
+	z-index: 100;
+	padding-top: 0;
+	width:auto;
+	max-width: 70%;
+
+	.p-body {
+		padding-bottom: 1em;
+	}
+	#p-welcome,
+	h3 {
+		border-bottom: 1px solid @soft-border;
+		margin: 1.25em 0;
+		font-size: 140%;
+		padding: 0 2em .5em;
+		background-image: none;
+	}
+	li {
+		padding: .5em 2em .5em;
+		font-size: 125%;
+	}
+}
+#menus-cover {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background: rgba(150,150,150,.7);
+	overflow: hidden;
 }

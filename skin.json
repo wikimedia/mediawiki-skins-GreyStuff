@@ -35,7 +35,7 @@
 					"media": "screen"
 				},
 				"resources/screen-full.less": {
-					"media": "screen"
+					"media": "screen and (min-width: 761px)"
 				},
 				"resources/screen-mobile.less": {
 					"media": "screen and (max-width: 760px)"
