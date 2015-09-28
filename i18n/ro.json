@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Strainu"
+			"Strainu",
+			"Minisarm"
 		]
 	},
+	"greystuff-desc": "Un aspect gri simplu cu lățime fixă",
+	"greystuff-loggedinas": "Autentificat(ă) ca $1",
 	"greystuff-history": "Istoricul paginii",
 	"greystuff-purge": "Reîncarcă pagina",
 	"greystuff-userpage": "Pagină de utilizator",
