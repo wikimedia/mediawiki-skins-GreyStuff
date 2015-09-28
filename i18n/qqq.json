@@ -8,6 +8,7 @@
 	},
 	"greystuff-desc": "{{desc|what=skin|name=GreyStuff}}",
 	"greystuff-loggedinas": "Label for personal menu for logged in users that really helpfully informs them that they are indeed logged in.\n\nParameters:\n* $1 - username",
+	"greystuff-notloggedin": "Label for personal menu for anonymous users that really helpfully informs them that they are not logged in.",
 	"greystuff-history": "Page history link label in toolbox.\n{{Identical|Page history}}",
 	"greystuff-purge": "Purge link label in toolbox.\n{{Identical|Refresh page}}",
 	"greystuff-userpage": "User page/profile link label in the personal menu\n{{Identical|User page}}",

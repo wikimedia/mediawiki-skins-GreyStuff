@@ -53,6 +53,8 @@ class GreyStuffTemplate extends BaseTemplate {
 				</div>
 				<div id="menus-cover"></div>
 				<div id="main-menu-toggle"></div>
+				<div id="personal-menu-toggle"></div>
+				<div id="tools-menu-toggle"></div>
 				<?php
 				$this->outputPersonalNavigation();
 				?>
@@ -217,31 +219,19 @@ class GreyStuffTemplate extends BaseTemplate {
 
 	private function outputPersonalNavigation() {
 		$user = $this->getSkin()->getUser();
-
-		if ( $user->isLoggedIn() ) {
-			?>
-			<div id="personal-menu-toggle"></div>
-			<?php
-		} ?>
-		<div id="tools-menu-toggle"></div>
+		?>
 		<div class="mw-portlet" id="p-personal" role="navigation">
-		<?php
-		// Display status, and make a dropdown if logged in
-		if ( $user->isLoggedIn() ) {
-			?>
 			<h3 id="p-welcome">
 			<?php
-			echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
+			// Display status, and make a dropdown if logged in
+			if ( $user->isLoggedIn() ) {
+				echo wfMessage( 'greystuff-loggedinas', '<b>' . $user->getName() . '</b>' )->parse();
+			} else {
+				echo wfMessage( 'greystuff-notloggedin' )->parse();
+			}
 			?>
 			</h3>
 			<div class="p-body dropdown">
-		<?php
-		} else {
-		?>
-			<div class="p-body no-dropdown">
-		<?php
-		}
-		?>
 			<ul<?php $this->html( 'userlangattributes' ) ?>>
 			<?php
 				foreach ( $this->getPersonalTools() as $key => $item ) {
