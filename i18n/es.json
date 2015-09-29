@@ -8,6 +8,7 @@
 	},
 	"greystuff-desc": "Apariencia sencilla, gris y de anchura fija",
 	"greystuff-loggedinas": "Sesión iniciada como $1",
+	"greystuff-notloggedin": "No has iniciado sesión",
 	"greystuff-history": "Historial de página",
 	"greystuff-purge": "Recargar página",
 	"greystuff-userpage": "Página de usuario",
