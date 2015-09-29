@@ -152,9 +152,9 @@ a.external:visited {
 		float: right;
 		clear: right;
 		margin-top: .5em;
-		_margin-top: -2px;
+		margin-top: -2px ~"!ie";
 		margin-bottom: 0;
-		_margin-bottom: -8px;
+		margin-bottom: -8px ~"!ie";
 		font-size: 85%;
 
 		h3 {
@@ -171,9 +171,9 @@ a.external:visited {
 		}
 		#searchGoButton {
 			border: solid 1px #bbb;
-			height: 30px !ie;
+			height: 30px ~"!ie";
 			min-width: 4em;
-			margin: 8px 0 !ie;
+			margin: 8px 0 ~"!ie";
 		}
 	}
 
@@ -536,7 +536,7 @@ label {
 
 		li {
 			display: inline-block;
-			display: inline !ie;
+			display: inline ~"!ie";
 			margin: .3em .75em 0 0;
 
 			&.selected a {
@@ -675,7 +675,7 @@ ul#filetoc {
 	border-bottom: solid 1px @soft-border;
 	color: @text-grey;
 	display: inline-block;
-	display: inline !ie;
+	display: inline ~"!ie";
 }
 #toc a, .mw-editsection a {
 	color: @link-grey;
@@ -688,7 +688,7 @@ ul#filetoc {
 	margin-top: .5em;
 	margin-right: 1em;
 	display: inline-block;
-	display: inline !ie;
+	display: inline ~"!ie";
 }
 
 
