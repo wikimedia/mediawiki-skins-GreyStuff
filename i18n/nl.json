@@ -3,11 +3,13 @@
 		"authors": [
 			"Romaine",
 			"Esketti",
-			"Siebrand"
+			"Siebrand",
+			"Sjoerddebruin"
 		]
 	},
 	"greystuff-desc": "Eenvoudig grijs uiterlijk met vaste breedte",
 	"greystuff-loggedinas": "Aangemeld als $1",
+	"greystuff-notloggedin": "Niet ingelogd",
 	"greystuff-history": "Paginageschiedenis",
 	"greystuff-purge": "Pagina vernieuwen",
 	"greystuff-userpage": "Gebruikerspagina",
