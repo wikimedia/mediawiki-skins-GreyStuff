@@ -428,7 +428,6 @@ fieldset {
 
 	legend {
 		padding: 0 1em;
-		font-variant: small-caps;
 		text-shadow: 0 0 1px #999;
 		margin-left: 1em;
 	}
@@ -503,9 +502,14 @@ label {
  * Content header
  *
  */
-#content-header {
-	border-bottom: double 4px @soft-border;
+#content-header-inner {
+	border-bottom: solid 1px @soft-border;
+	margin-top: 1px;
+	content: '';
 	margin-bottom: .75em;
+}
+#content-header {
+	border-bottom: solid 1px @soft-border;
 	padding-bottom: .25em;
 	padding-top: 1.25em;
 
@@ -536,7 +540,6 @@ label {
 
 		li {
 			display: inline-block;
-			display: inline ~"!ie";
 			margin: .3em .75em 0 0;
 
 			&.selected a {
@@ -577,7 +580,6 @@ label {
 
 h1, h2, h3, h4, h5, h6, dt {
 	line-height: 1.1em;
-	font-variant: small-caps;
 	font-weight: normal;
 	color: @header-grey;
 	margin: 2em 0 .5em;
@@ -675,7 +677,6 @@ ul#filetoc {
 	border-bottom: solid 1px @soft-border;
 	color: @text-grey;
 	display: inline-block;
-	display: inline ~"!ie";
 }
 #toc a, .mw-editsection a {
 	color: @link-grey;
@@ -688,7 +689,6 @@ ul#filetoc {
 	margin-top: .5em;
 	margin-right: 1em;
 	display: inline-block;
-	display: inline ~"!ie";
 }
 
 
