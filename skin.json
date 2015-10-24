@@ -31,6 +31,9 @@
 				"resources/normalise.css": {
 					"media": "screen"
 				},
+				"resources/forms.less": {
+					"media": "screen"
+				},
 				"resources/main.less": {
 					"media": "screen"
 				},

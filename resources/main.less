@@ -1,4 +1,3 @@
-@import "mediawiki.mixins";
 @import "variables.less";
 
 body {
@@ -12,26 +11,6 @@ body {
 }
 #content-header .mobileClear {
 	display: none;
-}
-.client-nojs {
-	/* need to specify #header-container to have the style actually applied,
-	 * otherwise some stupid display: none; somewhere overrides it. Yay for
-	 * cascading!
-	 */
-	div#header-container {
-		/* Allow the menus to remain usable even when JS isn't available/enabled */
-		div#p-personal {
-			&:hover {
-				.dropdown {
-					display: block;
-				}
-				h3 {
-					background-position: 100% 90%;
-					.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
-				}
-			}
-		}
-	}
 }
 a {
 	text-decoration: none;
@@ -99,121 +78,78 @@ a.external:visited {
  * HEADER STUFF
  *
  */
+#header-top-container {
+	padding: .5em 1.5em;
+}
+#header-top {
+	padding: 0;
+	font-size: 95%;
+}
 
-#header-container {
+/* Banner stuff */
+.mw-wiki-logo {
+	display: block;
+	width: 66px;
+	height: 66px;
+	float: left;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin-right: 1em;
+}
+#p-banner {
+	float: left;
 
-	#header-top-container {
-		padding: .5em 1.5em;
-	}
-	#header-top {
-		padding: 0;
-		font-size: 95%;
-	}
+	#sitetitle {
+		padding-top: .25em;
 
-	/* Banner stuff */
-	.mw-wiki-logo {
-		display: block;
-		width: 66px;
-		height: 66px;
-		float: left;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-size: contain;
-		margin-right: 1em;
-	}
-	#p-banner {
-		float: left;
+		a {
+			font-size: 210%;
+			font-weight: bold;
+			line-height: 140%;
+			color: #999;
+			/* @noflip */
+			text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
 
-		#sitetitle {
-			padding-top: .25em;
-
-			a {
-				font-size: 210%;
-				font-weight: bold;
-				line-height: 140%;
-				color: #999;
-				/* @noflip */
-				text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
-
-				&:hover {
-					text-decoration: none;
-				}
-			}
-		}
-		#sitesubtitle {
-			font-style: italic;
-			font-size: 85%;
-			line-height: 1.2em;
-		}
-	}
-
-	/* Search stuff */
-	#p-search {
-		float: right;
-		clear: right;
-		margin-top: .5em;
-		margin-top: -2px ~"!ie";
-		margin-bottom: 0;
-		margin-bottom: -8px ~"!ie";
-		font-size: 85%;
-
-		h3 {
-			position: absolute;
-			top: -9999px;
-		}
-
-		#searchInput-container-container {
-			display: inline-block;
-		}
-		#searchInput {
-			width: 20em;
-			border: solid 1px #ccc;
-		}
-		#searchGoButton {
-			border: solid 1px #bbb;
-			height: 30px ~"!ie";
-			min-width: 4em;
-			margin: 8px 0 ~"!ie";
-		}
-	}
-
-	/* Login stuff */
-	#p-personal {
-		float: right;
-		color: @text-grey;
-		font-size: 85%;
-		position: relative;
-
-		.dropdown {
-			display: none;
-		}
-		#p-welcome {
-			margin: .25em 0;
-			font-size: 1em;
-			line-height: 1.3;
-			background-repeat: no-repeat;
-			background-position: 100% 30%;
-			.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
-			padding: 0 1.75em .3em 0;
-
-			/* Dropdown stuff */
 			&:hover {
-				cursor: pointer;
+				text-decoration: none;
 			}
 		}
+	}
+	#sitesubtitle {
+		font-style: italic;
+		font-size: 85%;
+		line-height: 1.2em;
+	}
+}
 
-		/**
-		 * No-JS and JS versions, respectively
-		 * Without the latter rule there's some weird flickering and whatnot
-		 * with the personal tools menu due to the JS. I have no idea what or
-		 * why, but this seems to fix it...
-		 */
-		&:hover .dropdown,
-		.dropdown {
-			.generic-dropdown;
-			left: auto;
-			right: 0;
-		}
+/* Search stuff */
+#p-search {
+	float: right;
+	clear: right;
+	margin-top: .5em;
+	margin-top: -2px ~"!ie";
+	margin-bottom: 0;
+	margin-bottom: -8px ~"!ie";
+	font-size: 85%;
+
+	h3 {
+		position: absolute;
+		top: -9999px;
+	}
+
+	#searchInput-container-container {
+		display: inline-block;
+	}
+	#searchInput {
+		width: 20em;
+		border: solid 1px #ccc;
+	}
+	#searchGoButton {
+		border: solid 1px #bbb;
+		height: 30px ~"!ie";
+		min-width: 4em;
+		margin: 8px 0 ~"!ie";
 	}
 }
 
@@ -291,212 +227,6 @@ a.external:visited {
 	clear: both;
 }
 
-
-/*
- *
- * PREFERENCES AND FIELDSET STUFF
- *
- */
-#preftoc {
-	margin: 0 0 1em;
-	padding: 0;
-	list-style: none;
-	clear: both;
-
-	li {
-		display: inline;
-		margin-right: 1em;
-
-		&.selected {
-			border-bottom: solid 3px @soft-border;
-
-			a {
-				color: #000;
-			}
-		}
-		a {
-			color: @link-grey;
-		}
-	}
-}
-#preferences {
-	margin: 0;
-	clear: both;
-	min-height: 400px;
-
-	.prefsection {
-		border: none;
-		padding: 0;
-		margin: 0;
-	}
-	.mainLegend {
-		display: none;
-	}
-	.preferences-login {
-		clear: both;
-		margin-bottom: 1.5em;
-	}
-	.mw-email-not-authenticated .mw-input, .mw-email-none .mw-input {
-		display: block;
-	}
-}
-
-/*
- *
- * FORM STUFF
- *
- */
-
-/* pile of bad hacks to try to catch all the different ones */
-#searchInput,
-input[name="target"],
-input[name="user"],
-input[name="mime"],
-input[size$="0"],
-input[type="text"],
-input[type="checkbox"],
-input[type="radio"],
-input#wpTemplateSandboxPage,
-input.mw-summary,
-input.mw-input,
-.mw-input input,
-textarea,
-.mw-ui-input-inline {
-	padding: .35em;
-	box-shadow: 0 1px 4px -1px #ccc inset;
-	border: solid 1px @bold-border;
-	margin: .5em 0;
-}
-select {
-	padding: .2em;
-	margin: .5em 0;
-}
-#searchInput,
-input[type="submit"].searchButton {
-	padding: .45em;
-	margin: 0;
-}
-input[type="radio"] {
-	border-radius: 7px;
-}
-input[type="submit"],
-input[type="button"],
-button {
-	padding: .35em 1em;
-	border: solid 1px #ccc;
-	border-radius: 3px;
-	box-shadow: none;
-	.vertical-gradient ( #fcfcfc, #ededed, 0, 100% );
-
-	&:active {
-		.vertical-gradient ( #fff, #f6f6f6, 0, 100% );
-	}
-}
-textarea {
-	width: 100%;
-	resize: vertical;
-	box-sizing: border-box;
-	line-height: 1.3em;
-}
-div.editOptions {
-	background: #fff;
-	border-bottom: solid 1px @soft-border;
-	padding: 1em 0;
-
-	.mw-summary label {
-		padding-left: 0;
-	}
-	input#wpSummary {
-		box-sizing: border-box;
-		width: 100%;
-	}
-	label {
-		margin-right: 1.5em;
-	}
-}
-td.mw-input,
-td.mw-label {
-	vertical-align: middle;
-}
-
-fieldset {
-	border: 1px @bold-border;
-	border-style: solid none none;
-	line-height: 1.3em;
-	margin: 1em 0;
-	padding: 1.5em 0 0 0;
-
-	legend {
-		padding: 0 1em;
-		text-shadow: 0 0 1px #999;
-		margin-left: 1em;
-	}
-}
-label {
-	padding-left: .5em;
-}
-.mw-input label {
-	padding: 0;
-	margin-right: 1em;
-}
-.mw-label {
-	padding-right: .5em;
-}
-.mw-submit {
-	padding-top: 2em;
-}
-.htmlform-tip {
-	font-size: 85%;
-	color: @text-grey;
-	line-height: 1.2em;
-	padding: 1em 0;
-}
-
-/* Recent changes and watchlist options */
-.rcoptions hr,
-#mw-watchlist-options hr {
-	clear: both;
-}
-.rcoptions #namespace,
-#mw-watchlist-options .namespaceselector {
-	margin-right: 2em;
-}
-
-/* Watchlist */
-#mw-watchlist-options {
-	label {
-		padding: 0 1em 0 0;
-	}
-	input[type="submit"] {
-		margin: 0 0 0 4em;
-	}
-}
-
-/* Related changes hacks */
-.mw-special-Recentchangeslinked {
-	.rcoptions {
-		input[type="submit"] {
-			float: right;
-			margin: 0 0 0 4em;
-		}
-		td.mw-label.mw-target-label {
-			vertical-align: top;
-			padding-top: .75em;
-		}
-		input[name="target"] {
-			float: left;
-		}
-	}
-	#showlinkedto {
-		clear: left;
-		float: left;
-	}
-	label[for="showlinkedto"] {
-		padding: .4em;
-		float: left;
-	}
-}
-
 /*
  *
  * Content header
@@ -560,7 +290,6 @@ label {
 	}
 }
 
-
 /*
  *
  * CONTENT STUFF
@@ -583,11 +312,6 @@ h1, h2, h3, h4, h5, h6, dt {
 	font-weight: normal;
 	color: @header-grey;
 	margin: 2em 0 .5em;
-}
-h1 .mw-editsection,
-h2 .mw-editsection,
-h3, h4, h5, h6, dt {
-	font-variant: normal;
 }
 #mw-content-text {
 	h1, h2 {
@@ -671,7 +395,9 @@ ul#filetoc {
 		color: @link-grey;
 	}
 }
-#toc, .toc, .mw-warning {
+#toc,
+.toc,
+.mw-warning {
 	font-size: 95%;
 	padding: 1em 0 .5em 0;
 	border-bottom: solid 1px @soft-border;

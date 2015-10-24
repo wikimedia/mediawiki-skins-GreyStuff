@@ -1,26 +1,46 @@
-@import "mediawiki.mixins";
 @import "variables.less";
 
 /*
 * Navigation menus
-*
-* Some stuff shared/duplicated with personal menu(?)
 */
+
+#header-navigation .mw-portlet .dropdown,
+#p-personal .dropdown {
+	display: none;
+}
 .client-nojs {
-	#header-navigation {
-		.mw-portlet {
-			&.mw-portlet:hover {
-				.p-body {
-					transition-property: height;
-					transition-duration: 1s;
-					display: block;
-				}
-				h3 {
-					background-position: 100% 90%;
-					.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
-				}
-			}
+	#header-navigation .mw-portlet:hover .dropdown,
+	#p-personal:hover .dropdown {
+		display: block;
+	}
+}
+
+/* Login stuff */
+#p-personal {
+	float: right;
+	color: @text-grey;
+	font-size: 85%;
+	position: relative;
+
+	#p-welcome {
+		margin: .25em 0;
+		font-size: 1em;
+		line-height: 1.3;
+		background-repeat: no-repeat;
+		background-position: 100% 30%;
+		.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
+		padding: 0 1.75em .3em 0;
+
+		/* Dropdown stuff */
+		&:hover {
+			cursor: pointer;
 		}
+	}
+
+	.dropdown {
+		.generic-dropdown;
+		left: auto;
+		right: 0;
 	}
 }
 
@@ -56,11 +76,6 @@
 		.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
 		text-shadow: none;
 
-		&.menu-down-arrow {
-			background-position: 100% 90%;
-			.background-image-svg('images/arrow-down.svg', 'images/arrow-down.png');
-		}
-
 		&:hover {
 			cursor: pointer;
 		}
@@ -71,7 +86,6 @@
 		display: inline-block;
 
 		.p-body {
-			display: none;
 			font-size: 90%;
 			.generic-dropdown;
 		}
