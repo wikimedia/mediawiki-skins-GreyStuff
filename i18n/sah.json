@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"HalanTul"
+		]
+	},
+	"greystuff-desc": "Судургу, өҥө суох, кэтитэ уларыйбат тиэмэ",
+	"greystuff-loggedinas": "Маннык аатынан киирбиккин: $1",
+	"greystuff-notloggedin": "Бэлиэ-аатынан киирбэтэххин",
+	"greystuff-history": "Устуоруйатын сирэйэ",
+	"greystuff-purge": "Сирэйи саҥарт",
+	"greystuff-userpage": "Кыттааччы тус сирэйэ",
+	"greystuff-talkpage": "Ырытыы"
+}
