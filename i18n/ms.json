@@ -6,6 +6,9 @@
 	},
 	"greystuff-desc": "Rupa kelabu ringkas berlebar tetap",
 	"greystuff-loggedinas": "Log masuk sebagai $1",
+	"greystuff-notloggedin": "Belum log masuk",
 	"greystuff-history": "Sejarah laman",
-	"greystuff-purge": "Muat semula laman"
+	"greystuff-purge": "Muat semula laman",
+	"greystuff-userpage": "Laman pengguna",
+	"greystuff-talkpage": "Laman perbincangan"
 }
