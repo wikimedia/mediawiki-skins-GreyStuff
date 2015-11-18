@@ -2,12 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Sujiniku"
+			"Sujiniku",
+			"2nd-player"
 		]
 	},
 	"greystuff-desc": "灰色で固定幅のシンプルな外装",
 	"greystuff-loggedinas": "利用者 $1",
 	"greystuff-notloggedin": "ログインしていません",
 	"greystuff-history": "ページの履歴",
-	"greystuff-purge": "ページを更新"
+	"greystuff-purge": "ページを更新",
+	"greystuff-userpage": "利用者ページ",
+	"greystuff-talkpage": "トークページ"
 }
