@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ильнар"
+		]
+	},
+	"greystuff-desc": "Гади күк бизәлеш",
+	"greystuff-loggedinas": "$1 булып кергән",
+	"greystuff-notloggedin": "Кермәгәнсез",
+	"greystuff-history": "Битнең тарихы",
+	"greystuff-purge": "Битне яңарту",
+	"greystuff-userpage": "Кулланучы",
+	"greystuff-talkpage": "Бәхәс"
+}
