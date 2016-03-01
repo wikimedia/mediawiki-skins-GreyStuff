@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Khaled"
+			"Khaled",
+			"Maroen1990"
 		]
 	},
 	"greystuff-desc": "تصميم رمادي خفيف",
 	"greystuff-loggedinas": "سجل دخولك ك$1",
+	"greystuff-notloggedin": "غير مسجل الدخول",
 	"greystuff-history": "تاريخ الصفحة",
-	"greystuff-purge": "تحديث الصفحة"
+	"greystuff-purge": "تحديث الصفحة",
+	"greystuff-userpage": "صفحة مستخدم",
+	"greystuff-talkpage": "صفحة النقاش"
 }
