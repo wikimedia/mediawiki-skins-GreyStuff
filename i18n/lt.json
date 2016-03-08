@@ -4,5 +4,9 @@
 			"Zygimantus"
 		]
 	},
-	"greystuff-notloggedin": "Neprisijungta"
+	"greystuff-notloggedin": "Neprisijungta",
+	"greystuff-history": "Puslapio istorija",
+	"greystuff-purge": "Atnaujinti puslapį",
+	"greystuff-userpage": "Naudotojo puslapis",
+	"greystuff-talkpage": "Aptarimo puslapis"
 }
