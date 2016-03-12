@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftab1995"
+			"Aftab1995",
+			"Aftabuzzaman",
+			"Bodhisattwa"
 		]
 	},
 	"greystuff-desc": "সহজ ধূসর ফিক্সড-চওড়া স্কিন",
 	"greystuff-loggedinas": "$1 হিসাবে প্রবেশ",
+	"greystuff-notloggedin": "প্রবেশ করেন নি",
 	"greystuff-history": "পাতার ইতিহাস",
-	"greystuff-purge": "পাতা পুনঃসতেজ করুন"
+	"greystuff-purge": "পাতা পুনঃসতেজ করুন",
+	"greystuff-userpage": "ব্যবহারকারীর পাতা",
+	"greystuff-talkpage": "আলাপ পাতা"
 }
