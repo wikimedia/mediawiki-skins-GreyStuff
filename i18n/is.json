@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sveinn í Felli"
+		]
+	},
+	"greystuff-desc": "Einfalt grátt jafnbreitt skinn",
+	"greystuff-loggedinas": "Skráð/ur inn sem $1",
+	"greystuff-notloggedin": "Ekki innskráð/ur",
+	"greystuff-history": "Breytingaskrá",
+	"greystuff-purge": "Endurlesa síðu",
+	"greystuff-userpage": "Notandi",
+	"greystuff-talkpage": "Spjallsíða"
+}
