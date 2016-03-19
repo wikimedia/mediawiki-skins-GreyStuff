@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Sagan",
+			"Азат Хәлилов"
 		]
 	},
+	"greystuff-desc": "\n\n Киңлеге менән сикәлгән ябай һоро биҙәлеш темаһы",
 	"greystuff-loggedinas": "$1 булып танылған",
+	"greystuff-notloggedin": "Үҙегеҙҙе танытырға кәрәк",
 	"greystuff-history": "Бит тарихы",
-	"greystuff-purge": "Битте яңыртырға"
+	"greystuff-purge": "Битте яңыртырға",
+	"greystuff-userpage": "Ҡатнашыусы",
+	"greystuff-talkpage": "Фекер алышыу"
 }
