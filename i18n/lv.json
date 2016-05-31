@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Papuass"
+			"Papuass",
+			"Silraks"
 		]
 	},
+	"greystuff-loggedinas": "Pieslēdzies kā $1",
+	"greystuff-notloggedin": "Neesi iegājis",
 	"greystuff-history": "Lapas vēsture",
 	"greystuff-purge": "Atsvaidzināt lapu",
 	"greystuff-userpage": "Lietotāja lapa",
