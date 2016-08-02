@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Babanwalia",
-			"ਪ੍ਰਚਾਰਕ"
+			"ਪ੍ਰਚਾਰਕ",
+			"Tow"
 		]
 	},
 	"greystuff-loggedinas": "$1 ਵਜੋਂ ਦਾਖ਼ਲ",
 	"greystuff-notloggedin": "ਦਾਖਲ ਨਹੀਂ",
 	"greystuff-history": "ਸਫ਼ੇ ਦਾ ਅਤੀਤ",
-	"greystuff-purge": "ਸਫ਼ਾ ਮੁੜ-ਤਾਜ਼ਾ ਕਰੋ"
+	"greystuff-purge": "ਸਫ਼ਾ ਮੁੜ-ਤਾਜ਼ਾ ਕਰੋ",
+	"greystuff-userpage": "ਵਰਤੋਂਕਾਰ ਵਰਕਾ",
+	"greystuff-talkpage": "ਗੱਲ-ਬਾਤ ਸਫਾ"
 }
