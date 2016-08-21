@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zygimantus"
+			"Zygimantus",
+			"Eitvys200"
 		]
 	},
+	"greystuff-desc": "Paprasta pilka fiksuoto pločio išvaizda",
+	"greystuff-loggedinas": "Prisijungęs kaip $1",
 	"greystuff-notloggedin": "Neprisijungta",
 	"greystuff-history": "Puslapio istorija",
 	"greystuff-purge": "Atnaujinti puslapį",
