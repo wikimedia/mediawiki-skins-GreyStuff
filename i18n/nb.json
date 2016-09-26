@@ -1,7 +1,14 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
 	"greystuff-desc": "Enkel grå drakt med fastsatt bredde",
 	"greystuff-loggedinas": "Logget inn som $1",
+	"greystuff-notloggedin": "Ikke innlogget",
 	"greystuff-history": "Sidehistorikk",
-	"greystuff-purge": "Oppdater siden"
+	"greystuff-purge": "Oppdater siden",
+	"greystuff-userpage": "Brukerside",
+	"greystuff-talkpage": "Diskusjonsside"
 }
