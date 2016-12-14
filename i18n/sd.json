@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aursani"
+			"Aursani",
+			"Mehtab ahmed"
 		]
 	},
-	"greystuff-loggedinas": "بطور $1 لاگ اِن ٿيل",
-	"greystuff-notloggedin": "لاگ اِن نہ ٿيل",
+	"greystuff-loggedinas": "بطور $1 داخل ٿيل",
+	"greystuff-notloggedin": "داخل نہ ٿيل",
 	"greystuff-history": "صفحي جي سوانح",
 	"greystuff-purge": "صفحو تجديديو",
 	"greystuff-userpage": "يُوزر صفحو",
