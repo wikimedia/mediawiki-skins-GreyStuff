@@ -5,7 +5,7 @@
 			]
 	},
 	"greystuff-desc": "Simple grey fixed-width skin",
-	"greystuff-loggedinas": "Logged in as $1",
+	"greystuff-loggedinas": "Logged in as '''$1'''",
 	"greystuff-notloggedin": "Not logged in",
 	"greystuff-history": "Page history",
 	"greystuff-purge": "Refresh page",

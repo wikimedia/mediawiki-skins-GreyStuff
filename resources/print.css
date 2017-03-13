@@ -1,0 +1,10 @@
+
+#header-container,
+#header-navigation-container,
+#content-top-stuff,
+#content-bottom-stuff,
+#page-namespaces,
+#page-tools,
+#footer-navigation {
+	display: none;
+}

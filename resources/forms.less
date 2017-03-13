@@ -54,6 +54,11 @@
 
 /* pile of bad hacks to try to catch all the different ones */
 #searchInput,
+input#wpSummary,
+.oo-ui-textInputWidget input,
+.oo-ui-textInputWidget textarea,
+.oo-ui-textInputWidget.oo-ui-widget-enabled input,
+.oo-ui-textInputWidget.oo-ui-widget-enabled textarea,
 input[name="target"],
 input[name="user"],
 input[name="mime"],
@@ -65,10 +70,11 @@ input#wpTemplateSandboxPage,
 input.mw-summary,
 input.mw-input,
 .mw-input input,
+.mw-ui-input:invalid,
 textarea,
 .mw-ui-input-inline {
 	padding: .35em;
-	box-shadow: 0 1px 4px -1px #ccc inset;
+	box-shadow: 0 1px 4px -1px #ddd inset;
 	border: solid 1px @bold-border;
 	margin: .5em 0;
 }
@@ -84,19 +90,86 @@ input[type="submit"].searchButton {
 input[type="radio"] {
 	border-radius: 7px;
 }
+.oo-ui-buttonElement > .oo-ui-buttonElement-button {
+	font-weight: normal;
+}
+.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button,
 input[type="submit"],
 input[type="button"],
+#mw-createaccount-join,
+.mw-ui-button,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
 button {
+	color: #000;
 	padding: .35em 1em;
-	border: solid 1px #ccc;
+	border: solid 1px #aaa;
 	border-radius: 3px;
 	box-shadow: none;
+	text-shadow: 0 1px 1px #fff;
+	min-height: 1em;
 	.vertical-gradient ( #fcfcfc, #ededed, 0, 100% );
 
-	&:active {
+	&:focus {
 		.vertical-gradient ( #fff, #f6f6f6, 0, 100% );
+		border: solid 1px #aaa;
+		box-shadow: none;
+	}
+	&:hover {
+		.vertical-gradient ( #fff, #f6f6f6, 0, 100% );
+		border: solid 1px #777;
+		box-shadow: none;
+	}
+	&:active {
+		background: #fff;
+		border: solid 1px #777;
+		box-shadow: none;
 	}
 }
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button, .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
+.mw-ui-button.mw-ui-progressive {
+	color: #000;
+	border: solid 1px #999;
+	text-shadow: 0 1px 1px #eee;
+	.vertical-gradient ( #eee, #ccc, 0, 100% );
+
+	&:focus {
+		.vertical-gradient ( #f0f0f0, #d0d0d0, 0, 100% );
+		border: solid 1px #999;
+		box-shadow: none;
+	}
+	&:hover {
+		.vertical-gradient ( #f0f0f0, #d0d0d0, 0, 100% );
+		border: solid 1px #777;
+		box-shadow: none;
+		color: #000;
+	}
+	&:active:focus,
+	&:active {
+		background: #f0f0f0;
+		background-color: #f0f0f0;
+		border: solid 1px #999;
+		box-shadow: none;
+		color: #000;
+	}
+}
+input#wpSummary:focus,
+.oo-ui-textInputWidget.oo-ui-widget-enabled input:focus,
+.oo-ui-textInputWidget.oo-ui-widget-enabled textarea:focus {
+	border-color: #aaa;
+	box-shadow: 0 1px 4px -1px #ddd inset;
+}
+.oo-ui-textInputWidget.oo-ui-iconElement input,
+.oo-ui-textInputWidget.oo-ui-iconElement textarea {
+	padding-left: 2.88em;
+}
+.oo-ui-iconElement .oo-ui-iconElement-icon,
+.oo-ui-iconElement.oo-ui-iconElement-icon {
+	margin-top: .2em;
+}
+
 textarea {
 	width: 100%;
 	resize: vertical;

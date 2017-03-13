@@ -60,8 +60,7 @@ a.external:visited {
 #header-top,
 #header-navigation,
 #content,
-#footer-navigation,
-#footer-container {
+#footer {
 	.widths;
 	margin: auto;
 	padding: 1.5em;
@@ -87,7 +86,7 @@ a.external:visited {
 }
 
 /* Banner stuff */
-.mw-wiki-logo {
+a.mw-wiki-logo {
 	display: block;
 	width: 66px;
 	height: 66px;
@@ -97,10 +96,10 @@ a.external:visited {
 	background-size: contain;
 	margin-right: 1em;
 }
-#p-banner {
+.p-banner {
 	float: left;
 
-	#sitetitle {
+	.sitetitle {
 		padding-top: .25em;
 
 		a {
@@ -116,7 +115,7 @@ a.external:visited {
 			}
 		}
 	}
-	#sitesubtitle {
+	.sitesubtitle {
 		font-style: italic;
 		font-size: 85%;
 		line-height: 1.2em;
@@ -151,6 +150,13 @@ a.external:visited {
 		min-width: 4em;
 		margin: 8px 0 ~"!ie";
 	}
+	.searchButton {
+		margin-left: .5em;
+	}
+}
+
+#header-navigation-container {
+	border-bottom: solid 1px @soft-border;
 }
 
 /*
@@ -158,73 +164,81 @@ a.external:visited {
  * FOOTER STUFF
  *
  */
-#footer-container {
-	#footer-bottom {
-		font-size: 85%;
-		color: @text-grey;
-		padding-top: .5em;
-	}
-	.footer-icons {
-		float: right;
-		margin-left: 1em;
-	}
-	#f-list {
-		margin: 1em 0 0;
-		padding: 0;
-		font-size: 90%;
-		list-style: none;
-
-		li {
-			display: inline;
-			margin: 0 1em 0 0;
-		}
-	}
-}
-#header-navigation-container {
-	border-bottom: solid 1px @soft-border;
-}
-#footer-navigation h3 {
-	margin: 0 0 1em;
-	font-size: 85%;
-}
-#footer-navigation ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-#footer-navigation .mw-portlet {
+#footer-banner {
 	float: left;
+	padding-right: 3em;
 
-	padding: 1.5em;
+	.sitetitle a {
+		font-size: 150%;
+	}
+	.sitesubtitle {
+		font-size: 70%;
+	}
+	a.mw-wiki-logo {
+		float: none;
+	}
+}
+
+#footer-bottom {
+	font-size: 85%;
+	color: @text-grey;
+	padding-top: .5em;
+	clear: both;
+}
+.footer-icons {
+	float: right;
+	margin-left: 1em;
+}
+#f-list {
+	margin: 1em 0 0;
+	padding: 0;
+	font-size: 90%;
+	list-style: none;
 
 	li {
-		font-size: 85%;
+		display: inline;
+		margin: 0 1em 0 0;
 	}
 }
-#footer-navigation .navigation .mw-portlet:first-of-type {
-	padding-left: 0;
-}
-#footer-navigation .navigation-tools .mw-portlet:last-of-type {
-	padding-right: 0;
-}
+
 #footer-navigation {
 	padding-top: 0;
 	font-size: 80%;
 
 	h3 {
 		color: @text-grey;
+		margin: 0 0 1em;
+		font-size: 85%;
 	}
 	a {
 		color: @link-grey;
 	}
-}
-#footer-navigation .navigation-tools ul {
-	columns: 2 9em;
-	-moz-columns: 2 9em;
-	-webkit-columns: 2 9em;
-}
-#footer-container {
-	clear: both;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.mw-portlet {
+		float: left;
+
+		padding: 0 1.5em;
+
+		li {
+			font-size: 85%;
+		}
+	}
+	.navigation .mw-portlet:first-of-type {
+		padding-left: 0;
+	}
+	.navigation-tools .mw-portlet:last-of-type {
+		padding-right: 0;
+	}
+	.navigation-tools ul {
+		columns: 2 9em;
+		-moz-columns: 2 9em;
+		-webkit-columns: 2 9em;
+	}
 }
 
 /*
@@ -342,8 +356,15 @@ h6, dt {
 	font-size: 100%;
 	color: #000;
 }
-.mw-editsection-bracket {
-	display: none;
+.toctoggle,
+.mw-editsection-bracket,
+.mw-editsection-divider,
+// wtf VE
+.client-js .mw-content-ltr .mw-editsection-bracket:first-of-type,
+.client-js .mw-content-rtl .mw-editsection-bracket:not(:first-of-type),
+.client-js .mw-content-ltr .mw-editsection-bracket:last-of-type,
+.client-js .mw-content-rtl .mw-editsection-bracket:not(:last-of-type) {
+	color: #aaa;
 }
 .mw-editsection {
 	text-shadow: none;
@@ -357,7 +378,6 @@ pre {
 	white-space: pre-wrap;
 }
 
-/* Categories */
 #catlinks {
 	font-size: 85%;
 	border-top: solid 1px @soft-border;
@@ -417,12 +437,10 @@ ul#filetoc {
 	display: inline-block;
 }
 
-
 #toc #toctitle {
 	border-bottom: solid 1px @soft-border;
 	margin-bottom: 1em;
 }
-
 
 /* Thumbnails */
 .tright {

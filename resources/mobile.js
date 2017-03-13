@@ -33,10 +33,10 @@ $( function() {
 			if ( $( e.target ).closest( '#personal-menu-toggle, #main-menu-toggle, #tools-menu-toggle, #p-personal, #header-navigation .navigation, #header-navigation .navigation-tools' ).length > 0 ) {
 				// Clicked inside an open menu; don't close anything
 			} else {
+				$( '#menus-cover' ).fadeOut( 200 );
 				$( '#header-navigation .navigation' ).fadeOut( 300 );
 				$( '#header-navigation .navigation-tools' ).fadeOut( 300 );
 				$( '#p-personal' ).fadeOut( 300 );
-				$( '#menus-cover' ).fadeOut( 200 );
 			}
 		}
 	} );
