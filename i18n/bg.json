@@ -5,7 +5,7 @@
 		]
 	},
 	"greystuff-desc": "Прост сив облик с фиксирана ширина",
-	"greystuff-loggedinas": "Влезли сте като $1",
+	"greystuff-loggedinas": "Влезли сте като '''$1'''",
 	"greystuff-notloggedin": "Не сте влезли в системата",
 	"greystuff-history": "История на страницата",
 	"greystuff-purge": "Презареждане на страница",

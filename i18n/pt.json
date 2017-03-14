@@ -5,7 +5,7 @@
 		]
 	},
 	"greystuff-desc": "Tema cinzento simples com largura fixa",
-	"greystuff-loggedinas": "Autenticado como $1",
+	"greystuff-loggedinas": "Autenticado como '''$1'''",
 	"greystuff-notloggedin": "Não autenticado",
 	"greystuff-history": "Histórico",
 	"greystuff-purge": "Recarregar página",

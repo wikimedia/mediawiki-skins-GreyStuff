@@ -3,11 +3,12 @@
 		"authors": [
 			"Gomoko",
 			"Macofe",
-			"Orlodrim"
+			"Orlodrim",
+			"Wladek92"
 		]
 	},
 	"greystuff-desc": "Habillage de largeur fixe en gris simple",
-	"greystuff-loggedinas": "Connecté en tant que $1",
+	"greystuff-loggedinas": "Connecté en tant que <strong>$1</strong>",
 	"greystuff-notloggedin": "Non connecté",
 	"greystuff-history": "Historique de la page",
 	"greystuff-purge": "Rafraîchir la page",

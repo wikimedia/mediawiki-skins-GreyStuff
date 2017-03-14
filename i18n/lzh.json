@@ -4,7 +4,7 @@
 			"SolidBlock"
 		]
 	},
-	"greystuff-loggedinas": "入簿於$1。",
+	"greystuff-loggedinas": "入簿於'''$1'''。",
 	"greystuff-notloggedin": "未登簿",
 	"greystuff-history": "頁史"
 }

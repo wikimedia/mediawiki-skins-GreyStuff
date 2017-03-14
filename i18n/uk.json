@@ -6,7 +6,7 @@
 		]
 	},
 	"greystuff-desc": "Проста сіра тема з фіксованою шириною",
-	"greystuff-loggedinas": "Увійшли в систему як $1",
+	"greystuff-loggedinas": "Увійшли в систему як '''$1'''",
 	"greystuff-notloggedin": "Не увійшли до системи",
 	"greystuff-history": "Історія сторінки",
 	"greystuff-purge": "Оновити сторінку",

@@ -6,7 +6,7 @@
 		]
 	},
 	"greystuff-desc": "Jednoduchý šedý vzhled s pevnou šířkou",
-	"greystuff-loggedinas": "{{GENDER:$1|Přihlášen|Přihlášena}} jako $1",
+	"greystuff-loggedinas": "{{GENDER:$1|Přihlášen|Přihlášena}} jako '''$1'''",
 	"greystuff-history": "Historie stránky",
 	"greystuff-purge": "Obnovit stránku"
 }

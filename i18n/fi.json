@@ -6,7 +6,7 @@
 		]
 	},
 	"greystuff-desc": "Yksinkertainen harmaa kiinteäleveyksinen teema",
-	"greystuff-loggedinas": "Kirjauduttu sisään $1:na/nä",
+	"greystuff-loggedinas": "Kirjauduttu sisään '''$1''':na/nä",
 	"greystuff-notloggedin": "Et ole kirjautunut",
 	"greystuff-history": "Sivuhistoria",
 	"greystuff-purge": "Päivitä sivu",

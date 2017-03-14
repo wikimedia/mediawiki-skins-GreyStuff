@@ -6,7 +6,7 @@
 		]
 	},
 	"greystuff-desc": "Egyszerű, szürke, rögzített szélességű felület",
-	"greystuff-loggedinas": "Bejelentkezve $1 néven",
+	"greystuff-loggedinas": "Bejelentkezve '''$1''' néven",
 	"greystuff-notloggedin": "Nem vagy bejelentkezve",
 	"greystuff-history": "Laptörténet",
 	"greystuff-purge": "Lap frissítése",

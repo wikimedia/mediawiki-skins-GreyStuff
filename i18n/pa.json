@@ -6,7 +6,7 @@
 			"Tow"
 		]
 	},
-	"greystuff-loggedinas": "$1 ਵਜੋਂ ਦਾਖ਼ਲ",
+	"greystuff-loggedinas": "'''$1''' ਵਜੋਂ ਦਾਖ਼ਲ",
 	"greystuff-notloggedin": "ਦਾਖਲ ਨਹੀਂ",
 	"greystuff-history": "ਸਫ਼ੇ ਦਾ ਅਤੀਤ",
 	"greystuff-purge": "ਸਫ਼ਾ ਮੁੜ-ਤਾਜ਼ਾ ਕਰੋ",

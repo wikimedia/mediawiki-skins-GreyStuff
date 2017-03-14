@@ -3,11 +3,12 @@
 		"authors": [
 			"Guilhermemau",
 			"PedroMaia",
-			"HenriqueCrang"
+			"HenriqueCrang",
+			"Maxan"
 		]
 	},
 	"greystuff-desc": "Pele cinza simples de largura fixa",
-	"greystuff-loggedinas": "Logado como $1",
+	"greystuff-loggedinas": "Acessando como '''$1'''",
 	"greystuff-notloggedin": "Não está logado",
 	"greystuff-history": "Histórico da Página",
 	"greystuff-purge": "Atualizar página",
