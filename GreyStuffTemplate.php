@@ -18,13 +18,7 @@
  */
 class GreyStuffTemplate extends BaseTemplate {
 
-	/**
-	 * Template filter callback for GreyStuff skin.
-	 * Takes an associative array of data set from a SkinTemplate-based
-	 * class, and a wrapper for MediaWiki's localization database, and
-	 * outputs a formatted page.
-	 */
-	function execute() {
+	public function execute() {
 		// Apparently not set by default?
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 
@@ -91,7 +85,7 @@ class GreyStuffTemplate extends BaseTemplate {
 
 				$this->clear() .
 
-				Html::rawElement( 'div', [ 'id' => 'bodyContent', 'class' => 'mw-body' ],
+				Html::rawElement( 'div', [ 'id' => 'bodyContent', 'class' => 'mw-body-content' ],
 					Html::rawElement( 'div', [ 'id' => 'siteSub' ], $this->getMsg( 'tagline' ) ) .
 					$this->get( 'bodytext' ) .
 					$this->clear()
@@ -135,7 +129,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getPortlet( $name, $content, $dropdown = false, $msg = null ) {
+	protected function getPortlet( $name, $content, $dropdown = false, $msg = null ) {
 		if ( $msg === null ) {
 			$msg = $name;
 		} elseif ( is_array( $msg ) ) {
@@ -185,7 +179,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					$dropdown ? 'dropdown' : ''
 				] ],
 				$contentText .
-				$this->renderAfterPortlet( $name )
+				$this->getAfterPortlet( $name )
 			)
 		);
 
@@ -197,7 +191,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getMainNavigation() {
+	protected function getMainNavigation() {
 		$html = '';
 
 		$sidebar = $this->getSidebar();
@@ -256,7 +250,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getBanner() {
+	protected function getBanner() {
 		$html = Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
 			Html::element( 'a', array_merge( [
 				'class' => 'mw-wiki-logo',
@@ -290,8 +284,22 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getPersonalNavigation() {
+	protected function getPersonalNavigation() {
 		$user = $this->getSkin()->getUser();
+		$personalTools = $this->getPersonalTools();
+
+		$html = '';
+		$extraTools = [];
+
+		// Remove Echo badges
+		if ( isset( $personalTools['notifications-alert'] ) ) {
+			$extraTools['notifications-alert'] = $personalTools['notifications-alert'];
+			unset( $personalTools['notifications-alert'] );
+		}
+		if ( isset( $personalTools['notifications-notice'] ) ) {
+			$extraTools['notifications-notice'] = $personalTools['notifications-notice'];
+			unset( $personalTools['notifications-notice'] );
+		}
 
 		if ( $user->isLoggedIn() ) {
 			$headerMsg = [ 'greystuff-loggedinas', $user->getName() ];
@@ -299,7 +307,8 @@ class GreyStuffTemplate extends BaseTemplate {
 			$headerMsg = 'greystuff-notloggedin';
 		}
 
-		$personalTools = $this->getPersonalTools();
+		$html .= Html::openElement( 'div', [ 'id' => 'p-personal-container' ] );
+
 		if ( isset( $personalTools['userpage'] ) ) {
 			$personalTools['userpage']['links'][0]['text'] = $this->getMsg( 'greystuff-userpage' );
 		}
@@ -307,7 +316,25 @@ class GreyStuffTemplate extends BaseTemplate {
 			$personalTools['mytalk']['links'][0]['text'] = $this->getMsg( 'greystuff-talkpage' );
 		}
 
-		return $this->getPortlet( 'personal', $this->getPersonalTools(), true, $headerMsg );
+		// Re-add Echo badges
+		if ( !empty( $extraTools ) ) {
+			$iconList = '';
+			foreach ( $extraTools as $key => $item ) {
+				$iconList .= $this->makeListItem( $key, $item );
+			}
+
+			$html .= Html::rawElement(
+				'div',
+				[ 'id' => 'p-personal-extra', 'class' => 'p-body' ],
+				Html::rawElement( 'ul', [], $iconList )
+			);
+		}
+
+		$html .= $this->getPortlet( 'personal', $personalTools, true, $headerMsg );
+
+		$html .= Html::closeElement( 'div' );
+
+		return $html;
 	}
 
 	/**
@@ -315,14 +342,14 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getSearch() {
+	protected function getSearch() {
 		$html = '';
 
 		$html .= Html::openElement( 'div', [ 'class' => 'mw-portlet', 'id' => 'p-search', 'role' => 'search' ] );
 
 		$html .= Html::rawElement(
 			'h3',
-			[],
+			[ 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
 			Html::rawElement( 'label', [ 'for' => 'searchInput' ], $this->getMsg( 'search' ) )
 		);
 
@@ -332,9 +359,10 @@ class GreyStuffTemplate extends BaseTemplate {
 					Html::rawElement( 'div', [ 'id' => 'searchInput-container' ],
 						$this->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
 					)
-				). $this->makeSearchButton( 'fulltext', [ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ] ) .
+				) .
+				$this->makeSearchButton( 'fulltext', [ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ] ) .
 				$this->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
-				Html::rawElement( 'input', [ 'type' => 'hidden', 'name' => 'title', 'value' => $this->get( 'searchtitle' ) ] )
+				Html::hidden( 'title', $this->get( 'searchtitle' ) )
 			)
 		);
 
@@ -346,7 +374,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	/**
 	 * @return string html
 	 */
-	private function getSiteNotice() {
+	protected function getSiteNotice() {
 		$html = '';
 
 		if ( $this->data['sitenotice'] ) {
@@ -362,12 +390,16 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getSubtitle() {
+	protected function getSubtitle() {
 		$html = '';
 
 		if ( $this->data['subtitle'] || $this->data['undelete'] || $this->data['newtalk'] ) {
 			$html .= Html::openElement( 'div', [ 'id' => 'content-top-stuff' ] );
-			$html .= Html::rawElement( 'div', [ 'id' => 'contentSub', 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
+			$html .= Html::rawElement( 'div', [
+					'id' => 'contentSub',
+					'lang' => $this->get( 'userlang' ),
+					'dir' => $this->get( 'dir' )
+				],
 				$this->get( 'subtitle' )
 			);
 			if ( $this->data['undelete'] ) {
@@ -392,7 +424,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getAfterContent() {
+	protected function getAfterContent() {
 		$html = '';
 
 		if ( $this->data['catlinks'] || $this->data['dataAfterContent'] ) {
@@ -414,9 +446,9 @@ class GreyStuffTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	private function getFooter() {
-		$validFooterIcons = $this->getFooterIcons( 'icononly' );
-		$validFooterLinks = $this->getFooterLinks( 'flat' );
+	protected function getFooter( $iconStyle = 'icononly', $linkStyle = 'flat' ) {
+		$validFooterIcons = $this->getFooterIcons( $iconStyle );
+		$validFooterLinks = $this->getFooterLinks( $linkStyle );
 
 		$html = '';
 
@@ -452,7 +484,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Override BaseTemplate to not just immediately poop out hand-written html
+	 * BaseTemplate::renderAfterPortlet, but sans immediate pooping
 	 * Allows extensions to hook into known portlets and add stuff to them (an archaic approach;
 	 * assumes standardised, consistent portlet handling/naming, when the only standard portlets
 	 * that exist consistently are 'tbx' and 'personal', and tbx is already a mess )
@@ -460,20 +492,22 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * @param string $name
 	 * @return string html
 	 */
-	protected function renderAfterPortlet( $name ) {
+	protected function getAfterPortlet( $name ) {
 		$content = '';
 		Hooks::run( 'BaseTemplateAfterPortlet', [ $this, $name, &$content ] );
 
 		if ( $content !== '' ) {
 			return Html::rawElement( 'div', [ 'class' => [ 'after-portlet', 'after-portlet-' . $name ] ], $content );
 		}
+
+		return $content;
 	}
 
 	/**
 	 * @param string $prefix generally 'mobile' or 'visual' for visualClear or mobileClear classes
 	 * @return string html
 	 */
-	private function clear( $prefix = 'visual' ) {
+	protected function clear( $prefix = 'visual' ) {
 		return Html::element( 'div', [ 'class' => $prefix . 'Clear' ] );
 	}
 }
