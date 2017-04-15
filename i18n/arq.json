@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bachounda"
+			"Bachounda",
+			"Oldstoneage"
 		]
 	},
 	"greystuff-desc": "Simple grey fixed-width skin",
-	"greystuff-loggedinas": "سجل دخولتك ك'''$1'''",
+	"greystuff-loggedinas": "سجّل دخولك ب سمّيت` '''$1'''",
 	"greystuff-history": "تاريخ الباجه",
 	"greystuff-purge": "صفي الباجه"
 }
