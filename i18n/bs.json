@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Srdjan m"
+		]
+	},
+	"greystuff-loggedinas": "Prijavljeni ste kao '''$1'''",
+	"greystuff-notloggedin": "Niste prijavljeni",
+	"greystuff-history": "Historija",
+	"greystuff-purge": "Osvježi stranicu",
+	"greystuff-userpage": "Korisnička stranica",
+	"greystuff-talkpage": "Stranica za razgovor"
+}
