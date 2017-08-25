@@ -4,6 +4,9 @@
 			"Kaszeba"
 		]
 	},
+	"greystuff-loggedinas": "Wlogòwóny jakno '''$1'''",
+	"greystuff-notloggedin": "Nie jes wlogòwôny/a",
+	"greystuff-history": "Historëjô starnë",
 	"greystuff-userpage": "Starna brëkòwnika",
 	"greystuff-talkpage": "Starna diskùsëji"
 }
