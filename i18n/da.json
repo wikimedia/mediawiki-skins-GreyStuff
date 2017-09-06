@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"greystuff-desc": "Simpelt gråt skema med fast bredde",
+	"greystuff-loggedinas": "Logget ind som '''$1'''",
+	"greystuff-notloggedin": "Ikke logget ind",
+	"greystuff-history": "Sidehistorik",
+	"greystuff-purge": "Opdater siden",
+	"greystuff-userpage": "Brugerside",
+	"greystuff-talkpage": "Diskussionsside"
+}
