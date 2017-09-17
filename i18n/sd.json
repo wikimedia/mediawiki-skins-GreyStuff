@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Aursani",
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Indus Asia"
 		]
 	},
 	"greystuff-loggedinas": "بطور '''$1''' داخل ٿيل",
 	"greystuff-notloggedin": "داخل نہ ٿيل",
 	"greystuff-history": "صفحي جي سوانح",
 	"greystuff-purge": "صفحو تجديديو",
-	"greystuff-userpage": "واھپ صفحو",
+	"greystuff-userpage": "واھپ (يوزر) صفحو",
 	"greystuff-talkpage": "مباحثي صفحو"
 }
