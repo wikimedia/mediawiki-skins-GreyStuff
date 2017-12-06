@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Macofe",
 			"Orlodrim",
-			"Wladek92"
+			"Wladek92",
+			"Urhixidur"
 		]
 	},
 	"greystuff-desc": "Habillage de largeur fixe en gris simple",
@@ -12,6 +13,6 @@
 	"greystuff-notloggedin": "Non connecté",
 	"greystuff-history": "Historique de la page",
 	"greystuff-purge": "Rafraîchir la page",
-	"greystuff-userpage": "Page utilisateur",
+	"greystuff-userpage": "Page d’utilisateur",
 	"greystuff-talkpage": "Page de discussion"
 }
