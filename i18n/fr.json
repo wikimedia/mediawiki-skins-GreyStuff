@@ -5,12 +5,13 @@
 			"Macofe",
 			"Orlodrim",
 			"Wladek92",
-			"Urhixidur"
+			"Urhixidur",
+			"Verdy p"
 		]
 	},
-	"greystuff-desc": "Habillage de largeur fixe en gris simple",
-	"greystuff-loggedinas": "Connecté en tant que <strong>$1</strong>",
-	"greystuff-notloggedin": "Non connecté",
+	"greystuff-desc": "Habillage simple et gris, de largeur fixe",
+	"greystuff-loggedinas": "Connecté{{GENDER:$1||e}} en tant que <strong>$1</strong>",
+	"greystuff-notloggedin": "Non connecté(e)",
 	"greystuff-history": "Historique de la page",
 	"greystuff-purge": "Rafraîchir la page",
 	"greystuff-userpage": "Page d’utilisateur",
