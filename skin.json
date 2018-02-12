@@ -46,12 +46,10 @@
 				"resources/print.css": {
 					"media": "print"
 				}
-			},
-			"position": "top"
+			}
 		},
 		"skins.greystuff.js": {
-			"scripts": [ "resources/main.js" ],
-			"position": "bottom"
+			"scripts": [ "resources/main.js" ]
 		},
 		"skins.greystuff.mobile": {
 			"styles": {
@@ -59,8 +57,7 @@
 					"media": "(max-width: 760px)"
 				}
 			},
-			"scripts": [ "resources/mobile.js" ],
-			"position": "top"
+			"scripts": [ "resources/mobile.js" ]
 		}
 	},
 	"manifest_version": 1
