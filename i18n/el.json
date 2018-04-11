@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Glavkos"
+			"Glavkos",
+			"Nikosgranturismogt"
 		]
 	},
+	"greystuff-loggedinas": "Συνδεδεμένος ως \"$1\"",
+	"greystuff-notloggedin": "Δεν έχετε συνδεθεί",
 	"greystuff-history": "Ιστορικό σελίδας",
-	"greystuff-purge": "Ανανέωση σελίδας"
+	"greystuff-purge": "Ανανέωση σελίδας",
+	"greystuff-userpage": "Σελίδα χρήστη",
+	"greystuff-talkpage": "Σελίδα συζήτησης"
 }
