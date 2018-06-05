@@ -1,6 +1,6 @@
 {
 	"name": "GreyStuff",
-	"version": "1.0.3",
+	"version": "1.0.8",
 	"author": [
 		"Calimonius the Estrange"
 	],
@@ -17,8 +17,8 @@
 		]
 	},
 	"AutoloadClasses": {
-		"SkinGreyStuff": "GreyStuff.skin.php",
-		"GreyStuffTemplate": "GreyStuffTemplate.php"
+		"SkinGreyStuff": "includes/SkinGreyStuff.php",
+		"GreyStuffTemplate": "includes/GreyStuffTemplate.php"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
