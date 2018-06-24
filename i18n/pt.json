@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"greystuff-desc": "Tema cinzento simples com largura fixa",
@@ -9,6 +10,6 @@
 	"greystuff-notloggedin": "Não autenticado",
 	"greystuff-history": "Histórico",
 	"greystuff-purge": "Recarregar página",
-	"greystuff-userpage": "Página d{{GENDER:{{BASEPAGENAME}}|o utilizador|a utilizadora|e utilizador(a)}}",
+	"greystuff-userpage": "Página {{GENDER:{{BASEPAGENAME}}|do utilizador|da utilizadora}}",
 	"greystuff-talkpage": "Página de discussão"
 }
