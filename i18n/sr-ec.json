@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
-			"Obsuser"
+			"Obsuser",
+			"BadDog"
 		]
 	},
-	"greystuff-desc": "Једноставни сиви скин са непроменљивом ширином",
+	"greystuff-desc": "Једноставна сива тема с непроменљивом ширином",
 	"greystuff-loggedinas": "Пријављени сте као '''$1'''",
 	"greystuff-notloggedin": "Нисте пријављени",
 	"greystuff-history": "Историја странице",
