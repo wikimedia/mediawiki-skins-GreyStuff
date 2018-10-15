@@ -4,6 +4,11 @@
 			"Joetaras"
 		]
 	},
+	"greystuff-desc": "Skin grigge semblice a larghezze fisse",
+	"greystuff-loggedinas": "Trasute cumme \"$1\"",
+	"greystuff-notloggedin": "Non ge sì collegate",
+	"greystuff-history": "Cunde d'a pàgene",
+	"greystuff-purge": "Aggiorne 'a pàgene",
 	"greystuff-userpage": "Pàgene de l'utende",
 	"greystuff-talkpage": "Pàgene de le 'ngazzaminde"
 }
