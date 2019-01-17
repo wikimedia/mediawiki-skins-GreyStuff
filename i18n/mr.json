@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Shantanoo",
-			"V.narsikar"
+			"V.narsikar",
+			"Sureshkhole"
 		]
 	},
-	"greystuff-notloggedin": "सनोंद-प्रवेशित नाही",
+	"greystuff-notloggedin": "आल्याची नोंद केलेली नाही(लॉग इन केलेले नाही)",
 	"greystuff-history": "पानाचा इतिहास"
 }
