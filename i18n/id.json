@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iwan Novirion"
+			"Iwan Novirion",
+			"William Surya Permana"
 		]
 	},
 	"greystuff-desc": "Kulit sederhana abu-abu lebar-tetap",
 	"greystuff-loggedinas": "Log masuk sebagai '''$1'''",
+	"greystuff-notloggedin": "Belum masuk log",
 	"greystuff-history": "Versi terdahulu",
-	"greystuff-purge": "Segarkan halaman"
+	"greystuff-purge": "Segarkan halaman",
+	"greystuff-userpage": "Halaman pengguna",
+	"greystuff-talkpage": "Halaman pembicaraan"
 }
