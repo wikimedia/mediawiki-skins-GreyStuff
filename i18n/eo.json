@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirin"
+		]
+	},
+	"greystuff-desc": "Simpla griza etoso de fiksita larĝo",
+	"greystuff-loggedinas": "Ensalutinta kiel '''$1'''",
+	"greystuff-notloggedin": "Ne ensalutinta",
+	"greystuff-history": "Paĝa historio",
+	"greystuff-purge": "Refreŝigi paĝon",
+	"greystuff-userpage": "Uzantopaĝo",
+	"greystuff-talkpage": "Diskutopaĝo"
+}
