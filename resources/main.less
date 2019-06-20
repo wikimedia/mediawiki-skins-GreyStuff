@@ -9,37 +9,46 @@ body {
 	color: #000;
 	background: @bold-bkg;
 }
+
 #content-header .mobileClear {
 	display: none;
 }
+
 a {
 	text-decoration: none;
 	color: #04a;
 }
+
 a:visited {
 	color: #027;
 }
+
 #p-personal a.new,
 .new a,
 a.new {
 	color: #a03
 }
+
 #p-personal a.new:visited,
 .new a:visited,
 a.new:visited {
 	color: #703
 }
+
 a.external {
 	color: #07a;
 }
+
 a.external:visited {
 	color: #057;
 }
+
 .center,
 .center * {
 	margin: auto;
 	text-align: center;
 }
+
 .visualClear {
 	clear: both;
 }
@@ -53,9 +62,11 @@ a.external:visited {
 #header-container {
 	border-bottom: solid 1px @bold-border;
 }
+
 #header-navigation-container {
 	background: #fff;
 }
+
 #content-container {
 	background: #fff;
 	border-bottom: solid 1px @bold-border;
@@ -84,6 +95,7 @@ a.external:visited {
 #header-top-container {
 	padding: .5em 1.5em;
 }
+
 #header-top {
 	padding: 0;
 	font-size: 95%;
@@ -100,6 +112,7 @@ a.mw-wiki-logo {
 	background-size: contain;
 	margin-right: 1em;
 }
+
 .p-banner {
 	float: left;
 
@@ -119,6 +132,7 @@ a.mw-wiki-logo {
 			}
 		}
 	}
+
 	.sitesubtitle {
 		font-style: italic;
 		font-size: 85%;
@@ -144,16 +158,19 @@ a.mw-wiki-logo {
 	#searchInput-container-container {
 		display: inline-block;
 	}
+
 	#searchInput {
 		width: 20em;
 		border: solid 1px #ccc;
 	}
+
 	#searchGoButton {
 		border: solid 1px #bbb;
 		height: 30px ~"!ie";
 		min-width: 4em;
 		margin: 8px 0 ~"!ie";
 	}
+
 	.searchButton {
 		margin-left: .5em;
 	}
@@ -172,6 +189,7 @@ a.mw-wiki-logo {
 	display: inline-block;
 	float: right;
 }
+
 #p-personal-extra {
 	margin: 0 0 0 0;
 
@@ -180,6 +198,7 @@ a.mw-wiki-logo {
 		margin: 0 -.5em 0 1em;
 		padding: 0;
 	}
+
 	li {
 		margin: 0 .75em 0 0;
 	}
@@ -197,9 +216,11 @@ a.mw-wiki-logo {
 	.sitetitle a {
 		font-size: 150%;
 	}
+
 	.sitesubtitle {
 		font-size: 70%;
 	}
+
 	a.mw-wiki-logo {
 		float: none;
 	}
@@ -211,10 +232,12 @@ a.mw-wiki-logo {
 	padding-top: .5em;
 	clear: both;
 }
+
 .footer-icons {
 	float: right;
 	margin-left: 1em;
 }
+
 #f-list {
 	margin: 1em 0 0;
 	padding: 0;
@@ -236,6 +259,7 @@ a.mw-wiki-logo {
 		margin: 0 0 1em;
 		font-size: 85%;
 	}
+
 	a {
 		color: @link-grey;
 	}
@@ -245,6 +269,7 @@ a.mw-wiki-logo {
 		padding: 0;
 		list-style: none;
 	}
+
 	.mw-portlet {
 		float: left;
 
@@ -254,12 +279,15 @@ a.mw-wiki-logo {
 			font-size: 85%;
 		}
 	}
+
 	.navigation .mw-portlet:first-of-type {
 		padding-left: 0;
 	}
+
 	.navigation-tools .mw-portlet:last-of-type {
 		padding-right: 0;
 	}
+
 	.navigation-tools ul {
 		columns: 2 9em;
 		-moz-columns: 2 9em;
@@ -278,6 +306,7 @@ a.mw-wiki-logo {
 	content: '';
 	margin-bottom: .75em;
 }
+
 #content-header {
 	border-bottom: solid 1px @soft-border;
 	padding-bottom: .25em;
@@ -294,6 +323,7 @@ a.mw-wiki-logo {
 		padding-top: 0;
 		margin-right: .5em;
 	}
+
 	h1, div, ul {
 		display: inline-block;
 		 *display: inline;
@@ -324,6 +354,7 @@ a.mw-wiki-logo {
 		ul li {
 			margin: .3em 0 0 .75em;
 		}
+
 		#p-actions {
 			margin-left: .75em;
 		}
@@ -343,6 +374,7 @@ a.mw-wiki-logo {
 #content-container {
 	font-size: 90%;
 }
+
 #mw-content-text {
 	padding-bottom: 1.5em;
 	font-size: 95%;
@@ -352,41 +384,58 @@ a.mw-wiki-logo {
 	display: none;
 }
 
-h1, h2, h3, h4, h5, h6, dt {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt {
 	line-height: 1.1em;
 	font-weight: normal;
 	color: @header-grey;
 	margin: 2em 0 .5em;
 }
+
 #mw-content-text {
-	h1, h2 {
+	h1,
+	h2 {
 		border-bottom: solid 1px @soft-border;
 	}
+
 	.toc h2 {
 		border-bottom: none;
 	}
 }
+
 h1 {
 	font-size: 200%;
 	color: @text-grey;
 }
+
 h2 {
 	font-size: 170%;
 }
+
 h3 {
 	font-size: 140%;
 }
+
 h4 {
 	font-size: 125%;
 }
+
 h5 {
 	font-size: 110%;
 	color: #333;
 }
-h6, dt {
+
+h6,
+dt {
 	font-size: 100%;
 	color: #000;
 }
+
 .toctoggle,
 .mw-editsection-bracket,
 .mw-editsection-divider,
@@ -397,13 +446,16 @@ h6, dt {
 .client-js .mw-content-rtl .mw-editsection-bracket:not(:last-of-type) {
 	color: #aaa;
 }
+
 .mw-editsection {
 	text-shadow: none;
 }
+
 hr {
 	border: 1px @soft-border;
 	border-style: solid none none none;
 }
+
 pre {
 	overflow: auto;
 	white-space: pre-wrap;
@@ -446,6 +498,7 @@ ul#filetoc {
 		color: @link-grey;
 	}
 }
+
 #toc,
 .toc,
 .mw-warning {
@@ -455,12 +508,16 @@ ul#filetoc {
 	color: @text-grey;
 	display: inline-block;
 }
-#toc a, .mw-editsection a {
+
+#toc a,
+.mw-editsection a {
 	color: @link-grey;
 }
+
 .toc ul {
 	list-style: none;
 }
+
 .toc h2 {
 	font-size: 120%;
 	margin-top: .5em;
@@ -482,6 +539,7 @@ ul#filetoc {
 		background: #fff;
 	}
 }
+
 .tleft {
 	margin: 0 .5em .5em 0;
 
@@ -490,11 +548,13 @@ ul#filetoc {
 		background: #fff;
 	}
 }
+
 .thumbcaption {
 	font-size: 90%;
 	border-bottom: solid 1px @soft-border;
 	padding-bottom: 1em;
 }
-.thumbinner img{
+
+.thumbinner img {
 	border: solid 1px @soft-border;
 }
