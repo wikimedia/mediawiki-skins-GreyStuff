@@ -212,8 +212,10 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		// Add some extra links to the toolbox
+		$skin = $this->getSkin();
+		$title = $skin->getTitle();
 		$toolbox = $this->getToolbox();
-		if ( $this->getSkin()->getOutput()->isArticleRelated() ) {
+		if ( $skin->getOutput()->isArticleRelated() && $title->isKnown() ) {
 			$toolbox['history'] = $this->data['content_actions']['history'];
 			$toolbox['history']['text'] = $this->getMsg( 'greystuff-history' );
 			$toolbox['history']['id'] = 't-history';
@@ -221,7 +223,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$toolbox['purge'] = [
 			'text' => $this->getMsg( 'greystuff-purge' ),
 			'id' => 't-purge',
-			'href' => $this->getSkin()->getTitle()->getLocalURL( [ 'action' => 'purge' ] ),
+			'href' => $title->getLocalURL( [ 'action' => 'purge' ] ),
 			'rel' => 'nofolow'
 		];
 
