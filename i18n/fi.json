@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"McSalama",
-			"01miki10"
+			"01miki10",
+			"Jack Phoenix"
 		]
 	},
 	"greystuff-desc": "Yksinkertainen harmaa kiinteäleveyksinen teema",
-	"greystuff-loggedinas": "Kirjauduttu sisään '''$1''':na/nä",
+	"greystuff-loggedinas": "Kirjautunut käyttäjänä '''$1'''",
 	"greystuff-notloggedin": "Et ole kirjautunut",
 	"greystuff-history": "Sivuhistoria",
 	"greystuff-purge": "Päivitä sivu",
