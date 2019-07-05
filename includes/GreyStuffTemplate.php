@@ -256,7 +256,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html = Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
 			Html::element( 'a', array_merge( [
 				'class' => 'mw-wiki-logo',
-				'href' => htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ],
+				'href' => $this->data['nav_urls']['mainpage']['href'] ],
 				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 			) )
 		);
@@ -271,7 +271,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 		$html .= Html::rawElement( 'div', [ 'class' => [ 'mw-portlet', $bannerClass ], 'class' => 'p-banner' ],
 			Html::rawElement( 'div', [ 'class' => 'sitetitle', 'role' => 'banner' ],
-				Html::element( 'a', [ 'href' => htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ],
+				Html::element( 'a', [ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
 					$this->getMsg( 'sitetitle' )
 				)
 			) .
