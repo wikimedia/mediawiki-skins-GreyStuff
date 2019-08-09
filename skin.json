@@ -24,6 +24,9 @@
 		"localBasePath": "",
 		"remoteSkinPath": "GreyStuff"
 	},
+	"config": {
+		"GreyStuffUseLogoImage": true
+	},
 	"ResourceModules": {
 		"skins.greystuff": {
 			"class": "ResourceLoaderSkinModule",

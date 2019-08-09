@@ -253,13 +253,19 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	protected function getBanner() {
-		$html = Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
-			Html::element( 'a', array_merge( [
-				'class' => 'mw-wiki-logo',
-				'href' => $this->data['nav_urls']['mainpage']['href'] ],
-				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
-			) )
-		);
+		$config = $this->getSkin()->getContext()->getConfig();
+		$html = '';
+
+		// TODO: Allow it to also be set to another image instead; requires new RL module (!?)
+		if ( $config->get( 'GreyStuffUseLogoImage' ) ) {
+			$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
+				Html::element( 'a', array_merge( [
+					'class' => 'mw-wiki-logo',
+					'href' => $this->data['nav_urls']['mainpage']['href'] ],
+					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+				) )
+			);
+		}
 
 		$subtitleText = $this->getMsg( 'sitesubtitle' );
 		if ( strlen( $subtitleText ) > 1 ) {
