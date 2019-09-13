@@ -224,7 +224,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			'text' => $this->getMsg( 'greystuff-purge' ),
 			'id' => 't-purge',
 			'href' => $title->getLocalURL( [ 'action' => 'purge' ] ),
-			'rel' => 'nofolow'
+			'rel' => 'nofollow'
 		];
 
 		// Site and page tools (toolbox, languages)
