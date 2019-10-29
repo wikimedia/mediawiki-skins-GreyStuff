@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Sayginer",
-			"Uğurkent"
+			"Uğurkent",
+			"BaRaN6161 TURK"
 		]
 	},
 	"greystuff-desc": "Basit gri sabit genişlikli görünüm",
 	"greystuff-loggedinas": "'''$1''' olarak oturum açıldı",
+	"greystuff-notloggedin": "Giriş yapmadınız",
 	"greystuff-history": "Sayfa geçmişi",
 	"greystuff-purge": "Sayfayı yenile",
 	"greystuff-userpage": "Kullanıcı sayfası",
