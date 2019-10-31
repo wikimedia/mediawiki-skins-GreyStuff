@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
 	"greystuff-desc": "Гади күк бизәлеш",
@@ -10,5 +11,5 @@
 	"greystuff-history": "Битнең тарихы",
 	"greystuff-purge": "Битне яңарту",
 	"greystuff-userpage": "Кулланучы",
-	"greystuff-talkpage": "Бәхәс"
+	"greystuff-talkpage": "Бәхәс бите"
 }
