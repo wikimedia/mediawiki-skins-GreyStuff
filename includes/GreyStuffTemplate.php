@@ -73,6 +73,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					) .
 					$this->clear( 'mobile' ) .
 					Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
+						// @phan-suppress-next-line PhanTypeInvalidDimOffset
 						$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
 					) .
 					Html::rawElement( 'div', [ 'id' => 'page-tools' ],
@@ -504,6 +505,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$content = '';
 		Hooks::run( 'BaseTemplateAfterPortlet', [ $this, $name, &$content ] );
 
+		// @phan-suppress-next-line PhanSuspiciousValueComparison May set by hook
 		if ( $content !== '' ) {
 			return Html::rawElement( 'div', [ 'class' => [ 'after-portlet', 'after-portlet-' . $name ] ], $content );
 		}
