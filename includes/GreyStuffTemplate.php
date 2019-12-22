@@ -73,7 +73,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					) .
 					$this->clear( 'mobile' ) .
 					Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
-						// @phan-suppress-next-line PhanTypeInvalidDimOffset
+						// @phan-suppress-next-line PhanTypeInvalidDimOffset,PhanTypeMismatchArgument
 						$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
 					) .
 					Html::rawElement( 'div', [ 'id' => 'page-tools' ],
