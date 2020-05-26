@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Diki Ananta",
 			"NoiX180"
 		]
 	},
 	"greystuff-loggedinas": "Mlebu log minangka \"$1\"",
 	"greystuff-notloggedin": "Durung mlebu log",
 	"greystuff-history": "Sajarah kaca",
-	"greystuff-userpage": "Kaca panganggo",
+	"greystuff-userpage": "Kaca naraguna",
 	"greystuff-talkpage": "Kaca parembugan"
 }
