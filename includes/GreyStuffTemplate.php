@@ -209,6 +209,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			// Numeric strings gets an integer when set as key, cast back - T73639
 			$name = (string)$name;
 
+			// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 			$mainBlock .= $this->getPortlet( $name, $content['content'], true );
 		}
 
@@ -268,7 +269,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			);
 		}
 
-		$subtitleText = $this->getMsg( 'sitesubtitle' );
+		$subtitleText = $this->getMsg( 'sitesubtitle' )->text();
 		if ( strlen( $subtitleText ) > 1 ) {
 			$subtitle = Html::element( 'div', [ 'class' => 'sitesubtitle' ], $subtitleText );
 			$bannerClass = 'full-banner';
@@ -279,7 +280,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [ 'class' => [ 'mw-portlet', $bannerClass ], 'class' => 'p-banner' ],
 			Html::rawElement( 'div', [ 'class' => 'sitetitle', 'role' => 'banner' ],
 				Html::element( 'a', [ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					$this->getMsg( 'sitetitle' )
+					$this->getMsg( 'sitetitle' )->text()
 				)
 			) .
 			$subtitle
