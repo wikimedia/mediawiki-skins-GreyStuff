@@ -138,7 +138,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			$msgParams = $msg;
 			$msg = $msgString;
 		}
-		$msgObj = wfMessage( $msg );
+		$msgObj = $this->getMsg( $msg );
 		if ( $msgObj->exists() ) {
 			if ( isset( $msgParams ) && !empty( $msgParams ) ) {
 				$msgString = $this->getMsg( $msg, $msgParams );
@@ -149,12 +149,16 @@ class GreyStuffTemplate extends BaseTemplate {
 			$msgString = htmlspecialchars( $msg );
 		}
 
-		$labelId = Sanitizer::escapeId( "p-$name-label" );
+		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 
 		if ( is_array( $content ) ) {
 			$contentText = Html::openElement( 'ul' );
 			foreach ( $content as $key => $item ) {
-				$contentText .= $this->makeListItem( $key, $item, [ 'text-wrapper' => [ 'tag' => 'span' ] ] );
+				$contentText .= $this->getSkin()->makeListItem(
+					$key,
+					$item,
+					[ 'text-wrapper' => [ 'tag' => 'span' ] ]
+				);
 			}
 			$contentText .= Html::closeElement( 'ul' );
 		} else {
@@ -164,7 +168,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html = Html::rawElement( 'div', [
 				'role' => 'navigation',
 				'class' => 'mw-portlet',
-				'id' => Sanitizer::escapeId( "p-$name" ),
+				'id' => Sanitizer::escapeIdForAttribute( "p-$name" ),
 				'title' => Linker::titleAttrib( 'p-' . $name ),
 				'aria-labelledby' => $labelId
 			],
@@ -195,7 +199,9 @@ class GreyStuffTemplate extends BaseTemplate {
 	protected function getMainNavigation() {
 		$html = '';
 
-		$sidebar = $this->getSidebar();
+		$sidebar = $this->getSkin()->buildSidebar();
+		$toolbox = $sidebar['TOOLBOX'];
+		$languageUrls = $sidebar['LANGUAGES'];
 		$sidebar['SEARCH'] = false;
 		$sidebar['TOOLBOX'] = false;
 		$sidebar['LANGUAGES'] = false;
@@ -209,14 +215,12 @@ class GreyStuffTemplate extends BaseTemplate {
 			// Numeric strings gets an integer when set as key, cast back - T73639
 			$name = (string)$name;
 
-			// @phan-suppress-next-line SecurityCheck-DoubleEscaped
-			$mainBlock .= $this->getPortlet( $name, $content['content'], true );
+			$mainBlock .= $this->getPortlet( $name, $content, true );
 		}
 
 		// Add some extra links to the toolbox
 		$skin = $this->getSkin();
 		$title = $skin->getTitle();
-		$toolbox = $this->getToolbox();
 		if ( $skin->getOutput()->isArticleRelated() && $title->isKnown() ) {
 			$toolbox['history'] = $this->data['content_actions']['history'];
 			$toolbox['history']['text'] = $this->getMsg( 'greystuff-history' );
@@ -231,8 +235,8 @@ class GreyStuffTemplate extends BaseTemplate {
 
 		// Site and page tools (toolbox, languages)
 		$toolsBlock = '';
-		if ( $this->data['language_urls'] !== false ) {
-			$toolsBlock .= $this->getPortlet( 'lang', $this->data['language_urls'], true, 'otherlanguages' );
+		if ( $languageUrls || $this->getAfterPortlet( 'lang' ) !== '' ) {
+			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, true, 'otherlanguages' );
 		}
 		if ( isset( $this->data['variant_urls'] ) && $this->data['variant_urls'] !== false ) {
 			$toolsBlock .= $this->getPortlet( 'variants', $this->data['variant_urls'], true );
@@ -295,8 +299,9 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	protected function getPersonalNavigation() {
-		$user = $this->getSkin()->getUser();
-		$personalTools = $this->getPersonalTools();
+		$skin = $this->getSkin();
+		$user = $skin->getUser();
+		$personalTools = $skin->getPersonalToolsForMakeListItem( $this->get( 'personal_urls' ) );
 
 		$html = '';
 		$extraTools = [];
@@ -330,7 +335,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		if ( !empty( $extraTools ) ) {
 			$iconList = '';
 			foreach ( $extraTools as $key => $item ) {
-				$iconList .= $this->makeListItem( $key, $item );
+				$iconList .= $skin->makeListItem( $key, $item );
 			}
 
 			$html .= Html::rawElement(
@@ -353,6 +358,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	protected function getSearch() {
+		$skin = $this->getSkin();
 		$html = '';
 
 		$html .= Html::openElement( 'div', [ 'class' => 'mw-portlet', 'id' => 'p-search', 'role' => 'search' ] );
@@ -367,11 +373,11 @@ class GreyStuffTemplate extends BaseTemplate {
 			Html::rawElement( 'div', [ 'id' => 'simpleSearch' ],
 				Html::rawElement( 'div', [ 'id' => 'searchInput-container-container' ],
 					Html::rawElement( 'div', [ 'id' => 'searchInput-container' ],
-						$this->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
+						$skin->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
 					)
 				) .
-				$this->makeSearchButton( 'fulltext', [ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ] ) .
-				$this->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
+				$skin->makeSearchButton( 'fulltext', [ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ] ) .
+				$skin->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
 				Html::hidden( 'title', $this->get( 'searchtitle' ) )
 			)
 		);
@@ -475,7 +481,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 		foreach ( $validFooterIcons as $blockName => $footerIcons ) {
 			$html .= Html::openElement( 'div', [
-				'id' => 'f-' . Sanitizer::escapeId( $blockName ) . 'ico',
+				'id' => 'f-' . Sanitizer::escapeIdForAttribute( $blockName ) . 'ico',
 				'class' => 'footer-icons'
 			] );
 			foreach ( $footerIcons as $icon ) {
@@ -486,7 +492,8 @@ class GreyStuffTemplate extends BaseTemplate {
 		if ( count( $validFooterLinks ) > 0 ) {
 			$html .= Html::openElement( 'ul', [ 'id' => 'f-list' ] );
 			foreach ( $validFooterLinks as $aLink ) {
-				$html .= Html::rawElement( 'li', [ 'id' => Sanitizer::escapeId( $aLink ) ], $this->get( $aLink ) );
+				$html .= Html::rawElement( 'li', [ 'id' => Sanitizer::escapeIdForAttribute( $aLink ) ], $this->get(
+					$aLink ) );
 			}
 			$html .= Html::closeElement( 'ul' );
 		}
@@ -494,7 +501,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * BaseTemplate::renderAfterPortlet, but sans immediate pooping
+	 * Skin::getAfterPortlet, but with the old BaseTemplate wrapping.
 	 * Allows extensions to hook into known portlets and add stuff to them (an archaic approach;
 	 * assumes standardised, consistent portlet handling/naming, when the only standard portlets
 	 * that exist consistently are 'tbx' and 'personal', and tbx is already a mess )
@@ -503,10 +510,8 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	protected function getAfterPortlet( $name ) {
-		$content = '';
-		Hooks::run( 'BaseTemplateAfterPortlet', [ $this, $name, &$content ] );
+		$content = $this->getSkin()->getAfterPortlet( $name );
 
-		// @phan-suppress-next-line PhanSuspiciousValueComparison May set by hook
 		if ( $content !== '' ) {
 			return Html::rawElement( 'div', [ 'class' => [ 'after-portlet', 'after-portlet-' . $name ] ], $content );
 		}

@@ -28,17 +28,4 @@ class SkinGreyStuff extends SkinTemplate {
 		$out->addModules( 'skins.greystuff.js' );
 		$out->addModules( 'skins.greystuff.mobile' );
 	}
-
-	/**
-	 * @param $out OutputPage
-	 */
-	function setupSkinUserCss( OutputPage $out ) {
-		parent::setupSkinUserCss( $out );
-
-		// Add CSS
-		$out->addModuleStyles( array (
-			'mediawiki.skinning.content.externallinks',
-			'skins.greystuff'
-		) );
-	}
 }
