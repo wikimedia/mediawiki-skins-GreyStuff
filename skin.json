@@ -1,6 +1,6 @@
 {
 	"name": "GreyStuff",
-	"version": "1.0.8",
+	"version": "1.1.0",
 	"author": [
 		"Calimonius the Estrange"
 	],
@@ -8,8 +8,23 @@
 	"descriptionmsg": "greystuff-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
+	"requires": {
+		"MediaWiki": ">=1.35.0"
+	},
 	"ValidSkinNames": {
-		"greystuff": "GreyStuff"
+		"greystuff": {
+			"displayname": "GreyStuff",
+			"class": "SkinGreyStuff",
+			"args": [
+				{
+					"name": "greystuff",
+					"styles": [
+						"mediawiki.skinning.content.externallinks",
+						"skins.greystuff"
+					]
+				}
+			]
+		}
 	},
 	"MessagesDirs": {
 		"SkinGreyStuff": [
