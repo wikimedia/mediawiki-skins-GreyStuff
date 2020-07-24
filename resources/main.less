@@ -113,31 +113,43 @@ a.mw-wiki-logo {
 	margin-right: 1em;
 }
 
-.p-banner {
+#p-banner {
 	float: left;
 
-	.sitetitle {
-		padding-top: .25em;
+	&.full-banner .sitetitle {
+		padding-top: 0.45em;
+	}
 
-		a {
-			font-size: 210%;
-			font-weight: bold;
-			line-height: 140%;
-			color: #999;
-			/* @noflip */
-			text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
+	.wordmark-text {
+		font-size: 210%;
+	}
+}
 
-			&:hover {
-				text-decoration: none;
-			}
+.wordmark-text {
+	line-height: 1.25;
+}
+
+.p-banner {
+	a {
+		color: #888;
+		opacity: 0.9;
+		/* @noflip */
+		text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
+
+		&:hover {
+			text-decoration: none;
 		}
 	}
 
-	.sitesubtitle {
-		font-style: italic;
-		font-size: 85%;
-		line-height: 1.2em;
+	img {
+		margin-bottom: -0.25em;
 	}
+}
+
+.sitesubtitle {
+	font-style: italic;
+	font-size: 85%;
+	line-height: 1.2em;
 }
 
 /* Search stuff */

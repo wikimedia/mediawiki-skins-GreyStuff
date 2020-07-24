@@ -96,7 +96,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		);
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'footer' ],
-			Html::rawElement( 'div', [ 'id' => 'footer-banner' ], $this->getBanner() ) .
+			Html::rawElement( 'div', [ 'id' => 'footer-banner' ], $this->getBanner( 'p-banner-footer' ) ) .
 			Html::rawElement( 'div', [ 'id' => 'footer-navigation' ],
 				$this->getMainNavigation()
 			) .
@@ -256,13 +256,14 @@ class GreyStuffTemplate extends BaseTemplate {
 	 * cases such as '-' and the like (content that sets it to functionally nothing). May or may
 	 * not be a valid assumption in practice.
 	 *
+	 * @param string $id
+	 *
 	 * @return string html
 	 */
-	protected function getBanner() {
+	protected function getBanner( $id = 'p-banner' ) {
 		$config = $this->getSkin()->getContext()->getConfig();
 		$html = '';
 
-		// TODO: Allow it to also be set to another image instead; requires new RL module (!?)
 		if ( $config->get( 'GreyStuffUseLogoImage' ) ) {
 			$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
 				Html::element( 'a', array_merge( [
@@ -274,17 +275,34 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		$subtitleText = $this->getMsg( 'sitesubtitle' )->text();
+		$bannerClass = [ 'mw-portlet', 'p-banner' ];
 		if ( strlen( $subtitleText ) > 1 ) {
 			$subtitle = Html::element( 'div', [ 'class' => 'sitesubtitle' ], $subtitleText );
-			$bannerClass = 'full-banner';
+			$bannerClass[] = 'full-banner';
 		} else {
 			$subtitle = '';
-			$bannerClass = 'title-banner';
+			$bannerClass[] = 'title-banner';
 		}
-		$html .= Html::rawElement( 'div', [ 'class' => [ 'mw-portlet', $bannerClass ], 'class' => 'p-banner' ],
+
+		// Wordmark image! Fancy!
+		$logos = ResourceLoaderSkinModule::getAvailableLogos( $config );
+		if ( isset( $logos['wordmark'] ) ) {
+			$wordmarkData = $logos['wordmark'];
+			$wordmark = Html::element( 'img', [
+				'src' => $wordmarkData['src'],
+				'height' => $wordmarkData['height'] ?? null,
+				'width' => $wordmarkData['width'] ?? null,
+			] );
+		} else {
+			$wordmark = Html::element( 'div', [ 'class' => 'wordmark-text' ], $this->getMsg( 'sitetitle' )->text() );
+		}
+
+		$html .= Html::rawElement( 'div', [ 'class' => $bannerClass, 'id' => $id ],
 			Html::rawElement( 'div', [ 'class' => 'sitetitle', 'role' => 'banner' ],
-				Html::element( 'a', [ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					$this->getMsg( 'sitetitle' )->text()
+				Html::rawElement(
+					'a',
+					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+					$wordmark
 				)
 			) .
 			$subtitle
