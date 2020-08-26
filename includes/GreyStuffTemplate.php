@@ -18,6 +18,9 @@
  */
 class GreyStuffTemplate extends BaseTemplate {
 
+	/**
+	 * @inheritDoc
+	 */
 	public function execute() {
 		// Apparently not set by default?
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
@@ -28,7 +31,8 @@ class GreyStuffTemplate extends BaseTemplate {
 			unset( $this->data['content_navigation']['actions']['watch'] );
 		}
 		if ( isset( $this->data['content_navigation']['actions']['unwatch'] ) ) {
-			$this->data['content_navigation']['views']['unwatch'] = $this->data['content_navigation']['actions']['unwatch'];
+			$this->data['content_navigation']['views']['unwatch']
+				= $this->data['content_navigation']['actions']['unwatch'];
 			unset( $this->data['content_navigation']['actions']['unwatch'] );
 		}
 
@@ -37,7 +41,9 @@ class GreyStuffTemplate extends BaseTemplate {
 
 		$html .= Html::openElement( 'div', [ 'id' => 'globalWrapper' ] );
 
-		$html .= Html::rawElement( 'div', [ 'id' => 'header-container', 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
+		$html .= Html::rawElement(
+			'div',
+			[ 'id' => 'header-container', 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
 			Html::rawElement( 'div', [ 'id' => 'header-top-container' ],
 				Html::rawElement( 'div', [ 'id' => 'header-top' ],
 					Html::rawElement( 'div', [ 'id' => 'main-banner' ], $this->getBanner() ) .
@@ -52,7 +58,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					$this->clear()
 				)
 			)
-		) ;
+		);
 
 		$html .= $this->clear();
 
@@ -68,7 +74,9 @@ class GreyStuffTemplate extends BaseTemplate {
 				$this->getSiteNotice() .
 				$this->getSubtitle() .
 				Html::rawElement( 'div', [ 'id' => 'content-header' ],
-					Html::rawElement( 'h1', [ 'id' => 'firstHeading', 'class' => 'firstHeading', 'lang' => $this->get( 'pageLanguage' ) ],
+					Html::rawElement(
+						'h1',
+						[ 'id' => 'firstHeading', 'class' => 'firstHeading', 'lang' => $this->get( 'pageLanguage' ) ],
 						$this->get( 'title' )
 					) .
 					$this->clear( 'mobile' ) .
@@ -108,7 +116,8 @@ class GreyStuffTemplate extends BaseTemplate {
 
 		// BaseTemplate::printTrail() stuff (has no get version)
 		$html .= MWDebug::getDebugHTML( $this->getSkin()->getContext() );
-		$html .= $this->get( 'bottomscripts' ); /* JS call to runBodyOnloadHook */
+		// JS call to runBodyOnloadHook
+		$html .= $this->get( 'bottomscripts' );
 		$html .= $this->get( 'reporttime' );
 
 		$html .= Html::closeElement( 'body' );
@@ -394,7 +403,10 @@ class GreyStuffTemplate extends BaseTemplate {
 						$skin->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
 					)
 				) .
-				$skin->makeSearchButton( 'fulltext', [ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ] ) .
+				$skin->makeSearchButton(
+					'fulltext',
+					[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
+				) .
 				$skin->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
 				Html::hidden( 'title', $this->get( 'searchtitle' ) )
 			)
@@ -442,7 +454,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				);
 			}
 			if ( $this->data['newtalk'] ) {
-				$html .= Html::rawElement( 'div', [ 'class' =>  'usermessage' ],
+				$html .= Html::rawElement( 'div', [ 'class' => 'usermessage' ],
 					$this->get( 'newtalk' )
 				);
 			}
@@ -478,6 +490,8 @@ class GreyStuffTemplate extends BaseTemplate {
 	/**
 	 * Get page footer
 	 *
+	 * @param string|null $iconStyle
+	 * @param string|null $linkStyle
 	 * @return string html
 	 */
 	protected function getFooter( $iconStyle = 'icononly', $linkStyle = 'flat' ) {
