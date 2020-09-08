@@ -19,6 +19,9 @@ class SkinGreyStuff extends SkinTemplate {
 	public $skinname = 'greystuff', $stylename = 'greystuff',
 		$template = 'GreyStuffTemplate';
 
+	/**
+	 * @inheritDoc
+	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 
