@@ -2,8 +2,8 @@
 
 body {
 	font-family: sans-serif;
-	font-size: 1em;
-	line-height: 1.3em;
+	font-size: @smaller-text;
+	line-height: 1.5;
 	padding: 0;
 	margin: 0;
 	color: #000;
@@ -16,31 +16,30 @@ body {
 
 a {
 	text-decoration: none;
-	color: #04a;
-}
+	color: @link-normal;
 
-a:visited {
-	color: #027;
+	&:visited {
+		color: darken( @link-normal, 10% );
+	}
 }
 
 #p-personal a.new,
 .new a,
 a.new {
-	color: #a03
+	color: @link-red;
+
+	&:visited {
+		color: darken( @link-red, 10% );
+	}
 }
 
-#p-personal a.new:visited,
-.new a:visited,
-a.new:visited {
-	color: #703
-}
+a.external,
+.mw-parser-output a.external {
+	color: @link-ext;
 
-a.external {
-	color: #07a;
-}
-
-a.external:visited {
-	color: #057;
+	&:visited {
+		color: darken( @link-ext, 15% );
+	}
 }
 
 .center,
@@ -98,7 +97,6 @@ a.external:visited {
 
 #header-top {
 	padding: 0;
-	font-size: 95%;
 }
 
 /* Banner stuff */
@@ -148,12 +146,17 @@ a.mw-wiki-logo {
 
 .mw-indicators {
 	float: right;
-	padding-top: 0.75em;
+	margin-left: 0.5em;
+	font-size: @smaller-text;
+
+	.mw-indicator {
+		margin: 1.125em 0 0.5em 0.75em;
+	}
 }
 
 .sitesubtitle {
 	font-style: italic;
-	font-size: 85%;
+	font-size: @smaller-text;
 	line-height: 1.2em;
 }
 
@@ -165,7 +168,7 @@ a.mw-wiki-logo {
 	margin-top: -2px ~"!ie";
 	margin-bottom: 0;
 	margin-bottom: -8px ~"!ie";
-	font-size: 85%;
+	font-size: @smaller-text;
 
 	h3 {
 		position: absolute;
@@ -189,7 +192,7 @@ a.mw-wiki-logo {
 	}
 
 	.searchButton {
-		margin-left: .5em;
+		margin-left: 0.5em;
 	}
 }
 
@@ -235,7 +238,7 @@ a.mw-wiki-logo {
 	}
 
 	.sitesubtitle {
-		font-size: 70%;
+		font-size: @smaller-text;
 	}
 
 	a.mw-wiki-logo {
@@ -244,7 +247,7 @@ a.mw-wiki-logo {
 }
 
 #footer-bottom {
-	font-size: 85%;
+	font-size: @smaller-text;
 	color: @text-grey;
 	padding-top: 0.5em;
 	clear: both;
@@ -266,7 +269,7 @@ a.mw-wiki-logo {
 #footer-list {
 	margin: 1em 0 0;
 	padding: 0;
-	font-size: 90%;
+	font-size: @smaller-text;
 }
 
 #footer-places li {
@@ -276,12 +279,12 @@ a.mw-wiki-logo {
 
 #footer-navigation {
 	padding-top: 0;
-	font-size: 80%;
+	font-size: @smaller-text;
 
 	h3 {
 		color: @text-grey;
 		margin: 0 0 1em;
-		font-size: 85%;
+		font-size: @smaller-text;
 	}
 
 	a {
@@ -300,7 +303,7 @@ a.mw-wiki-logo {
 		padding: 0 1.5em;
 
 		li {
-			font-size: 85%;
+			font-size: @smaller-text;
 		}
 	}
 
@@ -340,12 +343,14 @@ a.mw-wiki-logo {
 		position: absolute;
 		top: -9999px;
 	}
+
 	#firstHeading {
 		font-size: 195%;
-		margin-top: 0;
+		margin-top: 0.15em;
 		margin-bottom: 0;
 		padding-top: 0;
 		margin-right: 0.5em;
+		float: left;
 	}
 
 	h1, div, ul {
@@ -360,7 +365,7 @@ a.mw-wiki-logo {
 		text-shadow: none;
 		font-variant: normal;
 		line-height: 1.1em;
-		font-size: 90%;
+		font-size: @smaller-text;
 
 		li {
 			display: inline-block;
@@ -381,13 +386,69 @@ a.mw-wiki-logo {
 
 		#p-actions {
 			margin-left: 0.75em;
+			position: relative;
+
+			h3 {
+				position: unset;
+				font-size: @smaller-text;
+				margin: 0 0 0 1.5em;
+				padding: 0.6em 1.75em 0.5em 0;
+				display: inline-block;
+				background-repeat: no-repeat;
+				background-position: 100% 50%;
+				background-image: url( images/arrow-down.svg );
+				cursor: pointer;
+			}
+
+			.dropdown {
+				.generic-dropdown();
+				width: unset;
+				left: unset;
+				right: 0;
+				display: none;
+
+				li {
+					display: block;
+					margin: 0;
+				}
+			}
+
+			.client-nojs &:hover .dropdown {
+				display: block;
+			}
 		}
+	}
+}
+
+#ca-watch a,
+#ca-unwatch a {
+	display: block;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+	text-indent: -99999px;
+	width: 20px;
+	height: 20px;
+	overflow: hidden; // T174314
+	margin: -5px 0;
+}
+
+#ca-watch a {
+	background-image: url( images/star.svg );
+}
+
+#ca-unwatch a {
+	background-image: url( images/star-filled.svg );
+
+	&.mw-watchlink-temp {
+		background-image: url( images/star-half-filled.svg );
+
 	}
 }
 
 #siteNotice {
 	padding: 1em 0 0;
 	text-align: center;
+	font-size: @smaller-text;
 }
 
 /*
@@ -395,13 +456,8 @@ a.mw-wiki-logo {
  * CONTENT STUFF
  *
  */
-#content-container {
-	font-size: 90%;
-}
-
 #mw-content-text {
 	padding-bottom: 1.5em;
-	font-size: 95%;
 }
 
 #siteSub {
@@ -486,7 +542,7 @@ pre {
 }
 
 #catlinks {
-	font-size: 85%;
+	font-size: @smaller-text;
 	border-top: solid 1px @soft-border;
 	margin: 1.75em 0 0;
 	padding: 0.45em 0 0.35em;
@@ -499,7 +555,7 @@ pre {
 }
 
 #contentSub {
-	font-size: 85%;
+	font-size: @smaller-text;
 	margin: 0;
 	border-bottom: solid 1px @soft-border;
 	padding: 0.25em 0 0.1em;
@@ -526,7 +582,7 @@ ul#filetoc {
 #toc,
 .toc,
 .mw-warning {
-	font-size: 95%;
+	font-size: @smaller-text;
 	padding: 1em 0 0.5em 0;
 	border-bottom: solid 1px @soft-border;
 	color: @text-grey;
@@ -574,7 +630,7 @@ ul#filetoc {
 }
 
 .thumbcaption {
-	font-size: 90%;
+	font-size: @smaller-text;
 	border-bottom: solid 1px @soft-border;
 	padding-bottom: 1em;
 }
