@@ -12,23 +12,9 @@
  */
 
 /**
- * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @ingroup Skins
  */
 class SkinGreyStuff extends SkinTemplate {
-	public $skinname = 'greystuff', $stylename = 'greystuff',
+	public $stylename = 'greystuff',
 		$template = 'GreyStuffTemplate';
-
-	/**
-	 * @inheritDoc
-	 */
-	public function initPage( OutputPage $out ) {
-		parent::initPage( $out );
-
-		$out->addMeta( 'viewport', 'width=device-width' );
-
-		// Add JS
-		$out->addModules( 'skins.greystuff.js' );
-		$out->addModules( 'skins.greystuff.mobile' );
-	}
 }

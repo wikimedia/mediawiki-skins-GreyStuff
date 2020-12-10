@@ -1,6 +1,6 @@
 {
 	"name": "GreyStuff",
-	"version": "1.1.0",
+	"version": "1.2.1",
 	"author": [
 		"Calimonius the Estrange"
 	],
@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">=1.35.0"
+		"MediaWiki": ">=1.36.0"
 	},
 	"ValidSkinNames": {
 		"greystuff": {
@@ -18,9 +18,12 @@
 			"args": [
 				{
 					"name": "greystuff",
+					"responsive": true,
 					"styles": [
-						"mediawiki.skinning.content.externallinks",
 						"skins.greystuff"
+					],
+					"scripts": [
+						"skins.greystuff.js"
 					]
 				}
 			]
@@ -40,15 +43,25 @@
 		"remoteSkinPath": "GreyStuff"
 	},
 	"config": {
-		"GreyStuffUseLogoImage": true
+		"GreyStuffUseLogoImage": {
+			"value": true,
+			"description": "Whether or not to use the wiki's square logo image as part of the banner"
+		}
 	},
 	"ResourceModules": {
 		"skins.greystuff": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
 			"class": "ResourceLoaderSkinModule",
+			"features": {
+				"content-links": true,
+				"logo": true,
+				"legacy": true,
+				"normalize": true
+			},
 			"styles": {
-				"resources/normalise.css": {
-					"media": "screen"
-				},
 				"resources/forms.less": {
 					"media": "screen"
 				},
@@ -67,16 +80,20 @@
 			}
 		},
 		"skins.greystuff.js": {
-			"scripts": [ "resources/main.js" ]
-		},
-		"skins.greystuff.mobile": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"scripts": [
+				"resources/main.js",
+				"resources/mobile.js"
+			],
 			"styles": {
 				"resources/mobile.js.less": {
 					"media": "(max-width: 760px)"
 				}
-			},
-			"scripts": [ "resources/mobile.js" ]
+			}
 		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
