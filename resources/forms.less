@@ -1,65 +1,11 @@
 @import "variables.less";
 
 /*
- * PREFERENCES AND FIELDSET STUFF
- */
-#preftoc {
-	margin: 0 0 1em;
-	padding: 0;
-	list-style: none;
-	clear: both;
-
-	li {
-		display: inline;
-		margin-right: 1em;
-
-		&.selected {
-			border-bottom: solid 3px @soft-border;
-
-			a {
-				color: #000;
-			}
-		}
-
-		a {
-			color: @link-grey;
-		}
-	}
-}
-
-#preferences {
-	margin: 0;
-	clear: both;
-	min-height: 400px;
-
-	.prefsection {
-		border: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.mainLegend {
-		display: none;
-	}
-
-	.preferences-login {
-		clear: both;
-		margin-bottom: 1.5em;
-	}
-
-	.mw-email-not-authenticated .mw-input,
-	.mw-email-none .mw-input {
-		display: block;
-	}
-}
-
-/*
  * FORM STUFF
  */
 
 /* pile of bad hacks to try to catch all the different ones */
 #searchInput,
-input#wpSummary,
 .oo-ui-textInputWidget input,
 .oo-ui-textInputWidget textarea,
 .oo-ui-textInputWidget.oo-ui-widget-enabled input,
@@ -78,20 +24,14 @@ input.mw-input,
 .mw-ui-input:invalid,
 textarea,
 .mw-ui-input-inline {
-	padding: .35em;
+	padding: 0.35em;
 	box-shadow: 0 1px 4px -1px #ddd inset;
 	border: solid 1px @bold-border;
-	margin: .5em 0;
-}
-
-select {
-	padding: .2em;
-	margin: .5em 0;
 }
 
 #searchInput,
 input[type="submit"].searchButton {
-	padding: .45em;
+	padding: 0.45em;
 	margin: 0;
 }
 
@@ -112,7 +52,7 @@ input[type="button"],
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button,
 button {
 	color: #000;
-	padding: .35em 1em;
+	padding: 0.35em 1em;
 	border: solid 1px #aaa;
 	border-radius: 3px;
 	box-shadow: none;
@@ -139,55 +79,6 @@ button {
 	}
 }
 
-.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-pressed > .oo-ui-buttonElement-button, .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive.oo-ui-buttonElement-active > .oo-ui-buttonElement-button,
-.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
-.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button,
-.mw-ui-button.mw-ui-progressive {
-	color: #000;
-	border: solid 1px #999;
-	text-shadow: 0 1px 1px #eee;
-	.vertical-gradient ( #eee, #ccc, 0, 100% );
-
-	&:focus {
-		.vertical-gradient ( #f0f0f0, #d0d0d0, 0, 100% );
-		border: solid 1px #999;
-		box-shadow: none;
-	}
-
-	&:hover {
-		.vertical-gradient ( #f0f0f0, #d0d0d0, 0, 100% );
-		border: solid 1px #777;
-		box-shadow: none;
-		color: #000;
-	}
-
-	&:active:focus,
-	&:active {
-		background: #f0f0f0;
-		background-color: #f0f0f0;
-		border: solid 1px #999;
-		box-shadow: none;
-		color: #000;
-	}
-}
-
-input#wpSummary:focus,
-.oo-ui-textInputWidget.oo-ui-widget-enabled input:focus,
-.oo-ui-textInputWidget.oo-ui-widget-enabled textarea:focus {
-	border-color: #aaa;
-	box-shadow: 0 1px 4px -1px #ddd inset;
-}
-
-.oo-ui-textInputWidget.oo-ui-iconElement input,
-.oo-ui-textInputWidget.oo-ui-iconElement textarea {
-	padding-left: 2.88em;
-}
-
-.oo-ui-iconElement .oo-ui-iconElement-icon,
-.oo-ui-iconElement.oo-ui-iconElement-icon {
-	margin-top: .2em;
-}
-
 textarea {
 	width: 100%;
 	resize: vertical;
@@ -196,118 +87,14 @@ textarea {
 }
 
 div.editOptions {
-	background: #fff;
 	border-bottom: solid 1px @soft-border;
 	padding: 1em 0;
-
-	.mw-summary label {
-		padding-left: 0;
-	}
-
-	input#wpSummary {
-		box-sizing: border-box;
-		width: 100%;
-	}
-
-	label {
-		margin-right: 1.5em;
-	}
 }
 
 .mw-editform #editpage-copywarn {
 	line-height: unset;
 }
 
-td.mw-input,
-td.mw-label {
-	vertical-align: middle;
-}
-
-fieldset {
-	border: 1px @bold-border;
-	border-style: solid none none;
-	line-height: 1.3em;
-	margin: 1em 0;
-	padding: 1.5em 0 0 0;
-
-	legend {
-		padding: 0 1em;
-		text-shadow: 0 0 1px #999;
-		margin-left: 1em;
-	}
-}
-
-label {
-	padding-left: .5em;
-}
-
-.mw-input label {
-	padding: 0;
-	margin-right: 1em;
-}
-
-.mw-label {
-	padding-right: .5em;
-}
-
-.mw-submit {
-	padding-top: 2em;
-}
-
-.htmlform-tip {
+.oo-ui-defaultOverlay {
 	font-size: 85%;
-	color: @text-grey;
-	line-height: 1.2em;
-	padding: 1em 0;
-}
-
-/* Recent changes and watchlist options */
-.rcoptions hr,
-#mw-watchlist-options hr {
-	clear: both;
-}
-
-.rcoptions #namespace,
-#mw-watchlist-options .namespaceselector {
-	margin-right: 2em;
-}
-
-/* Watchlist */
-#mw-watchlist-options {
-	label {
-		padding: 0 1em 0 0;
-	}
-
-	input[type="submit"] {
-		margin: 0 0 0 4em;
-	}
-}
-
-/* Related changes hacks */
-.mw-special-Recentchangeslinked {
-	.rcoptions {
-		input[type="submit"] {
-			float: right;
-			margin: 0 0 0 4em;
-		}
-
-		td.mw-label.mw-target-label {
-			vertical-align: top;
-			padding-top: .75em;
-		}
-
-		input[name="target"] {
-			float: left;
-		}
-	}
-
-	#showlinkedto {
-		clear: left;
-		float: left;
-	}
-
-	label[for="showlinkedto"] {
-		padding: .4em;
-		float: left;
-	}
 }
