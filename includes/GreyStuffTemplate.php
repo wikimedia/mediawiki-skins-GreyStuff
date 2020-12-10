@@ -53,14 +53,14 @@ class GreyStuffTemplate extends BaseTemplate {
 					Html::element( 'div', [ 'id' => 'tools-menu-toggle' ] ) .
 
 					$this->getPersonalNavigation() .
-					$this->clear( 'mobile' ) .
+					Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
 					$this->getSearch() .
-					$this->clear()
+					$this->getClear()
 				)
 			)
 		);
 
-		$html .= $this->clear();
+		$html .= $this->getClear();
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'header-navigation-container' ],
 			Html::rawElement( 'div', [ 'id' => 'header-navigation' ],
@@ -79,7 +79,7 @@ class GreyStuffTemplate extends BaseTemplate {
 						[ 'id' => 'firstHeading', 'class' => 'firstHeading', 'lang' => $this->get( 'pageLanguage' ) ],
 						$this->get( 'title' )
 					) .
-					$this->clear( 'mobile' ) .
+					Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
 					Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
 						// @phan-suppress-next-line PhanTypeInvalidDimOffset,PhanTypeMismatchArgument
 						$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
@@ -93,12 +93,12 @@ class GreyStuffTemplate extends BaseTemplate {
 				// for double underline on the header
 				Html::element( 'div', [ 'id' => 'content-header-inner' ] ) .
 
-				$this->clear() .
+				$this->getClear() .
 
 				Html::rawElement( 'div', [ 'id' => 'bodyContent', 'class' => 'mw-body-content' ],
 					Html::rawElement( 'div', [ 'id' => 'siteSub' ], $this->getMsg( 'tagline' ) ) .
 					$this->get( 'bodytext' ) .
-					$this->clear()
+					$this->getClear()
 				) .
 				$this->getAfterContent()
 			)
@@ -109,15 +109,11 @@ class GreyStuffTemplate extends BaseTemplate {
 			Html::rawElement( 'div', [ 'id' => 'footer-navigation' ],
 				$this->getMainNavigation()
 			) .
-			$this->clear() .
+			$this->getClear() .
 			$this->getFooterBlock( [ 'id' => 'footer-bottom' ] )
 		);
 
-		// BaseTemplate::printTrail() stuff (has no get version)
-		$html .= MWDebug::getDebugHTML( $this->getSkin()->getContext() );
-		// JS call to runBodyOnloadHook
-		$html .= $this->get( 'bottomscripts' );
-		$html .= $this->get( 'reporttime' );
+		$html .= $this->getTrail();
 
 		$html .= Html::closeElement( 'body' );
 		$html .= Html::closeElement( 'html' );
@@ -663,32 +659,5 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= $this->getClear() . Html::closeElement( 'div' );
 
 		return $html;
-	}
-
-	/**
-	 * Skin::getAfterPortlet, but with the old BaseTemplate wrapping.
-	 * Allows extensions to hook into known portlets and add stuff to them (an archaic approach;
-	 * assumes standardised, consistent portlet handling/naming, when the only standard portlets
-	 * that exist consistently are 'tbx' and 'personal', and tbx is already a mess )
-	 *
-	 * @param string $name
-	 * @return string html
-	 */
-	protected function getAfterPortlet( $name ) {
-		$content = $this->getSkin()->getAfterPortlet( $name );
-
-		if ( $content !== '' ) {
-			return Html::rawElement( 'div', [ 'class' => [ 'after-portlet', 'after-portlet-' . $name ] ], $content );
-		}
-
-		return $content;
-	}
-
-	/**
-	 * @param string $prefix generally 'mobile' or 'visual' for visualClear or mobileClear classes
-	 * @return string html
-	 */
-	protected function clear( $prefix = 'visual' ) {
-		return Html::element( 'div', [ 'class' => $prefix . 'Clear' ] );
 	}
 }
