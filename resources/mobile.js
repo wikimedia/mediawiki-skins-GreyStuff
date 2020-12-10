@@ -1,10 +1,20 @@
 /* Expanding menus (footer) */
 
 $( function() {
-	$( '#footer-navigation h3' ).on( 'click', function( e ) {
+	$( '#footer-navigation h3' ).on( 'click', function() {
 		if ( $( window ).width() <= 760 ) {
 			$( this ).next( 'div' ).slideToggle( 300 );
 			$( this ).parent().toggleClass( 'visible', 300, 'slide' );
+		}
+	} );
+
+	if ( $( window ).width() <= 760 ) {
+		$( '#footer-navigation h3' ).next( 'div' ).hide();
+	}
+
+	$( window ).on( 'resize', function() {
+		if ( $( window ).width() <= 760 ) {
+			$( '#footer-navigation h3' ).next( 'div' ).hide();
 		}
 	} );
 } );

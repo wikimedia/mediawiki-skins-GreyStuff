@@ -87,7 +87,8 @@ class GreyStuffTemplate extends BaseTemplate {
 					Html::rawElement( 'div', [ 'id' => 'page-tools' ],
 						$this->getPortlet( 'views', $this->data['content_navigation']['views'] ) .
 						$this->getPortlet( 'actions', $this->data['content_navigation']['actions'] )
-					)
+					) .
+					$this->getIndicators()
 				) .
 				// for double underline on the header
 				Html::element( 'div', [ 'id' => 'content-header-inner' ] ) .
@@ -109,9 +110,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				$this->getMainNavigation()
 			) .
 			$this->clear() .
-			Html::rawElement( 'div', [ 'id' => 'footer-bottom' ],
-				$this->getFooter()
-			)
+			$this->getFooterBlock( [ 'id' => 'footer-bottom' ] )
 		);
 
 		// BaseTemplate::printTrail() stuff (has no get version)
@@ -127,19 +126,38 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Generate a single portlet of any kind
+	 * Generate a block of navigation links with a header
 	 *
-	 * $content array format is expected to follow the format used by SkinTemplate, which is a mess
-	 * $msg array fomat is expected to follow [ message name, parameter 1, parameter 2, etc ]
+	 * Re-copied out of splash, perhaps not the best idea. (Original comment: '<INSERT SCREAMING>')
 	 *
 	 * @param string $name
-	 * @param array $content
-	 * @param bool $dropdown
+	 * @param array|string $content array of links for use with makeListItem, or a block of text
 	 * @param null|string|array $msg
+	 * @param array $setOptions random crap to rename/do/whatever
 	 *
-	 * @return string html
+	 * @return string HTML
 	 */
-	protected function getPortlet( $name, $content, $dropdown = false, $msg = null ) {
+	protected function getPortlet( $name, $content, $msg = null, $setOptions = [] ) {
+		// random stuff to override with any provided options
+		$options = $setOptions + [
+			// extra classes/ids
+			'id' => 'p-' . $name,
+			'class' => [ 'mw-portlet', 'emptyPortlet' => !$content ],
+			'extra-classes' => [],
+			// what to wrap the body list in, if anything
+			'body-wrapper' => 'div',
+			'body-id' => '',
+			'body-class' => 'mw-portlet-body',
+			'body-extra-classes' => [],
+			// makeListItem options
+			'list-item' => [ 'text-wrapper' => [ 'tag' => 'span' ] ],
+			// option to stick arbitrary stuff at the beginning of the ul
+			'list-prepend' => '',
+			'extra-header' => false,
+			'incontentlanguage' => false
+		];
+
+		// Handle the different $msg possibilities
 		if ( $msg === null ) {
 			$msg = $name;
 		} elseif ( is_array( $msg ) ) {
@@ -147,10 +165,14 @@ class GreyStuffTemplate extends BaseTemplate {
 			$msgParams = $msg;
 			$msg = $msgString;
 		}
-		$msgObj = $this->getMsg( $msg );
+		if ( $options['incontentlanguage'] ) {
+			$msgObj = $this->getMsg( $msg )->inContentLanguage();
+		} else {
+			$msgObj = $this->getMsg( $msg );
+		}
 		if ( $msgObj->exists() ) {
 			if ( isset( $msgParams ) && !empty( $msgParams ) ) {
-				$msgString = $this->getMsg( $msg, $msgParams );
+				$msgString = $this->getMsg( $msg, $msgParams )->parse();
 			} else {
 				$msgString = $msgObj->parse();
 			}
@@ -161,43 +183,87 @@ class GreyStuffTemplate extends BaseTemplate {
 		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 
 		if ( is_array( $content ) ) {
-			$contentText = Html::openElement( 'ul' );
+			if ( !count( $content ) ) {
+				return '';
+			}
+
+			$contentText = '';
+			if ( $options['extra-header'] ) {
+				$contentText .= Html::rawElement( 'h3', [], $msgString );
+			}
+
+			$contentText .= Html::openElement( 'ul',
+				[ 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ]
+			);
+			$contentText .= $options['list-prepend'];
 			foreach ( $content as $key => $item ) {
-				$contentText .= $this->getSkin()->makeListItem(
-					$key,
-					$item,
-					[ 'text-wrapper' => [ 'tag' => 'span' ] ]
-				);
+				$contentText .= $this->makeListItem( $key, $item, $options['list-item'] );
 			}
 			$contentText .= Html::closeElement( 'ul' );
 		} else {
 			$contentText = $content;
 		}
 
-		$html = Html::rawElement( 'div', [
-				'role' => 'navigation',
-				'class' => 'mw-portlet',
-				'id' => Sanitizer::escapeIdForAttribute( "p-$name" ),
-				'title' => Linker::titleAttrib( 'p-' . $name ),
-				'aria-labelledby' => $labelId
-			],
-			Html::rawElement( 'h3', [
-					'id' => $labelId,
-					'lang' => $this->get( 'userlang' ),
-					'dir' => $this->get( 'dir' )
-				],
-				$msgString
-			) .
-			Html::rawElement( 'div', [ 'class' => [
-					'p-body',
-					$dropdown ? 'dropdown' : ''
-				] ],
+		// Special handling for role=search and other weird things
+		$divOptions = [
+			'role' => 'navigation',
+			'class' => $this->mergeClasses( $options['class'], $options['extra-classes'] ),
+			'id' => Sanitizer::escapeIdForAttribute( $options['id'] ),
+			'title' => Linker::titleAttrib( $options['id'] ),
+			'aria-labelledby' => $labelId,
+		];
+
+		$labelOptions = [
+			'id' => $labelId,
+			'lang' => $this->get( 'userlang' ),
+			'dir' => $this->get( 'dir' )
+		];
+
+		// @phan-suppress-next-line PhanSuspiciousValueComparison
+		if ( $options['body-wrapper'] !== 'none' ) {
+			$bodyDivOptions = [ 'class' => $this->mergeClasses(
+				$options['body-class'],
+				$options['body-extra-classes']
+			) ];
+			if ( strlen( $options['body-id'] ) ) {
+				$bodyDivOptions['id'] = $options['body-id'];
+			}
+			$body = Html::rawElement( $options['body-wrapper'], $bodyDivOptions,
 				$contentText .
 				$this->getAfterPortlet( $name )
-			)
+			);
+		} else {
+			$body = $contentText . $this->getAfterPortlet( $name );
+		}
+
+		$html = Html::rawElement( 'div', $divOptions,
+			Html::rawElement( 'h3', $labelOptions, $msgString ) .
+			$body
 		);
 
 		return $html;
+	}
+
+	/**
+	 * Helper function for getPortlet
+	 *
+	 * Merge all provided css classes into a single array
+	 * Account for possible different input methods matching what Html::element stuff takes
+	 *
+	 * @param string|array $class base portlet/body class
+	 * @param string|array $extraClasses any extra classes to also include
+	 *
+	 * @return array all classes to apply
+	 */
+	protected function mergeClasses( $class, $extraClasses ) {
+		if ( !is_array( $class ) ) {
+			$class = [ $class ];
+		}
+		if ( !is_array( $extraClasses ) ) {
+			$extraClasses = [ $extraClasses ];
+		}
+
+		return array_merge( $class, $extraClasses );
 	}
 
 	/**
@@ -224,7 +290,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			// Numeric strings gets an integer when set as key, cast back - T73639
 			$name = (string)$name;
 
-			$mainBlock .= $this->getPortlet( $name, $content, true );
+			$mainBlock .= $this->getPortlet( $name, $content, null, [ 'body-extra-classes' => [ 'dropdown' ] ] );
 		}
 
 		// Add some extra links to the toolbox
@@ -232,11 +298,11 @@ class GreyStuffTemplate extends BaseTemplate {
 		$title = $skin->getTitle();
 		if ( $skin->getOutput()->isArticleRelated() && $title->isKnown() ) {
 			$toolbox['history'] = $this->data['content_actions']['history'];
-			$toolbox['history']['text'] = $this->getMsg( 'greystuff-history' );
+			$toolbox['history']['text'] = $this->getMsg( 'greystuff-history' )->text();
 			$toolbox['history']['id'] = 't-history';
 		}
 		$toolbox['purge'] = [
-			'text' => $this->getMsg( 'greystuff-purge' ),
+			'text' => $this->getMsg( 'greystuff-purge' )->text(),
 			'id' => 't-purge',
 			'href' => $title->getLocalURL( [ 'action' => 'purge' ] ),
 			'rel' => 'nofollow'
@@ -245,12 +311,16 @@ class GreyStuffTemplate extends BaseTemplate {
 		// Site and page tools (toolbox, languages)
 		$toolsBlock = '';
 		if ( $languageUrls || $this->getAfterPortlet( 'lang' ) !== '' ) {
-			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, true, 'otherlanguages' );
+			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, 'otherlanguages',
+				[ 'body-extra-classes' => [ 'dropdown' ] ]
+			);
 		}
 		if ( isset( $this->data['variant_urls'] ) && $this->data['variant_urls'] !== false ) {
-			$toolsBlock .= $this->getPortlet( 'variants', $this->data['variant_urls'], true );
+			$toolsBlock .= $this->getPortlet( 'variants', $this->data['variant_urls'], null,
+				[ 'body-extra-classes' => [ 'dropdown' ] ]
+			);
 		}
-		$toolsBlock .= $this->getPortlet( 'tbx', $toolbox, true, 'toolbox' );
+		$toolsBlock .= $this->getPortlet( 'tbx', $toolbox, 'toolbox', [ 'body-extra-classes' => [ 'dropdown' ] ] );
 
 		$html .= Html::rawElement( 'div', [ 'class' => 'navigation' ], $mainBlock );
 		$html .= Html::rawElement( 'div', [ 'class' => 'navigation-tools' ], $toolsBlock );
@@ -352,10 +422,10 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'p-personal-container' ] );
 
 		if ( isset( $personalTools['userpage'] ) ) {
-			$personalTools['userpage']['links'][0]['text'] = $this->getMsg( 'greystuff-userpage' );
+			$personalTools['userpage']['links'][0]['text'] = $this->getMsg( 'greystuff-userpage' )->text();
 		}
 		if ( isset( $personalTools['mytalk'] ) ) {
-			$personalTools['mytalk']['links'][0]['text'] = $this->getMsg( 'greystuff-talkpage' );
+			$personalTools['mytalk']['links'][0]['text'] = $this->getMsg( 'greystuff-talkpage' )->text();
 		}
 
 		// Re-add Echo badges
@@ -372,7 +442,9 @@ class GreyStuffTemplate extends BaseTemplate {
 			);
 		}
 
-		$html .= $this->getPortlet( 'personal', $personalTools, true, $headerMsg );
+		$html .= $this->getPortlet( 'personal', $personalTools, $headerMsg,
+			[ 'body-extra-classes' => [ 'dropdown' ] ]
+		);
 
 		$html .= Html::closeElement( 'div' );
 
@@ -402,10 +474,6 @@ class GreyStuffTemplate extends BaseTemplate {
 					Html::rawElement( 'div', [ 'id' => 'searchInput-container' ],
 						$skin->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
 					)
-				) .
-				$skin->makeSearchButton(
-					'fulltext',
-					[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
 				) .
 				$skin->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
 				Html::hidden( 'title', $this->get( 'searchtitle' ) )
@@ -488,48 +556,113 @@ class GreyStuffTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Get page footer
+	 * Better renderer for getFooterIcons and getFooterLinks
 	 *
-	 * @param string|null $iconStyle
-	 * @param string|null $linkStyle
+	 * @param array $setOptions Miscellaneous other options
+	 * * 'id' for footer id
+	 * * 'class' for footer class
+	 * * 'order' to determine whether icons or links appear first: 'iconsfirst' or links, though in
+	 *   practice we currently only check if it is or isn't 'iconsfirst'
+	 * * 'link-prefix' to set the prefix for all link and block ids; most skins use 'f' or 'footer',
+	 *   as in id='f-whatever' vs id='footer-whatever'
+	 * * 'icon-style' to pass to getFooterIcons: "icononly", "nocopyright"
+	 * * 'link-style' to pass to getFooterLinks: "flat" to disable categorisation of links in a
+	 *   nested array
+	 *
 	 * @return string html
 	 */
-	protected function getFooter( $iconStyle = 'icononly', $linkStyle = 'flat' ) {
-		$validFooterIcons = $this->getFooterIcons( $iconStyle );
-		$validFooterLinks = $this->getFooterLinks( $linkStyle );
+	protected function getFooterBlock( $setOptions = [] ) {
+		// Set options and fill in defaults
+		$options = $setOptions + [
+			'id' => 'footer',
+			'class' => 'mw-footer',
+			'order' => 'iconsfirst',
+			'link-prefix' => 'footer',
+			'icon-style' => 'icononly',
+			'link-style' => null
+		];
+
+		// phpcs:ignore Generic.Files.LineLength.TooLong
+		'@phan-var array{id:string,class:string,order:string,link-prefix:string,icon-style:string,link-style:?string} $options';
+
+		$validFooterIcons = $this->getFooterIcons( $options['icon-style'] );
+		$validFooterLinks = $this->getFooterLinks( $options['link-style'] );
 
 		$html = '';
 
-		if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) {
-			$html .= Html::openElement( 'div', [
-				'id' => 'footer-bottom',
-				'role' => 'contentinfo',
-				'lang' => $this->get( 'userlang' ),
-				'dir' => $this->get( 'dir' )
-			] );
-			$footerEnd = Html::closeElement( 'div' );
-		} else {
-			$footerEnd = '';
-		}
-		foreach ( $validFooterIcons as $blockName => $footerIcons ) {
-			$html .= Html::openElement( 'div', [
-				'id' => 'f-' . Sanitizer::escapeIdForAttribute( $blockName ) . 'ico',
-				'class' => 'footer-icons'
-			] );
-			foreach ( $footerIcons as $icon ) {
-				$html .= $this->getSkin()->makeFooterIcon( $icon );
+		$html .= Html::openElement( 'div', [
+			'id' => $options['id'],
+			'class' => $options['class'],
+			'role' => 'contentinfo',
+			'lang' => $this->get( 'userlang' ),
+			'dir' => $this->get( 'dir' )
+		] );
+
+		$iconsHTML = '';
+		if ( count( $validFooterIcons ) > 0 ) {
+			$iconsHTML .= Html::openElement( 'ul', [ 'id' => "{$options['link-prefix']}-icons" ] );
+			foreach ( $validFooterIcons as $blockName => $footerIcons ) {
+				$iconsHTML .= Html::openElement( 'li', [
+					'id' => Sanitizer::escapeIdForAttribute(
+						"{$options['link-prefix']}-{$blockName}ico"
+					),
+					'class' => 'footer-icons'
+				] );
+				foreach ( $footerIcons as $icon ) {
+					$iconsHTML .= $this->getSkin()->makeFooterIcon( $icon );
+				}
+				$iconsHTML .= Html::closeElement( 'li' );
 			}
-			$html .= Html::closeElement( 'div' );
+			$iconsHTML .= Html::closeElement( 'ul' );
 		}
+
+		$linksHTML = '';
 		if ( count( $validFooterLinks ) > 0 ) {
-			$html .= Html::openElement( 'ul', [ 'id' => 'f-list' ] );
-			foreach ( $validFooterLinks as $aLink ) {
-				$html .= Html::rawElement( 'li', [ 'id' => Sanitizer::escapeIdForAttribute( $aLink ) ], $this->get(
-					$aLink ) );
+			if ( $options['link-style'] === 'flat' ) {
+				$linksHTML .= Html::openElement( 'ul', [
+					'id' => "{$options['link-prefix']}-list",
+					'class' => 'footer-places'
+				] );
+				foreach ( $validFooterLinks as $link ) {
+					$linksHTML .= Html::rawElement(
+						'li',
+						[ 'id' => Sanitizer::escapeIdForAttribute( $link ) ],
+						$this->get( $link )
+					);
+				}
+				$linksHTML .= Html::closeElement( 'ul' );
+			} else {
+				$linksHTML .= Html::openElement( 'div', [ 'id' => "{$options['link-prefix']}-list" ] );
+				foreach ( $validFooterLinks as $category => $links ) {
+					$linksHTML .= Html::openElement( 'ul',
+						[ 'id' => Sanitizer::escapeIdForAttribute(
+							"{$options['link-prefix']}-{$category}"
+						) ]
+					);
+					foreach ( $links as $link ) {
+						$linksHTML .= Html::rawElement(
+							'li',
+							[ 'id' => Sanitizer::escapeIdForAttribute(
+								"{$options['link-prefix']}-{$category}-{$link}"
+							) ],
+							$this->get( $link )
+						);
+					}
+					$linksHTML .= Html::closeElement( 'ul' );
+				}
+				$linksHTML .= Html::closeElement( 'div' );
 			}
-			$html .= Html::closeElement( 'ul' );
 		}
-		return $html . $this->clear() . $footerEnd;
+
+		if ( $options['order'] === 'iconsfirst' ) {
+			$html .= $iconsHTML . $linksHTML;
+		} else {
+			$html .= $linksHTML . $iconsHTML;
+		}
+
+		$html .= $this->getClear() . Html::closeElement( 'div' );
+
+		return $html;
 	}
 
 	/**

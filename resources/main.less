@@ -146,6 +146,11 @@ a.mw-wiki-logo {
 	}
 }
 
+.mw-indicators {
+	float: right;
+	padding-top: 0.75em;
+}
+
 .sitesubtitle {
 	font-style: italic;
 	font-size: 85%;
@@ -243,6 +248,14 @@ a.mw-wiki-logo {
 	color: @text-grey;
 	padding-top: 0.5em;
 	clear: both;
+
+	li {
+		list-style: none;
+	}
+
+	ul {
+		padding: 0;
+	}
 }
 
 .footer-icons {
@@ -250,16 +263,15 @@ a.mw-wiki-logo {
 	margin-left: 1em;
 }
 
-#f-list {
+#footer-list {
 	margin: 1em 0 0;
 	padding: 0;
 	font-size: 90%;
-	list-style: none;
+}
 
-	li {
-		display: inline;
-		margin: 0 1em 0 0;
-	}
+#footer-places li {
+	display: inline-block;
+	margin: 0 1em 0 0;
 }
 
 #footer-navigation {
