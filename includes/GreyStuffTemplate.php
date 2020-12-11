@@ -79,33 +79,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				Html::element( 'a', [ 'id' => 'top' ] ) .
 				$this->getSiteNotice() .
 				$this->getSubtitle() .
-				Html::rawElement( 'div', [ 'id' => 'content-header' ],
-					Html::rawElement(
-						'h1',
-						[ 'id' => 'firstHeading', 'class' => 'firstHeading', 'lang' => $this->get( 'pageLanguage' ) ],
-						$this->get( 'title' )
-					) .
-					Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
-					$this->getIndicators() .
-					Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
-						// @phan-suppress-next-line PhanTypeInvalidDimOffset,PhanTypeMismatchArgument
-						$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
-					) .
-					Html::rawElement( 'div', [ 'id' => 'page-tools' ],
-						$this->getPortlet( 'views', $this->data['content_navigation']['views'] ) .
-						$this->getPortlet(
-							'actions',
-							$this->data['content_navigation']['actions'],
-							null,
-							[ 'body-extra-classes' => [ 'dropdown' ] ]
-						) .
-						$this->getPortlet(
-							'more-actions',
-							$this->data['content_navigation']['views2'],
-							'actions'
-						)
-					)
-				) .
+				$this->getContentHeader() .
 				// for double underline on the header
 				Html::element( 'div', [ 'id' => 'content-header-inner' ] ) .
 
@@ -276,6 +250,51 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		return array_merge( $class, $extraClasses );
+	}
+
+	/**
+	 * Get first heading, with page tool stuff
+	 *
+	 * @return string html
+	 */
+	protected function getContentHeader() {
+		$html = Html::openElement( 'div', [ 'id' => 'content-header' ] );
+
+		$html .= Html::rawElement(
+			'h1',
+			[ 'id' => 'firstHeading', 'class' => 'firstHeading', 'lang' => $this->get( 'pageLanguage' ) ],
+			$this->get( 'title' )
+		);
+		$html .= Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
+			$this->getIndicators() .
+			Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
+				$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
+			);
+
+		$pageTools = Html::openElement( 'div', [ 'id' => 'page-tools' ] );
+		$pageTools .= $this->getPortlet(
+			'views',
+			$this->data['content_navigation']['views']
+		);
+		$pageTools .= $this->getPortlet(
+			'actions',
+			$this->data['content_navigation']['actions'],
+			null,
+			[ 'body-extra-classes' => [ 'dropdown' ] ]
+		);
+		if ( isset( $this->data['content_navigation']['views2'] ) ) {
+			$pageTools .= $this->getPortlet(
+				'more-actions',
+				$this->data['content_navigation']['views2'],
+				'actions'
+			);
+		}
+		$pageTools .= Html::closeElement( 'div' );
+
+		$html .= $pageTools;
+		$html .= Html::closeElement( 'div' );
+
+		return $html;
 	}
 
 	/**
@@ -551,7 +570,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		if ( $this->data['catlinks'] || $this->data['dataAfterContent'] ) {
 			$html .= Html::openElement( 'div', [ 'id' => 'content-bottom-stuff' ] );
 			if ( $this->data['catlinks'] ) {
-				$html .= $this->get( 'catlinks' );
+				$html .= $this->get( 'catlinks' ) . $this->getClear();
 			}
 			if ( $this->data['dataAfterContent'] ) {
 				$html .= $this->get( 'dataAfterContent' );
