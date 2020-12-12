@@ -95,5 +95,10 @@
 			}
 		}
 	},
+	"ResourceModuleSkinStyles": {
+		"greystuff": {
+			"+ext.echo.styles.badge": "resources/modules/Echo.styles.badge.less"
+		}
+	},
 	"manifest_version": 2
 }
