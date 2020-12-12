@@ -77,7 +77,7 @@ a.external,
 #footer {
 	.widths();
 	margin: auto;
-	padding: 1.5em;
+	padding: 1.5em 1.5em 0.75em;
 	word-wrap: break-word;
 }
 
@@ -171,8 +171,7 @@ a.mw-wiki-logo {
 	font-size: @smaller-text;
 
 	h3 {
-		position: absolute;
-		top: -9999px;
+		.hidden();
 	}
 
 	#searchInput-container-container {
@@ -340,8 +339,7 @@ a.mw-wiki-logo {
 	padding-top: 1.25em;
 
 	h3 {
-		position: absolute;
-		top: -9999px;
+		.hidden();
 	}
 
 	#firstHeading {
