@@ -27,13 +27,19 @@ class GreyStuffTemplate extends BaseTemplate {
 
 		// Move some content actions links
 		if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
-			$this->data['content_navigation']['views']['watch'] = $this->data['content_navigation']['actions']['watch'];
+			$this->data['content_navigation']['views2']['watch']
+				= $this->data['content_navigation']['actions']['watch'];
 			unset( $this->data['content_navigation']['actions']['watch'] );
 		}
 		if ( isset( $this->data['content_navigation']['actions']['unwatch'] ) ) {
-			$this->data['content_navigation']['views']['unwatch']
+			$this->data['content_navigation']['views2']['unwatch']
 				= $this->data['content_navigation']['actions']['unwatch'];
 			unset( $this->data['content_navigation']['actions']['unwatch'] );
+		}
+		if ( isset( $this->data['content_navigation']['views']['history'] ) ) {
+			$this->data['sidebar']['TOOLBOX']['history'] = $this->data['content_navigation']['views']['history'];
+			$this->data['sidebar']['TOOLBOX']['history']['text'] = $this->getMsg( 'greystuff-history' )->text();
+			unset( $this->data['content_navigation']['views']['history'] );
 		}
 
 		// Open html, body elements, etc
@@ -80,15 +86,25 @@ class GreyStuffTemplate extends BaseTemplate {
 						$this->get( 'title' )
 					) .
 					Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
+					$this->getIndicators() .
 					Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
 						// @phan-suppress-next-line PhanTypeInvalidDimOffset,PhanTypeMismatchArgument
 						$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
 					) .
 					Html::rawElement( 'div', [ 'id' => 'page-tools' ],
 						$this->getPortlet( 'views', $this->data['content_navigation']['views'] ) .
-						$this->getPortlet( 'actions', $this->data['content_navigation']['actions'] )
-					) .
-					$this->getIndicators()
+						$this->getPortlet(
+							'actions',
+							$this->data['content_navigation']['actions'],
+							null,
+							[ 'body-extra-classes' => [ 'dropdown' ] ]
+						) .
+						$this->getPortlet(
+							'more-actions',
+							$this->data['content_navigation']['views2'],
+							'actions'
+						)
+					)
 				) .
 				// for double underline on the header
 				Html::element( 'div', [ 'id' => 'content-header-inner' ] ) .
@@ -270,7 +286,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	protected function getMainNavigation() {
 		$html = '';
 
-		$sidebar = $this->getSkin()->buildSidebar();
+		$sidebar = $this->data['sidebar'];
 		$toolbox = $sidebar['TOOLBOX'];
 		$languageUrls = $sidebar['LANGUAGES'];
 		$sidebar['SEARCH'] = false;
@@ -292,11 +308,6 @@ class GreyStuffTemplate extends BaseTemplate {
 		// Add some extra links to the toolbox
 		$skin = $this->getSkin();
 		$title = $skin->getTitle();
-		if ( $skin->getOutput()->isArticleRelated() && $title->isKnown() ) {
-			$toolbox['history'] = $this->data['content_actions']['history'];
-			$toolbox['history']['text'] = $this->getMsg( 'greystuff-history' )->text();
-			$toolbox['history']['id'] = 't-history';
-		}
 		$toolbox['purge'] = [
 			'text' => $this->getMsg( 'greystuff-purge' )->text(),
 			'id' => 't-purge',

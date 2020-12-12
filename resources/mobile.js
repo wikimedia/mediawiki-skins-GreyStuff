@@ -1,7 +1,7 @@
 /* Expanding menus (footer) */
 
 $( function() {
-	$( '#footer-navigation h3' ).on( 'click', function() {
+	$( '#footer-navigation h3, #p-actions h3' ).on( 'click', function() {
 		if ( $( window ).width() <= 760 ) {
 			$( this ).next( 'div' ).slideToggle( 300 );
 			$( this ).parent().toggleClass( 'visible', 300, 'slide' );
@@ -9,12 +9,12 @@ $( function() {
 	} );
 
 	if ( $( window ).width() <= 760 ) {
-		$( '#footer-navigation h3' ).next( 'div' ).hide();
+		$( '#footer-navigation h3, #p-actions h3' ).next( 'div' ).hide();
 	}
 
 	$( window ).on( 'resize', function() {
 		if ( $( window ).width() <= 760 ) {
-			$( '#footer-navigation h3' ).next( 'div' ).hide();
+			$( '#footer-navigation h3, #p-actions h3' ).next( 'div' ).hide();
 		}
 	} );
 } );
@@ -38,6 +38,7 @@ $( function() {
 			$( '#header-navigation .navigation-tools, #menus-cover' ).fadeToggle( 400 );
 		}
 	} );
+
 	$( document ).click( function( e ) {
 		if ( $( window ).width() <= 760 ) {
 			if ( $( e.target ).closest( '#personal-menu-toggle, #main-menu-toggle, #tools-menu-toggle, #p-personal, #header-navigation .navigation, #header-navigation .navigation-tools' ).length > 0 ) {
@@ -47,6 +48,13 @@ $( function() {
 				$( '#header-navigation .navigation' ).fadeOut( 300 );
 				$( '#header-navigation .navigation-tools' ).fadeOut( 300 );
 				$( '#p-personal' ).fadeOut( 300 );
+			}
+
+			if ( $( e.target ).closest( '#p-actions' ).length > 0 ) {
+				// Special case for actions
+				// Should maybe replace with handling like the above later?
+			} else {
+				$( '#p-actions .dropdown' ).slideUp( 300 );
 			}
 		}
 	} );
