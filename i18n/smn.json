@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Seipinne",
 			"Yupik"
 		]
 	},
-	"greystuff-notloggedin": "Jieh lah čälittâm jieijâd siisâ"
+	"greystuff-notloggedin": "Jieh lah čälittâm jieijâd siisâ",
+	"greystuff-history": "Siijđo historjá",
+	"greystuff-userpage": "Kevtteesijđo"
 }
