@@ -379,7 +379,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			);
 		}
 
-		$subtitleText = $this->getMsg( 'sitesubtitle' )->text();
+		$subtitleText = $this->getMsg( 'sitesubtitle' )->inContentLanguage()->text();
 		$bannerClass = [ 'mw-portlet', 'p-banner' ];
 		if ( strlen( $subtitleText ) > 1 ) {
 			$subtitle = Html::element( 'div', [ 'class' => 'sitesubtitle' ], $subtitleText );
@@ -439,7 +439,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			unset( $personalTools['notifications-notice'] );
 		}
 
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 			$headerMsg = [ 'greystuff-loggedinas', $user->getName() ];
 		} else {
 			$headerMsg = 'greystuff-notloggedin';
