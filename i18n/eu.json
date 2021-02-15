@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mikel Ibaiba"
+			"Mikel Ibaiba",
+			"Xabier Armendaritz"
 		]
 	},
-	"greystuff-loggedinas": "'''$1''' bezala saioa hasita",
+	"greystuff-loggedinas": "Saioa hasita, '''$1''' erabiltzaile izenarekin",
 	"greystuff-notloggedin": "Saioa hasi gabe",
 	"greystuff-history": "Orrialdearen historia",
 	"greystuff-purge": "Orria freskatu",
