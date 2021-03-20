@@ -138,42 +138,50 @@ div.thumb {
 /* Footer */
 #footer-navigation {
 	font-size: 100%;
+
+	.navigation {
+		border-top: solid 1px @bold-border;
+	}
+
+	.mw-portlet {
+		float: none;
+		padding: 1em 0 1.5em;
+		border-bottom: solid 1px @bold-border;
+	}
+
+	.p-body ul {
+		columns: 12em 2;
+		-moz-columns: 12em 2;
+		-webkit-columns: 12em 2;
+	}
 }
 
-#footer-navigation .mw-portlet {
-	float: none;
-	padding: 1em 0 1.5em;
-	border-bottom: solid 1px @bold-border;
+#return-to-top,
+// We could do something fancy with the top nav...
+// Or we could just send them to the nav at the bottom.
+.client-nojs #p-personal-label,
+.client-nojs #jump-to-end {
+	display: block;
+	content: '';
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
 }
 
-#footer-navigation .p-body ul {
-	columns: 12em 2;
-	-moz-columns: 12em 2;
-	-webkit-columns: 12em 2;
+#return-to-top {
+	background-image: url( images/top-icon.svg );
+	margin: 0.5em auto 0.5em;
 }
 
 .client-nojs {
-	#p-personal-label,
-	// We could do something fancy with the top nav...
-	// Or we could just send them to the nav at the bottom.
-	#return-to-top,
-	#jump-to-end {
-		display: block;
-		content: '';
-		width: 35px;
-		height: 35px;
-		cursor: pointer;
+	#return-to-top {
+		margin: -0.5em auto 1em;
 	}
 
 	#jump-to-end {
 		background-image: url( images/menu-icon.svg );
 		float: left;
 		margin: 0.5em 0.5em 0 0;
-	}
-
-	#return-to-top {
-		background-image: url( images/top-icon.svg );
-		margin: 0 auto 0.5em;
 	}
 
 	#p-personal-label {
