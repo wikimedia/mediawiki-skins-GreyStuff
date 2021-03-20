@@ -9,7 +9,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">=1.36.0"
+		"MediaWiki": ">=1.35.2"
 	},
 	"ValidSkinNames": {
 		"greystuff": {
@@ -19,6 +19,7 @@
 				{
 					"name": "greystuff",
 					"responsive": true,
+					"template": "GreyStuffTemplate",
 					"styles": [
 						"skins.greystuff"
 					],
