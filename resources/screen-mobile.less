@@ -61,6 +61,8 @@
 #searchGoButton {
 	width: 6em;
 	float: right;
+	position: relative;
+	z-index: 1;
 }
 
 /* Full-width thumbnails */
@@ -148,4 +150,63 @@ div.thumb {
 	columns: 12em 2;
 	-moz-columns: 12em 2;
 	-webkit-columns: 12em 2;
+}
+
+.client-nojs {
+	#p-personal-label,
+	// We could do something fancy with the top nav...
+	// Or we could just send them to the nav at the bottom.
+	#return-to-top,
+	#jump-to-end {
+		display: block;
+		content: '';
+		width: 35px;
+		height: 35px;
+		cursor: pointer;
+	}
+
+	#jump-to-end {
+		background-image: url( images/menu-icon.svg );
+		float: left;
+		margin: 0.5em 0.5em 0 0;
+	}
+
+	#return-to-top {
+		background-image: url( images/top-icon.svg );
+		margin: 0 auto 0.5em;
+	}
+
+	#p-personal-label {
+		background-image: url( images/user-icon.svg );
+		overflow: hidden;
+		text-indent: -99999px;
+		margin: 0;
+	}
+
+	#p-personal {
+		position: relative;
+		padding: 0.5em 0 0 0.5em;
+
+		.dropdown {
+			display: none !important;
+			.generic-dropdown();
+			top: 40px;
+			left: unset;
+			right: 0;
+		}
+
+		&:hover .dropdown {
+			display: block !important;
+		}
+	}
+
+	#p-personal-container {
+		display: flex;
+		float: right;
+	}
+
+	#p-personal-extra,
+	#p-personal {
+		float: none;
+	}
 }
