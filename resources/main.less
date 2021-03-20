@@ -98,7 +98,7 @@ a.external,
 #header-top {
 	padding: 0;
 
-	.p-logo img {
+	.p-logo {
 		height: 50px;
 		width: auto;
 		float: left;
@@ -109,13 +109,12 @@ a.external,
 /* Banner stuff */
 a.mw-wiki-logo {
 	display: block;
-	width: 66px;
-	height: 66px;
+	width: 50px;
+	height: 50px;
 	float: left;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
-	margin-right: 1em;
 }
 
 #p-banner {
@@ -134,16 +133,17 @@ a.mw-wiki-logo {
 	line-height: 1.25;
 }
 
-.p-banner {
-	a {
-		color: #888;
+a .p-banner {
+	color: #888;
+
+	.wordmark-text {
 		opacity: 0.9;
 		/* @noflip */
 		text-shadow:  0 -1px 0 #333, 0 2px 1px #fff;
+	}
 
-		&:hover {
-			text-decoration: none;
-		}
+	&:hover {
+		text-decoration: none;
 	}
 }
 
@@ -248,9 +248,15 @@ a.mw-wiki-logo {
 		float: none;
 	}
 
-	.p-logo img {
+	.p-logo {
 		width: 100px;
 		height: auto;
+		margin: auto;
+	}
+
+	a.mw-wiki-logo {
+		width: 100px;
+		height: 120px;
 	}
 }
 
