@@ -1,0 +1,49 @@
+@import "variables.less";
+
+/* Footer js 'n stuff */
+
+@media screen {
+	#footer-navigation {
+		font-size: 100%;
+
+		.p-body {
+			display: none;
+		}
+
+		.mw-portlet {
+			padding: 0;
+			float: none;
+			border-bottom: solid 1px @bold-border;
+		}
+
+		h3 {
+			margin: 0;
+			padding: 0.75em 0 0.75em 0;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.mw-portlet.visible {
+			padding-bottom: 0.75em;
+		}
+
+		li {
+			padding: 0.25em 1em;
+		}
+
+		ul {
+			columns: 12em 2;
+			-moz-columns: 12em 2;
+			-webkit-columns: 12em 2;
+		}
+	}
+}
+
+@media screen and ( min-width: 761px ) {
+	#footer-navigation {
+		margin-top: -1.45em;
+		margin-left: 200px;
+	}
+}
