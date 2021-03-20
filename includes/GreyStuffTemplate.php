@@ -396,15 +396,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html = '';
 
 		if ( $config->get( 'GreyStuffUseLogoImage' ) ) {
-			if ( isset( $logos['icon'] ) ) {
-				$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
-					Html::rawElement(
-						'a',
-						[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-						Html::element( 'img', [ 'src' => $logos['icon'] ] )
-					)
-				);
-			} else {
+			if ( !isset( $logos['icon'] ) ) {
 				// Oldschool wgLogo via RL
 				$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
 					Html::element( 'a', array_merge( [
@@ -413,10 +405,27 @@ class GreyStuffTemplate extends BaseTemplate {
 						Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 					) )
 				);
+
+				// The above needs to be a separate link due to how the image is applied, soo...
+				$html .= Html::openElement( 'a', [ 'href' => $this->data['nav_urls']['mainpage']['href'] ] );
+			} else {
+				$html .= Html::openElement( 'a',  array_merge(
+					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+				) );
+				$html .= Html::element( 'img', [ 'src' => $logos['icon'], 'class' => 'p-logo' ] );
 			}
+		} else {
+			// No image logo, but we still gotta open the link for the banner stuff...
+			$html .= Html::openElement( 'a',  array_merge(
+				[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+			) );
 		}
 
 		$subtitleText = $this->getMsg( 'sitesubtitle' )->inContentLanguage()->text();
+		$wordmarkText = $this->getMsg( 'sitetitle' )->inContentLanguage()->text();
+
 		$bannerClass = [ 'mw-portlet', 'p-banner' ];
 		if ( isset( $logos['tagline'] ) ) {
 			$taglineData = $logos['tagline'];
@@ -425,6 +434,7 @@ class GreyStuffTemplate extends BaseTemplate {
 					'src' => $taglineData['src'],
 					'height' => $taglineData['height'] ?? null,
 					'width' => $taglineData['width'] ?? null,
+					'alt' => $subtitleText
 				] )
 			);
 			$bannerClass[] = 'full-banner';
@@ -443,20 +453,19 @@ class GreyStuffTemplate extends BaseTemplate {
 				'src' => $wordmarkData['src'],
 				'height' => $wordmarkData['height'] ?? null,
 				'width' => $wordmarkData['width'] ?? null,
+				'alt' => $wordmarkText
 			] );
 		} else {
-			$wordmark = Html::element( 'div', [ 'class' => 'wordmark-text' ], $this->getMsg( 'sitetitle' )->text() );
+			$wordmark = Html::element( 'div', [ 'class' => 'wordmark-text' ], $wordmarkText );
 		}
 
 		$html .= Html::rawElement( 'div', [ 'class' => $bannerClass, 'id' => $id ],
 			Html::rawElement( 'div', [ 'class' => 'sitetitle', 'role' => 'banner' ],
-				Html::rawElement(
-					'a',
-					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					$wordmark . $subtitle
-				)
+				$wordmark . $subtitle
 			)
 		);
+
+		$html .= Html::closeElement( 'a' );
 
 		return $html;
 	}
