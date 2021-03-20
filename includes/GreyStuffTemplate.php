@@ -367,21 +367,43 @@ class GreyStuffTemplate extends BaseTemplate {
 	 */
 	protected function getBanner( $id = 'p-banner' ) {
 		$config = $this->getSkin()->getContext()->getConfig();
+		$logos = ResourceLoaderSkinModule::getAvailableLogos( $config );
 		$html = '';
 
 		if ( $config->get( 'GreyStuffUseLogoImage' ) ) {
-			$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
-				Html::element( 'a', array_merge( [
-					'class' => 'mw-wiki-logo',
-					'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
-				) )
-			);
+			if ( isset( $logos['icon'] ) ) {
+				$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
+					Html::rawElement(
+						'a',
+						[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+						Html::element( 'img', [ 'src' => $logos['icon'] ] )
+					)
+				);
+			} else {
+				// Oldschool wgLogo via RL
+				$html .= Html::rawElement( 'div', [ 'class' => 'p-logo', 'role' => 'banner' ],
+					Html::element( 'a', array_merge( [
+						'class' => 'mw-wiki-logo',
+						'href' => $this->data['nav_urls']['mainpage']['href'] ],
+						Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+					) )
+				);
+			}
 		}
 
 		$subtitleText = $this->getMsg( 'sitesubtitle' )->inContentLanguage()->text();
 		$bannerClass = [ 'mw-portlet', 'p-banner' ];
-		if ( strlen( $subtitleText ) > 1 ) {
+		if ( isset( $logos['tagline'] ) ) {
+			$taglineData = $logos['tagline'];
+			$subtitle = Html::rawElement( 'div', [ 'class' => 'sitesubtitle' ],
+				Html::element( 'img', [
+					'src' => $taglineData['src'],
+					'height' => $taglineData['height'] ?? null,
+					'width' => $taglineData['width'] ?? null,
+				] )
+			);
+			$bannerClass[] = 'full-banner';
+		} elseif ( strlen( $subtitleText ) > 1 ) {
 			$subtitle = Html::element( 'div', [ 'class' => 'sitesubtitle' ], $subtitleText );
 			$bannerClass[] = 'full-banner';
 		} else {
@@ -390,7 +412,6 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		// Wordmark image! Fancy!
-		$logos = ResourceLoaderSkinModule::getAvailableLogos( $config );
 		if ( isset( $logos['wordmark'] ) ) {
 			$wordmarkData = $logos['wordmark'];
 			$wordmark = Html::element( 'img', [
@@ -407,10 +428,9 @@ class GreyStuffTemplate extends BaseTemplate {
 				Html::rawElement(
 					'a',
 					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					$wordmark
+					$wordmark . $subtitle
 				)
-			) .
-			$subtitle
+			)
 		);
 
 		return $html;
