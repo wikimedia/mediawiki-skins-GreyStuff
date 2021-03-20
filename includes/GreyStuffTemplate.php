@@ -97,7 +97,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [ 'id' => 'footer' ],
 			Html::rawElement( 'div', [ 'id' => 'footer-banner' ], $this->getBanner( 'p-banner-footer' ) ) .
 			Html::rawElement( 'div', [ 'id' => 'footer-navigation' ],
-				$this->getMainNavigation()
+				$this->getMainNavigation( 'f' )
 			) .
 			$this->getClear() .
 			$this->getFooterBlock( [ 'id' => 'footer-bottom' ] )
@@ -140,7 +140,8 @@ class GreyStuffTemplate extends BaseTemplate {
 			// option to stick arbitrary stuff at the beginning of the ul
 			'list-prepend' => '',
 			'extra-header' => false,
-			'incontentlanguage' => false
+			'incontentlanguage' => false,
+			'prefix' => 'p'
 		];
 
 		// Handle the different $msg possibilities
@@ -166,7 +167,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			$msgString = htmlspecialchars( $msg );
 		}
 
-		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
+		$labelId = Sanitizer::escapeIdForAttribute( "{$options['prefix']}-$name-label" );
 
 		if ( is_array( $content ) ) {
 			if ( !count( $content ) ) {
@@ -300,29 +301,17 @@ class GreyStuffTemplate extends BaseTemplate {
 	/**
 	 * Get all main navigation portlets, sectioned into navigation and navigation-tools divs
 	 *
+	 * @param string $idPrefix
+	 *
 	 * @return string html
 	 */
-	protected function getMainNavigation() {
-		$html = '';
-
+	protected function getMainNavigation( $idPrefix = '' ) {
 		$sidebar = $this->data['sidebar'];
 		$toolbox = $sidebar['TOOLBOX'];
 		$languageUrls = $sidebar['LANGUAGES'];
 		$sidebar['SEARCH'] = false;
 		$sidebar['TOOLBOX'] = false;
 		$sidebar['LANGUAGES'] = false;
-
-		// Main navigation, from [[MediaWiki:Sidebar]]
-		$mainBlock = '';
-		foreach ( $sidebar as $name => $content ) {
-			if ( $content === false ) {
-				continue;
-			}
-			// Numeric strings gets an integer when set as key, cast back - T73639
-			$name = (string)$name;
-
-			$mainBlock .= $this->getPortlet( $name, $content, null, [ 'body-extra-classes' => [ 'dropdown' ] ] );
-		}
 
 		// Add some extra links to the toolbox
 		$skin = $this->getSkin();
@@ -334,19 +323,55 @@ class GreyStuffTemplate extends BaseTemplate {
 			'rel' => 'nofollow'
 		];
 
+		$html = '';
+		if ( $idPrefix !== '' ) {
+			foreach ( $toolbox as $item => $details ) {
+				$toolbox[$item]['id'] = $idPrefix . $details['id'];
+			}
+		}
+
+		// Main navigation, from [[MediaWiki:Sidebar]]
+		$mainBlock = '';
+		foreach ( $sidebar as $name => $content ) {
+			if ( $content === false ) {
+				continue;
+			}
+			// Numeric strings gets an integer when set as key, cast back - T73639
+			$name = (string)$name;
+
+			if ( $idPrefix !== '' ) {
+				foreach ( $content as $item => $details ) {
+					$content[$item]['id'] = $idPrefix . $details['id'];
+				}
+			}
+			$mainBlock .= $this->getPortlet( $name, $content, null, [
+				'body-extra-classes' => [ 'dropdown' ],
+				'id' => $idPrefix . 'p-' . $name,
+				'prefix' => $idPrefix . 'p'
+			] );
+		}
+
 		// Site and page tools (toolbox, languages)
 		$toolsBlock = '';
 		if ( $languageUrls || $this->getAfterPortlet( 'lang' ) !== '' ) {
-			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, 'otherlanguages',
-				[ 'body-extra-classes' => [ 'dropdown' ] ]
-			);
+			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, 'otherlanguages', [
+				'body-extra-classes' => [ 'dropdown' ],
+				'id' => $idPrefix . 'p-lang',
+				'prefix' => $idPrefix . 'p'
+			] );
 		}
 		if ( isset( $this->data['variant_urls'] ) && $this->data['variant_urls'] !== false ) {
-			$toolsBlock .= $this->getPortlet( 'variants', $this->data['variant_urls'], null,
-				[ 'body-extra-classes' => [ 'dropdown' ] ]
-			);
+			$toolsBlock .= $this->getPortlet( 'variants', $this->data['variant_urls'], null, [
+				'body-extra-classes' => [ 'dropdown' ],
+				'id' => $idPrefix . 'p-variants',
+				'prefix' => $idPrefix . 'p'
+			] );
 		}
-		$toolsBlock .= $this->getPortlet( 'tbx', $toolbox, 'toolbox', [ 'body-extra-classes' => [ 'dropdown' ] ] );
+		$toolsBlock .= $this->getPortlet( 'tbx', $toolbox, 'toolbox', [
+			'body-extra-classes' => [ 'dropdown' ],
+			'id' => $idPrefix . 'p-tbx',
+			'prefix' => $idPrefix . 'p'
+		] );
 
 		$html .= Html::rawElement( 'div', [ 'class' => 'navigation' ], $mainBlock );
 		$html .= Html::rawElement( 'div', [ 'class' => 'navigation-tools' ], $toolsBlock );
@@ -472,6 +497,10 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 		if ( isset( $personalTools['mytalk'] ) ) {
 			$personalTools['mytalk']['links'][0]['text'] = $this->getMsg( 'greystuff-talkpage' )->text();
+		}
+		if ( isset( $personalTools['anonuserpage'] ) ) {
+			// Pointless; already used as the dropdown header
+			unset( $personalTools['anonuserpage'] );
 		}
 
 		// Re-add Echo badges
