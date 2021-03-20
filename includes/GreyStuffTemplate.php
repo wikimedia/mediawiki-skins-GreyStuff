@@ -52,6 +52,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			[ 'id' => 'header-container', 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
 			Html::rawElement( 'div', [ 'id' => 'header-top-container' ],
 				Html::rawElement( 'div', [ 'id' => 'header-top' ],
+					Html::element( 'a', [ 'href' => '#footer-navigation', 'id' => 'jump-to-end' ] ) .
 					Html::rawElement( 'div', [ 'id' => 'main-banner' ], $this->getBanner() ) .
 					Html::element( 'div', [ 'id' => 'menus-cover' ] ) .
 					Html::element( 'div', [ 'id' => 'main-menu-toggle' ] ) .
@@ -97,6 +98,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [ 'id' => 'footer' ],
 			Html::rawElement( 'div', [ 'id' => 'footer-banner' ], $this->getBanner( 'p-banner-footer' ) ) .
 			Html::rawElement( 'div', [ 'id' => 'footer-navigation' ],
+				Html::element( 'a', [ 'href' => '#header-container', 'id' => 'return-to-top' ] ) .
 				$this->getMainNavigation( 'f' )
 			) .
 			$this->getClear() .
