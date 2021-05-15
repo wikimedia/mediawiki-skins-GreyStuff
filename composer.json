@@ -12,6 +12,7 @@
 		],
 		"fix": [
 			"minus-x fix ."
-		]
+		],
+		"phan": "phan -d . --long-progress-bar"
 	}
 }
