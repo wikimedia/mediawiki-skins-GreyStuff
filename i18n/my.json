@@ -5,6 +5,8 @@
 			"Ninjastrikers"
 		]
 	},
+	"greystuff-loggedinas": "'''$1''' အဖြစ် လော့ဂ်အင်ဝင်ထားသည်",
+	"greystuff-notloggedin": "အကောင့် မဝင်ထားပါ",
 	"greystuff-history": "စာမျက်နှာ ရာဇဝင်",
 	"greystuff-userpage": "အသုံးပြုသူ စာမျက်နှာ",
 	"greystuff-talkpage": "ဆွေးနွေးချက် စာမျက်နှာ"
