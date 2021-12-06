@@ -10,10 +10,10 @@
 		]
 	},
 	"greystuff-desc": "Habillage simple et gris, de largeur fixe",
-	"greystuff-loggedinas": "Connecté{{GENDER:$1||e}} en tant que <strong>$1</strong>",
+	"greystuff-loggedinas": "Connecté{{GENDER:$1||e}} en tant que '''$1'''",
 	"greystuff-notloggedin": "Non connecté(e)",
 	"greystuff-history": "Historique de la page",
-	"greystuff-purge": "Rafraîchir la page",
+	"greystuff-purge": "Actualiser la page",
 	"greystuff-userpage": "Page d’utilisateur",
 	"greystuff-talkpage": "Page de discussion"
 }
