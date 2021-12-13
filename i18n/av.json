@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Gazimagomedov",
+			"Omarov M.",
 			"Аль-Гимравий"
 		]
 	},
-	"greystuff-desc": "Фиксированияб гӀеблъигун бигьаяб цӀцӀахӀилаб куцалъул тема",
-	"greystuff-loggedinas": "Жаниве лъугьана '''$1''' гӀадин",
-	"greystuff-history": "Хиса-басиязул тарих",
-	"greystuff-purge": "Гьумер цIигьабизе",
+	"greystuff-desc": "Куцлъиялъул гӀадатияб цӀцӀахӀилаб тема фиксинабураб гӀеблъигун",
+	"greystuff-loggedinas": "'''$1''' гӀадин жаниве лӀугьана",
+	"greystuff-history": "Гьумералъул тарих",
+	"greystuff-purge": "Гьумер цӀигьабизе",
 	"greystuff-talkpage": "Гьоркьоб лъей"
 }
