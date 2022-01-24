@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Giromin Cangiaxo"
+			"Giromin Cangiaxo",
+			"N. Longo"
 		]
 	},
-	"greystuff-userpage": "Paggina utente"
+	"greystuff-desc": "Sénplice skin grîxa a larghéssa fìssa",
+	"greystuff-loggedinas": "Intròu cómme '''$1'''",
+	"greystuff-notloggedin": "Ti no t'ê intròu",
+	"greystuff-history": "Cronologîa da pàgina",
+	"greystuff-purge": "Agiórna a pàgina",
+	"greystuff-userpage": "Pàgina uténte",
+	"greystuff-talkpage": "Pàgina de discusción"
 }
