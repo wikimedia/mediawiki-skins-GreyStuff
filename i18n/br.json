@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fulup"
+			"Fulup",
+			"Huñvreüs"
 		]
 	},
+	"greystuff-loggedinas": "Kevreet evel '''$1'''",
+	"greystuff-notloggedin": "Digevreet",
 	"greystuff-history": "Istor ar bajenn",
 	"greystuff-purge": "Freskaat ar bajenn",
 	"greystuff-userpage": "Pajenn implijer",
