@@ -43,7 +43,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		// Open html, body elements, etc
-		$html = $this->get( 'headelement' );
+		$html = '';
 
 		$html .= Html::openElement( 'div', [ 'id' => 'globalWrapper' ] );
 
@@ -104,11 +104,6 @@ class GreyStuffTemplate extends BaseTemplate {
 			$this->getClear() .
 			$this->getFooterBlock( [ 'id' => 'footer-bottom' ] )
 		);
-
-		$html .= $this->getTrail();
-
-		$html .= Html::closeElement( 'body' );
-		$html .= Html::closeElement( 'html' );
 
 		echo $html;
 	}
@@ -219,10 +214,10 @@ class GreyStuffTemplate extends BaseTemplate {
 			}
 			$body = Html::rawElement( $options['body-wrapper'], $bodyDivOptions,
 				$contentText .
-				$this->getAfterPortlet( $name )
+				$this->getSkin()->getAfterPortlet( $name )
 			);
 		} else {
-			$body = $contentText . $this->getAfterPortlet( $name );
+			$body = $contentText . $this->getSkin()->getAfterPortlet( $name );
 		}
 
 		$html = Html::rawElement( 'div', $divOptions,
@@ -355,7 +350,7 @@ class GreyStuffTemplate extends BaseTemplate {
 
 		// Site and page tools (toolbox, languages)
 		$toolsBlock = '';
-		if ( $languageUrls || $this->getAfterPortlet( 'lang' ) !== '' ) {
+		if ( $languageUrls || $this->getSkin()->getAfterPortlet( 'lang' ) !== '' ) {
 			$toolsBlock .= $this->getPortlet( 'lang', $languageUrls, 'otherlanguages', [
 				'body-extra-classes' => [ 'dropdown' ],
 				'id' => $idPrefix . 'p-lang',
