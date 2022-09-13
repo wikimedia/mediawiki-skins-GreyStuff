@@ -9,15 +9,16 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">=1.35.2"
+		"MediaWiki": ">=1.39.0"
 	},
 	"ValidSkinNames": {
 		"greystuff": {
 			"displayname": "GreyStuff",
-			"class": "SkinGreyStuff",
+			"class": "SkinTemplate",
 			"args": [
 				{
 					"name": "greystuff",
+					"bodyOnly": true,
 					"responsive": true,
 					"template": "GreyStuffTemplate",
 					"styles": [
@@ -36,7 +37,6 @@
 		]
 	},
 	"AutoloadClasses": {
-		"SkinGreyStuff": "includes/SkinGreyStuff.php",
 		"GreyStuffTemplate": "includes/GreyStuffTemplate.php"
 	},
 	"ResourceFileModulePaths": {
@@ -59,7 +59,13 @@
 			"features": {
 				"content-links": true,
 				"logo": true,
-				"legacy": true,
+				"content-media": true,
+				"interface-message-box": true,
+				"interface-category": true,
+				"content-tables": true,
+				"i18n-ordered-lists": true,
+				"i18n-all-lists-margins": true,
+				"i18n-headings": true,
 				"normalize": true
 			},
 			"styles": {
