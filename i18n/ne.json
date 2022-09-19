@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"बडा काजी"
 		]
 	},
-	"greystuff-notloggedin": "प्रवेश नगरिएको"
+	"greystuff-notloggedin": "तपाईंले प्रवेश गर्नुभएको छैन"
 }
