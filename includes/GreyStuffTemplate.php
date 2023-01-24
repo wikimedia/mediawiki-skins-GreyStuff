@@ -559,7 +559,11 @@ class GreyStuffTemplate extends BaseTemplate {
 						$skin->makeSearchInput( [ 'id' => 'searchInput', 'type' => 'text' ] )
 					)
 				) .
-				$skin->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] ) .
+				$skin->makeSearchButton( 'go', [
+					'id' => 'searchGoButton',
+					'class' => 'searchButton',
+					'value' => $this->getMsg( 'searcharticle' )->text()
+				] ) .
 				Html::hidden( 'title', $this->get( 'searchtitle' ) )
 			)
 		);
