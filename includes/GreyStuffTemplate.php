@@ -330,7 +330,10 @@ class GreyStuffTemplate extends BaseTemplate {
 		// Main navigation, from [[MediaWiki:Sidebar]]
 		$mainBlock = '';
 		foreach ( $sidebar as $name => $content ) {
-			if ( $content === false ) {
+			// is_array() check to skip things like [[mw:Extension:NewsBox]]
+			// which output raw HTML and would thus trigger an "invalid argument
+			// supplied for foreach() in line ..." on the foreach() loop below
+			if ( $content === false || !is_array( $content ) ) {
 				continue;
 			}
 			// Numeric strings gets an integer when set as key, cast back - T73639
