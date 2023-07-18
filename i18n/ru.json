@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Okras",
-			"OlegCinema"
+			"OlegCinema",
+			"BerryAVGN"
 		]
 	},
 	"greystuff-desc": "Простая серая тема оформления с фиксированной шириной",
-	"greystuff-loggedinas": "Вошёл как '''$1'''",
-	"greystuff-notloggedin": "Вы не представились системе",
+	"greystuff-loggedinas": "Вошли как '''$1'''",
+	"greystuff-notloggedin": "Вы не вошли",
 	"greystuff-history": "История",
 	"greystuff-purge": "Обновить страницу",
 	"greystuff-userpage": "Страница участника",
