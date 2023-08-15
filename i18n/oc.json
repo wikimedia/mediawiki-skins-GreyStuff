@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"BrennodAloisi",
 			"Cedric31"
 		]
 	},
 	"greystuff-history": "Istoric de la pagina",
-	"greystuff-purge": "Refrescar la pagina"
+	"greystuff-purge": "Refrescar la pagina",
+	"greystuff-userpage": "Pagina d'utilizaire"
 }
