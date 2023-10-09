@@ -3,14 +3,15 @@
 		"authors": [
 			"Sagan",
 			"Азат Хәлилов",
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"greystuff-desc": "\n\n Киңлеге менән сикәлгән ябай һоро биҙәлеш темаһы",
-	"greystuff-loggedinas": "'''$1''' булып танылған",
+	"greystuff-loggedinas": "'''$1''' булып танылғанһығыҙ",
 	"greystuff-notloggedin": "Үҙегеҙҙе танытырға кәрәк",
 	"greystuff-history": "Бит тарихы",
 	"greystuff-purge": "Битте яңыртырға",
-	"greystuff-userpage": "Ҡатнашыусы",
-	"greystuff-talkpage": "Фекер алышыу"
+	"greystuff-userpage": "Ҡатнашыусы бите",
+	"greystuff-talkpage": "Фекер алышыу бите"
 }
