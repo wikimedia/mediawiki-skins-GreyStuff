@@ -6,6 +6,7 @@
 			"Shirayuki"
 		]
 	},
+	"greystuff-prefs-talkpage": "{{optional}}\nLink to the skin's talk page on MediaWiki.org; it is shown before the preview link in skin preferences on Special:Preferences. Inspired by [https://phabricator.wikimedia.org/T307113 T307113].",
 	"greystuff-desc": "{{desc|what=skin|name=GreyStuff}}",
 	"greystuff-loggedinas": "Label for personal menu for logged in users that really helpfully informs them that they are indeed logged in.\n\nParameters:\n* $1 - username",
 	"greystuff-notloggedin": "Label for personal menu for anonymous users that really helpfully informs them that they are not logged in.",

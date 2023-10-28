@@ -4,6 +4,7 @@
 			"Isarra"
 		]
 	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Simple grey fixed-width skin",
 	"greystuff-loggedinas": "Logged in as '''$1'''",
 	"greystuff-notloggedin": "Not logged in",
