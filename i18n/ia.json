@@ -4,6 +4,7 @@
 			"McDutchie"
 		]
 	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Simple apparentia gris a largor fixe",
 	"greystuff-loggedinas": "Authenticate como '''$1'''",
 	"greystuff-notloggedin": "Tu non ha aperite session",
