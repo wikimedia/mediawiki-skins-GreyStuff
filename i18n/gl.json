@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Tema gris simple co ancho fixo",
 	"greystuff-loggedinas": "Conectado como '''$1'''",
 	"greystuff-notloggedin": "Non accedeu ao sistema",
