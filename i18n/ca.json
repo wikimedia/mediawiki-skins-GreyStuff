@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"SMP"
 		]
 	},
+	"greystuff-desc": "Aparença simple grisa d'amplada fixa",
+	"greystuff-loggedinas": "S'ha iniciat sessió com a '''$1'''",
+	"greystuff-notloggedin": "No heu iniciat sessió",
+	"greystuff-history": "Historial de la pàgina",
+	"greystuff-purge": "Refresca la pàgina",
 	"greystuff-userpage": "Pàgina d'usuari",
 	"greystuff-talkpage": "Pàgina de discussió"
 }
