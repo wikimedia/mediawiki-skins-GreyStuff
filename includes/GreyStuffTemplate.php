@@ -12,6 +12,8 @@
  *
  */
 
+use MediaWiki\ResourceLoader\SkinModule;
+
 /**
  * Main skin class
  * @ingroup Skins
@@ -392,7 +394,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 */
 	protected function getBanner( $id = 'p-banner' ) {
 		$config = $this->getSkin()->getContext()->getConfig();
-		$logos = ResourceLoaderSkinModule::getAvailableLogos( $config );
+		$logos = SkinModule::getAvailableLogos( $config );
 		$html = '';
 
 		if ( $config->get( 'GreyStuffUseLogoImage' ) ) {
