@@ -157,7 +157,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			$msgObj = $this->getMsg( $msg );
 		}
 		if ( $msgObj->exists() ) {
-			if ( isset( $msgParams ) && !empty( $msgParams ) ) {
+			if ( !empty( $msgParams ) ) {
 				$msgString = $this->getMsg( $msg, $msgParams )->parse();
 			} else {
 				$msgString = $msgObj->parse();
@@ -515,7 +515,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		}
 
 		// Re-add Echo badges
-		if ( !empty( $extraTools ) ) {
+		if ( $extraTools ) {
 			$iconList = '';
 			foreach ( $extraTools as $key => $item ) {
 				$iconList .= $skin->makeListItem( $key, $item );
