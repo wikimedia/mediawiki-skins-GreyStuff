@@ -3,12 +3,13 @@
 		"authors": [
 			"Gazimagomedov",
 			"Omarov M.",
-			"Аль-Гимравий"
+			"Аль-Гимравий",
+			"Augustus A C"
 		]
 	},
 	"greystuff-desc": "Куцлъиялъул гӀадатияб цӀцӀахӀилаб тема фиксинабураб гӀеблъигун",
 	"greystuff-loggedinas": "'''$1''' гӀадин жаниве лӀугьана",
-	"greystuff-history": "Гьумералъул тарих",
+	"greystuff-history": "Гьумералъул история",
 	"greystuff-purge": "Гьумер цӀигьабизе",
-	"greystuff-talkpage": "БахӀс"
+	"greystuff-talkpage": "Гьоркьолъеялъул гьумер"
 }
