@@ -411,7 +411,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				// The above needs to be a separate link due to how the image is applied, soo...
 				$html .= Html::openElement( 'a', [ 'href' => $this->data['nav_urls']['mainpage']['href'] ] );
 			} else {
-				$html .= Html::openElement( 'a',  array_merge(
+				$html .= Html::openElement( 'a', array_merge(
 					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
 					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 				) );
@@ -419,7 +419,7 @@ class GreyStuffTemplate extends BaseTemplate {
 			}
 		} else {
 			// No image logo, but we still gotta open the link for the banner stuff...
-			$html .= Html::openElement( 'a',  array_merge(
+			$html .= Html::openElement( 'a', array_merge(
 				[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
 				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 			) );
