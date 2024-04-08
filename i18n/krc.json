@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"greystuff-desc": "Белгиленнген кенглиги бла бош боз бетли тема",
+	"greystuff-loggedinas": "'''$1''' кибик кирилди",
+	"greystuff-notloggedin": "Сиситемагъа кирмегенсиз",
+	"greystuff-history": "Бетни тарихи",
+	"greystuff-purge": "Бетни джангырт",
+	"greystuff-userpage": "Хайырланыучуну бети",
+	"greystuff-talkpage": "Сюзюу бет"
+}
