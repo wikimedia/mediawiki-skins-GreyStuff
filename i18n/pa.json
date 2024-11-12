@@ -2,14 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Babanwalia",
+			"Cabal",
 			"Tow",
 			"ਪ੍ਰਚਾਰਕ"
 		]
 	},
+	"greystuff-desc": "ਸਧਾਰਨ ਸਲੇਟੀ ਪੱਕੀ-ਚੌੜਾਈ ਵਾਲੀ ਚਮੜੀ",
 	"greystuff-loggedinas": "'''$1''' ਵਜੋਂ ਦਾਖ਼ਲ",
 	"greystuff-notloggedin": "ਦਾਖਲ ਨਹੀਂ",
 	"greystuff-history": "ਸਫ਼ੇ ਦਾ ਅਤੀਤ",
 	"greystuff-purge": "ਸਫ਼ਾ ਮੁੜ-ਤਾਜ਼ਾ ਕਰੋ",
 	"greystuff-userpage": "ਵਰਤੋਂਕਾਰ ਵਰਕਾ",
-	"greystuff-talkpage": "ਗੱਲ-ਬਾਤ ਸਫਾ"
+	"greystuff-talkpage": "ਗੱਲਬਾਤ ਸਫ਼ਾ"
 }
