@@ -3,13 +3,15 @@
 		"authors": [
 			"Babanwalia",
 			"Tow",
-			"ਪ੍ਰਚਾਰਕ"
+			"ਪ੍ਰਚਾਰਕ",
+			"Cabal"
 		]
 	},
+	"greystuff-desc": "ਸਧਾਰਨ ਸਲੇਟੀ ਪੱਕੀ-ਚੌੜਾਈ ਵਾਲੀ ਚਮੜੀ",
 	"greystuff-loggedinas": "'''$1''' ਵਜੋਂ ਦਾਖ਼ਲ",
 	"greystuff-notloggedin": "ਦਾਖਲ ਨਹੀਂ",
 	"greystuff-history": "ਸਫ਼ੇ ਦਾ ਅਤੀਤ",
 	"greystuff-purge": "ਸਫ਼ਾ ਮੁੜ-ਤਾਜ਼ਾ ਕਰੋ",
 	"greystuff-userpage": "ਵਰਤੋਂਕਾਰ ਵਰਕਾ",
-	"greystuff-talkpage": "ਗੱਲ-ਬਾਤ ਸਫਾ"
+	"greystuff-talkpage": "ਗੱਲਬਾਤ ਸਫ਼ਾ"
 }
