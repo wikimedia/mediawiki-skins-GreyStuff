@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Умар"
+			"Умар",
+			"Исмаил Садуев"
 		]
 	},
 	"greystuff-loggedinas": "Чуваьлла '''$1''' санна",
-	"greystuff-notloggedin": "ХӀинца а ахьа системин чохь болх беш бац",
+	"greystuff-notloggedin": "Хьо чу ца ваьлла",
 	"greystuff-history": "АгӀонан истори",
 	"greystuff-purge": "Карлайаккха агӀо",
 	"greystuff-userpage": "Декъашхо",
