@@ -9,7 +9,6 @@
  * @author Jack Phoenix
  * @authors Whoever wrote monobook
  * @date 2014
- *
  */
 
 use MediaWiki\Html\Html;
@@ -27,7 +26,7 @@ class GreyStuffTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		// Apparently not set by default?
-		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageLanguage()->getHtmlCode();
 
 		// Move some content actions links
 		if ( isset( $this->data['content_navigation']['actions']['watch'] ) ) {
