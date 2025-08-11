@@ -206,7 +206,6 @@ class GreyStuffTemplate extends BaseTemplate {
 			'dir' => $this->get( 'dir' )
 		];
 
-		// @phan-suppress-next-line PhanSuspiciousValueComparison
 		if ( $options['body-wrapper'] !== 'none' ) {
 			$bodyDivOptions = [ 'class' => $this->mergeClasses(
 				$options['body-class'],
