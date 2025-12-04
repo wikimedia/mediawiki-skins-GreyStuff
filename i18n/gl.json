@@ -7,10 +7,10 @@
 	},
 	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Tema gris simple co ancho fixo",
-	"greystuff-loggedinas": "Conectado como '''$1'''",
-	"greystuff-notloggedin": "Non accedeu ao sistema",
+	"greystuff-loggedinas": "Iniciaches sesión como '''$1'''",
+	"greystuff-notloggedin": "Non iniciaches sesión",
 	"greystuff-history": "Historial da páxina",
-	"greystuff-purge": "Recargar a páxina",
+	"greystuff-purge": "Actualizar a páxina",
 	"greystuff-userpage": "Páxina de usuario",
 	"greystuff-talkpage": "Páxina de conversa"
 }
