@@ -90,7 +90,7 @@ class GreyStuffTemplate extends BaseTemplate {
 				$this->getClear() .
 
 				Html::rawElement( 'div', [ 'id' => 'bodyContent', 'class' => 'mw-body-content' ],
-					Html::rawElement( 'div', [ 'id' => 'siteSub' ], $this->getMsg( 'tagline' ) ) .
+					Html::element( 'div', [ 'id' => 'siteSub' ], $this->getMsg( 'tagline' )->text() ) .
 					$this->get( 'bodytext' ) .
 					$this->getClear()
 				) .
@@ -551,7 +551,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::rawElement(
 			'h3',
 			[ 'lang' => $this->get( 'userlang' ), 'dir' => $this->get( 'dir' ) ],
-			Html::rawElement( 'label', [ 'for' => 'searchInput' ], $this->getMsg( 'search' ) )
+			Html::label( $this->getMsg( 'search' )->text(), 'searchInput' )
 		);
 
 		$html .= Html::rawElement( 'form', [ 'action' => $this->get( 'wgScript' ), 'id' => 'searchform' ],
