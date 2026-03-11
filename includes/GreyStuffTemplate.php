@@ -268,7 +268,7 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html .= Html::element( 'div', [ 'class' => 'mobileClear' ] ) .
 			$this->getIndicators() .
 			Html::rawElement( 'div', [ 'id' => 'page-namespaces' ],
-				$this->getPortlet( 'namespaces', $this->data['content_navigation']['namespaces'] )
+				$this->getPortlet( 'namespaces', $this->data['content_navigation']['associated-pages'] )
 			);
 
 		$pageTools = Html::openElement( 'div', [ 'id' => 'page-tools' ] );
@@ -482,7 +482,15 @@ class GreyStuffTemplate extends BaseTemplate {
 	protected function getPersonalNavigation() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
-		$personalTools = $skin->getPersonalToolsForMakeListItem( $this->get( 'personal_urls' ) );
+		$contentNav = $this->get( 'content_navigation' );
+		$personalTools = $skin->getPersonalToolsForMakeListItem(
+			array_merge(
+				$contentNav[ 'user-interface-preferences' ],
+				$contentNav[ 'user-page' ],
+				$contentNav[ 'notifications' ],
+				$contentNav[ 'user-menu' ],
+			)
+		);
 
 		$html = '';
 		$extraTools = [];
