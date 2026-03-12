@@ -325,7 +325,9 @@ class GreyStuffTemplate extends BaseTemplate {
 		$html = '';
 		if ( $idPrefix !== '' ) {
 			foreach ( $toolbox as $item => $details ) {
-				$toolbox[$item]['id'] = $idPrefix . $details['id'];
+				if ( isset( $details['id'] ) ) {
+					$toolbox[$item]['id'] = $idPrefix . $details['id'];
+				}
 			}
 		}
 
