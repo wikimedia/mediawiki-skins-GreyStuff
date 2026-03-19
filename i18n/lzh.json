@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"SolidBlock"
+			"SolidBlock",
+			"Davidzdh"
 		]
 	},
-	"greystuff-loggedinas": "入簿於'''$1'''。",
+	"greystuff-loggedinas": "業已籍名曰'''$1'''。",
 	"greystuff-notloggedin": "未登簿",
 	"greystuff-history": "頁史"
 }
