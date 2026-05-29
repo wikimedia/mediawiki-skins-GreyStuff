@@ -4,8 +4,10 @@
 			"Kallmemel"
 		]
 	},
+	"greystuff-loggedinas": "Outentiká komo '''$1'''",
 	"greystuff-notloggedin": "No ta outentiká",
 	"greystuff-history": "Historia di página",
 	"greystuff-purge": "Refreská página",
+	"greystuff-userpage": "Página di usadó",
 	"greystuff-talkpage": "Página di diskushon"
 }
