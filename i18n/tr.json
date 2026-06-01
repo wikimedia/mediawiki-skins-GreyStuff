@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"HakanIST",
 			"Sayginer",
 			"Uncitoyen",
 			"Uğurkent"
 		]
 	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Basit gri sabit genişlikli görünüm",
 	"greystuff-loggedinas": "'''$1''' olarak oturum açıldı",
 	"greystuff-notloggedin": "Oturum açık değil",
