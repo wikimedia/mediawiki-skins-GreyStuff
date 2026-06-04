@@ -4,9 +4,11 @@
 			"BaRaN6161 TURK",
 			"Sayginer",
 			"Uncitoyen",
-			"Uğurkent"
+			"Uğurkent",
+			"HakanIST"
 		]
 	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
 	"greystuff-desc": "Basit gri sabit genişlikli görünüm",
 	"greystuff-loggedinas": "'''$1''' olarak oturum açıldı",
 	"greystuff-notloggedin": "Oturum açık değil",
