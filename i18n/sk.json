@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"greystuff-prefs-talkpage": "[[mw:Skin talk:GreyStuff|{{int:talk}}]]",
+	"greystuff-desc": "Jednoduchá sivá téma vzhľadu s pevnou šírkou",
+	"greystuff-loggedinas": "Prihlásený ako '''$1'''",
+	"greystuff-notloggedin": "Neprihlásený",
+	"greystuff-history": "História stránky",
+	"greystuff-purge": "Obnoviť stránku",
+	"greystuff-userpage": "Používateľská stránka",
+	"greystuff-talkpage": "Diskusná stránka"
+}
