@@ -7,6 +7,9 @@
 	},
 	"greystuff-desc": "Simple grey fixed-width skin",
 	"greystuff-loggedinas": "سجّل دخولك ب سمّيت` '''$1'''",
+	"greystuff-notloggedin": "ماشي مسجّل الدخول",
 	"greystuff-history": "تاريخ الباجه",
-	"greystuff-purge": "صفي الباجه"
+	"greystuff-purge": "صفي الباجه",
+	"greystuff-userpage": "صفحات المستعملين",
+	"greystuff-talkpage": "صفحة النقاش"
 }
