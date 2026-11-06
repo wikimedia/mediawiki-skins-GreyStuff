@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
+			"LProfo",
 			"Reza1615"
 		]
 	},
 	"greystuff-desc": "پوستهٔ سادهٔ خاکستری عرض ثابت",
-	"greystuff-loggedinas": "ورود به عنوان '''$1'''",
+	"greystuff-loggedinas": "واردشده به سامانه به‌عنوان '''$1'''",
 	"greystuff-notloggedin": "به سامانه وارد نشده‌اید",
 	"greystuff-history": "تاریخچهٔ صفحه",
 	"greystuff-purge": "تازه کردن صفحه",
